@@ -3,6 +3,7 @@
 import CTA from "@components/CTA";
 import { Image } from "next/dist/client/image-component";
 import FeedDemo from "@components/FeedDemo";
+import Contact from "@components/Contact";
 
 export default function Home() {
   const siteName = "Prompt Draft";
@@ -49,7 +50,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex-center bg-gradient-to-r from-sky-500 to-indigo-500 w-screen">
+      <div className="flex-center background_blue_gradient">
         <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 p-20 max-w-5xl">
           <div className="flex justify-center items-center rounded-lg">
             <Image
@@ -70,6 +71,7 @@ export default function Home() {
         </div>
       </div>
       <FeedDemo />
+      <Contact />
     </section>
   );
 }

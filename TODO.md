@@ -2,13 +2,11 @@
 
 <!-- Feed? ^^^ -->
 
-contact us section w/footer
-
-implement pagination for all fetches
-
 Integrate text-to-image form with state management
 
 Create text-to-chat form with fetch request to GPT4
+
+implement pagination for all fetches
 
 implement a cache for searches, update DB fetch logic
 
@@ -42,3 +40,5 @@ implement View other profiles
 separate feed page from home w/ search
 
 Change descriptions
+
+contact us section w/footer

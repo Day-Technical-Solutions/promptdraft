@@ -23,6 +23,11 @@ export default function RootLayout({
           <main className="app">
             <Nav />
             {children}
+            <footer>
+              <div className="w-screen  p-4 text-center  bg-gradient-to-r from-slate-600 to-transparent">
+                © 2023 Powered By: Day Technical Solutions
+              </div>
+            </footer>
           </main>
         </Provider>
       </body>

@@ -13,7 +13,7 @@ const PromptCardList = ({
   handleTagClick: (tag: string) => void;
 }) => {
   return (
-    <div className="mt-16 prompt_layout">
+    <div className="mt-16 prompt_layout h-full">
       {data.map((post, index) => (
         <PromptCard key={index} post={post} handleTagClick={handleTagClick} />
       ))}
@@ -66,10 +66,12 @@ export default function Feed() {
           className="search_input peer"
         />
       </form>
-      <PromptCardList
-        data={searchText.length ? filteredPosts : posts}
-        handleTagClick={handleTagClick}
-      />
+      <div className="min-h-screen">
+        <PromptCardList
+          data={searchText.length ? filteredPosts : posts}
+          handleTagClick={handleTagClick}
+        />
+      </div>
     </section>
   );
 }

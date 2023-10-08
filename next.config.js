@@ -3,9 +3,9 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
-    images: {
-        domains: ['lh3.googleusercontent.com'],
-      },
+  images: {
+      domains: ['lh3.googleusercontent.com'],
+  },
 }
 
 module.exports = nextConfig
