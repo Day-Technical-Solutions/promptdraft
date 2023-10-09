@@ -45,7 +45,7 @@ export default function MyProfile() {
   return (
     <Profile
       name="My"
-      desc="Welcome to your personalized profile page"
+      desc="Welcome to your personalized profile page. Explore and review any prompts you've shared or favorited."
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}

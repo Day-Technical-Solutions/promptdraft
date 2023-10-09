@@ -19,12 +19,16 @@ export type Post = {
   tag: string;
 };
 
-export default function CreatePrompt() {
+export default function CreatePrompt({
+  generatedPrompt,
+}: {
+  generatedPrompt?: string;
+}) {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState<Post>({
-    prompt: "",
+    prompt: generatedPrompt ?? "",
     tag: "",
   });
   if (!session?.user.id) return router.push("/");
