@@ -2,6 +2,10 @@
 
 <!-- Feed? ^^^ -->
 
+Add Generate button to Nav
+
+Add generator selectors
+
 Integrate text-to-image form with state management
 
 Create text-to-chat form with fetch request to GPT4
