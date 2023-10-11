@@ -1,7 +1,5 @@
 <!-- @format -->
 
-<!-- Feed? ^^^ -->
-
 Add generator selectors
 
 Integrate text-to-image form with state management
@@ -16,19 +14,23 @@ implement a cache for searches, update DB fetch logic
 
 Remove emails and replace with userTag
 
-Add favorties module so users can save posts the have favorited
-
-create front page posts
-
---------MVP Ready------ Deploy on Vercel
+Add a title to the prompts
 
 Add more login providers, add dedicated sign up/login page
 
 Add custom login form
 
-Add null state module for a user with no posts ? < 5 ?
+Settings page to update user information
+
+Add favorties module so users can save posts the have favorited
+
+create front page posts
 
 create and replace logo
+
+--------MVP Ready------ Deploy on Vercel
+
+Add null state module for a user with no posts ? < 5 ?
 
 add google analytics and google adsense
 
