@@ -78,7 +78,7 @@
 }
 
 .black_btn {
-  @apply rounded-md border bg-blue-500 py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
+  @apply py-1.5 px-5 text-blue-600 transition-all hover:underline hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .black_btn_reversed {
@@ -86,15 +86,23 @@
 }
 
 .background_blue_gradient {
-  @apply bg-gradient-to-r from-sky-500 to-indigo-500 w-screen;
+  @apply bg-gradient-to-r from-sky-500 to-indigo-500;
+}
+
+.bg_light_blue_gradient{
+  @apply bg-gradient-to-r from-white to-blue-400;
 }
 
 .outline_btn {
-  @apply rounded-md border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply  bg-transparent py-1.5 px-2 text-black transition-all hover:text-blue-800 hover:underline text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+}
+
+.subHead_text {
+  @apply  md:text-4xl font-extrabold leading-[1.15] text-gray-800 text-2xl;
 }
 
 .orange_gradient {

@@ -50,7 +50,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex-center background_blue_gradient">
+      <div className="flex-center background_blue_gradient w-screen">
         <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 p-20 max-w-5xl">
           <div className="flex justify-center items-center rounded-lg">
             <Image

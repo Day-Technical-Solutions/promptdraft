@@ -112,6 +112,13 @@ export default function Nav() {
                   My Profile
                 </Link>
                 <Link
+                  href="/generate"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Generate
+                </Link>
+                <Link
                   href={"/create-prompt"}
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}

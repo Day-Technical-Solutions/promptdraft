@@ -11,7 +11,7 @@ export default function Contact() {
   const form = useRef(null);
 
   return (
-    <div className="background_blue_gradient text-center flex p-12 mt-10 ">
+    <div className="background_blue_gradient text-center flex p-12 mt-10 w-screen">
       <section className="w-full max-w-full flex-col flex-center mx-10">
         <h1 className="head_text text-center">
           <span className="text-white font-satoshi">Contact Us</span>

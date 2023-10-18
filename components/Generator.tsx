@@ -1,7 +1,9 @@
 /** @format */
+"use client";
 
 import React from "react";
-import Image from "next/dist/client/image-component";
+import { Image } from "next/dist/client/image-component";
+import { useRouter } from "next/navigation";
 
 export default function Generator({
   type,
@@ -10,9 +12,39 @@ export default function Generator({
   type: string;
   image: typeof Image | null;
 }) {
+  const router = useRouter();
+
   return (
-    <div>
-      <p>Generator</p>
+    <div
+      className="flex flex-row rounded-lg items-center drop-shadow-lg transition-all hover:scale-95 cursor-pointer"
+      onClick={() => {
+        switch (type) {
+          case "Text-to-Image":
+            return router.push("/generate/text-to-image");
+          case "Text-to-Chat":
+            return router.push("/generate/text-to-chat");
+          case "Image-to-Text":
+            return router.push("/generate/image-to-text");
+          default:
+            return null;
+        }
+      }}
+    >
+      <div className="flex flex-center w-full rounded-l-lg min-h-full bg_light_blue_gradient ">
+        <p className="subHead_text text-center">{`${type}`}</p>
+      </div>
+      <div className="">
+        {!image && (
+          <Image
+            src="/assets/images/sample.jpg"
+            width={300}
+            height={300}
+            alt="generator"
+            className="object-fill rounded-r-lg"
+            priority
+          />
+        )}
+      </div>
     </div>
   );
 }
