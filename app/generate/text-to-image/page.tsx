@@ -5,7 +5,7 @@ import React from "react";
 
 function TextToImageForm() {
   return (
-    <div>
+    <div className="min-h-screen w-full">
       <TextToImage />
     </div>
   );

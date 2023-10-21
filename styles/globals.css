@@ -188,3 +188,9 @@
 .pulse-hover {
   @apply transition ease-in-out delay-150 hover:scale-105 duration-300;
 }
+
+.tooltip {
+  font-size: .75rem;
+  width: 15px;
+  height: 15px;
+}
