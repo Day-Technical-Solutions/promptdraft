@@ -1,34 +1,32 @@
 <!-- @format -->
 
-Add generator selectors
-
 Integrate text-to-image form with state management
 
 Create text-to-chat form with fetch request to GPT4
 
 implement salesforce blip for image to text
 
-implement pagination for all fetches
-
-implement a cache for searches, update DB fetch logic
-
 Remove emails and replace with userTag
 
 Add a title to the prompts
 
-Add more login providers, add dedicated sign up/login page
-
-Add custom login form
-
-Settings page to update user information
-
-Add favorties module so users can save posts the have favorited
+Add favorties module so users can see posts the have favorited
 
 create front page posts
 
 create and replace logo
 
 --------MVP Ready------ Deploy on Vercel
+
+implement pagination for all fetches
+
+implement a cache for searches, update DB fetch logic
+
+Add more login providers, add dedicated sign up/login page
+
+Add custom login form
+
+Settings page to update user information
 
 Add null state module for a user with no posts ? < 5 ?
 
@@ -56,3 +54,5 @@ Change descriptions
 contact us section w/footer
 
 Add Generate button to Nav
+
+Add generator selectors

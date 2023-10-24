@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
+import Accordion from "./Accordion";
 
 type FormData = {
   subject: string;
@@ -142,7 +143,14 @@ export default function TextToImage() {
           placeholder="Eg. red shirt, green stroller, smiling"
           className="form_textarea mb-5 border-none"
         ></textarea>
+        <div className="mb-5">
+          <Accordion
+            collection={formData.photoArtStyle}
+            setCollection={setFormData}
+          />
+        </div>
 
+        {/* Submit Button */}
         <div className="flex-start mx-3 mb-5 gap-4">
           <button
             type="submit"
