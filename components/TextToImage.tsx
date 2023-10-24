@@ -3,6 +3,7 @@
 import React from "react";
 import { useState } from "react";
 import Tooltip from "./Tooltip";
+import { Image } from "next/dist/client/image-component";
 
 type FormData = {
   subject: string;
@@ -65,41 +66,80 @@ export default function TextToImage() {
         onSubmit={handleSubmit}
         className="mt-10 w-full flex flex-col glassmorphism"
       >
-        <label>
+        <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 max-w-5xl pb-1">
+          <div className="input_container">
+            <label htmlFor="subject">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Subject{" "}
+                <Tooltip info="What is the primary focus of your prompt?" />
+              </span>
+            </label>
+            <input
+              id="subject"
+              onChange={(e) => {
+                setFormData({ ...formData, subject: `${e.target.value}` });
+              }}
+              placeholder="Eg. 'a baby'"
+              required
+              name="subject"
+              className="form_input mb-5"
+            ></input>
+            <label htmlFor="predicate">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Predicate
+                <Tooltip info="What is the subject doing?" />
+              </span>
+            </label>
+            <input
+              id="predicate"
+              name="predicate"
+              onChange={(e) => {
+                setFormData({ ...formData, predicate: `${e.target.value}` });
+              }}
+              placeholder="Eg. 'in a stroller'"
+              className="form_input mb-5"
+            ></input>
+            <label htmlFor="environment">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Environment
+                <Tooltip info="What kind of enviroment is the subject in?" />
+              </span>
+            </label>
+            <input
+              id="environment"
+              name="environment"
+              onChange={(e) => {
+                setFormData({ ...formData, environment: `${e.target.value}` });
+              }}
+              placeholder="Eg. 'urban sidewalk'"
+              className="form_input mb-5"
+            ></input>
+          </div>
+          <div className="flex flex-col flex-center">
+            <Image
+              src="/assets/images/placeholder.png"
+              width={300}
+              height={300}
+              alt="generator"
+              className="object-fill rounded-lg"
+              priority
+            />
+            <p className=" italic p-1"> text describing image above</p>
+          </div>
+        </div>
+        <label htmlFor="extra_details">
           <span className="font-satoshi font-semibold text-base text-gray-800 flex">
-            Subject <Tooltip info="What is the primary focus of your prompt?" />
-          </span>
-        </label>
-        <input
-          onChange={(e) => {
-            setFormData({ ...formData, subject: `${e.target.value}` });
-          }}
-          placeholder="Eg. 'a baby'"
-          required
-          className="form_input mb-5"
-        ></input>
-        <label>
-          <span className="font-satoshi font-semibold text-base text-gray-800 flex">
-            Predicate
-            <Tooltip info="What is the subject doing?" />
-          </span>
-        </label>
-        <input
-          onChange={(e) => {
-            setFormData({ ...formData, predicate: `${e.target.value}` });
-          }}
-          placeholder="Eg. 'in a stroller'"
-          className="form_input mb-5"
-        ></input>
-
-        <label>
-          <span className="font-satoshi font-semibold text-base text-gray-800">
-            Your AI Prompt
+            Extra Details
+            <Tooltip info="What other details about the subject do you want to push priority for the model?" />
           </span>
         </label>
         <textarea
-          onChange={(e) => {}}
-          placeholder="Write your prompt here..."
+          id="extra_details"
+          name="extra_details"
+          onChange={(e) => {
+            setFormData({ ...formData, extraDetails: `${e.target.value}` });
+          }}
+          placeholder="Eg. red shirt, green stroller, smiling"
           className="form_textarea mb-5 border-none"
         ></textarea>
 

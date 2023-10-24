@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import React from "react";
+import React, { ReactElement } from "react";
 import { Image } from "next/dist/client/image-component";
 import { useRouter } from "next/navigation";
 
@@ -10,7 +10,7 @@ export default function Generator({
   image,
 }: {
   type: string;
-  image: typeof Image | null;
+  image: ReactElement;
 }) {
   const router = useRouter();
 
@@ -34,9 +34,10 @@ export default function Generator({
         <p className="subHead_text text-center">{`${type}`}</p>
       </div>
       <div className="">
+        {image}
         {!image && (
           <Image
-            src="/assets/images/sample.jpg"
+            src="/assets/images/placeholder.png"
             width={300}
             height={300}
             alt="generator"
