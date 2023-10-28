@@ -28,6 +28,8 @@ Add custom login form
 
 Settings page to update user information
 
+truncate posts and add see all module
+
 Add null state module for a user with no posts ? < 5 ?
 
 add google analytics and google adsense

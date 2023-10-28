@@ -6,7 +6,7 @@ import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
 
-type FormData = {
+export type FormData = {
   subject: string;
   predicate: string;
   environment: string;
@@ -30,16 +30,16 @@ export default function TextToImage() {
     predicate: "",
     environment: "",
     extraDetails: "",
-    photoArtStyle: new Set(),
-    realism: new Set(),
-    artMedium: new Set(),
-    timeOfDay: new Set(),
-    lighting: new Set(),
-    colorScheme: new Set(),
-    mood: new Set(),
-    influece: new Set(),
-    config: new Set(),
-    magicWords: new Set(),
+    photoArtStyle: new Set<string>(),
+    realism: new Set<string>(),
+    artMedium: new Set<string>(),
+    timeOfDay: new Set<string>(),
+    lighting: new Set<string>(),
+    colorScheme: new Set<string>(),
+    mood: new Set<string>(),
+    influece: new Set<string>(),
+    config: new Set<string>(),
+    magicWords: new Set<string>(),
   });
 
   const handleSubmit = (e: { preventDefault: any }) => {
@@ -53,7 +53,7 @@ export default function TextToImage() {
   };
 
   return (
-    <section className="w-full max-w-full flex-start flex-col h-screen">
+    <section className="w-full  flex-start flex-col min-h-screen">
       <h1 className="head_text text-left">
         <span className="blue_gradient">Text-to-Image</span>
       </h1>
@@ -119,10 +119,10 @@ export default function TextToImage() {
           <div className="flex flex-col flex-center">
             <Image
               src="/assets/images/placeholder.png"
-              width={300}
-              height={300}
+              width={500}
+              height={500}
               alt="generator"
-              className="object-fill rounded-lg"
+              className="object-fill rounded-lg max-w-sm pointer-events-none"
               priority
             />
             <p className=" italic p-1"> text describing image above</p>
@@ -147,6 +147,7 @@ export default function TextToImage() {
           <Accordion
             collection={formData.photoArtStyle}
             setCollection={setFormData}
+            options={null}
           />
         </div>
 

@@ -16,7 +16,7 @@ export default function Home() {
           width={5769}
           height={2784}
           alt="banner"
-          className="object-fill  -z-10"
+          className="object-fill pointer-events-none -z-10"
           priority
         />
       </div>
@@ -45,7 +45,7 @@ export default function Home() {
               width={2048}
               height={2048}
               alt="picture"
-              className="object-fill m-5 rounded-xl drop-shadow-md"
+              className="object-fill m-5 rounded-xl drop-shadow-md pointer-events-none"
             />
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function Home() {
               width={2048}
               height={2048}
               alt="picture"
-              className="object-fill m-5 rounded-xl drop-shadow-md md:row-start-1"
+              className="object-fill m-5 rounded-xl drop-shadow-md md:row-start-1 pointer-events-none"
             />
           </div>
           <p className="font-satoshi text-xl text-right text-white">

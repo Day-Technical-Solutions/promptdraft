@@ -3,12 +3,20 @@
 import React, { useState } from "react";
 import { TECollapse } from "tw-elements-react";
 import Tooltip from "./Tooltip";
+import { FormData } from "./TextToImage";
+import SelectCard from "./SelectCard";
 
-export default function Accordion(
-  collection: any,
-  setCollection: any,
-  options: any
-) {
+type props = {
+  collection: Set<string>;
+  setCollection: React.Dispatch<React.SetStateAction<FormData>>;
+  options: any;
+};
+
+export default function Accordion({
+  collection,
+  setCollection,
+  options,
+}: props) {
   const [activeElement, setActiveElement] = useState("");
 
   const handleClick = (value: string) => {
@@ -69,13 +77,12 @@ export default function Accordion(
           >
             <p className="p-5">Select all that apply:</p>
             <div className="px-5 py-4">
-              <strong>This is the first item's accordion body.</strong> Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eu
-              rhoncus purus, vitae tincidunt nibh. Vivamus elementum egestas
-              ligula in varius. Proin ac erat pretium, ultricies leo at, cursus
-              ante. Pellentesque at odio euismod, mattis urna ac, accumsan
-              metus. Nam nisi leo, malesuada vitae pretium et, laoreet at lorem.
-              Curabitur non sollicitudin neque.
+              <SelectCard
+                src="/assets/images/placeholder.png"
+                desc="test"
+                title="testf  ffdsaf sf"
+                handleClick={() => {}}
+              />
             </div>
           </TECollapse>
         </div>
