@@ -190,8 +190,10 @@
 }
 
 .checklogo {
-  bottom: 335px;
-  left: 265px;
+  position: absolute;
+  opacity: .3;
+  z-index: 1000;
+
 }
 
 .border-green {

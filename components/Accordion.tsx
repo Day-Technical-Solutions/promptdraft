@@ -1,23 +1,34 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TECollapse } from "tw-elements-react";
-import Tooltip from "./Tooltip";
 import { FormData } from "./TextToImage";
 import SelectCard from "./SelectCard";
+import { type CollectionEnumType } from "@data/CollectionTypeMap";
+import PhotoArtStyle from "@data/PhotoArtStyle";
+import { Utils } from "@utils/utils";
 
 type props = {
   collection: Set<string>;
-  setCollection: React.Dispatch<React.SetStateAction<FormData>>;
-  options: any;
+  label: string;
+  tooltip: React.JSX.Element;
+  enumType: string;
+};
+
+type CollectionItem = {
+  title: string;
+  url: string;
+  text: CollectionEnumType;
 };
 
 export default function Accordion({
   collection,
-  setCollection,
-  options,
+  label,
+  enumType,
+  tooltip,
 }: props) {
   const [activeElement, setActiveElement] = useState("");
+  const [data, setData] = useState<CollectionItem[]>([]);
 
   const handleClick = (value: string) => {
     if (value === activeElement) {
@@ -26,10 +37,25 @@ export default function Accordion({
       setActiveElement(value);
     }
   };
+
+  useEffect(() => {
+    const collectionArray = Utils.getDataFromCollectionType(enumType);
+    const collectionItems = collectionArray.map((item) => ({
+      ...Utils.getInfoFromEnum(item),
+      text: item,
+    }));
+    setData(collectionItems);
+  }, []);
+
+  const handleCheckBox = (selection: CollectionEnumType) => {
+    if (collection.has(selection)) collection.delete(selection);
+    else collection.add(selection);
+    console.log(collection);
+  };
   return (
     <>
       <div id="accordionExample">
-        <div className="rounded-lg  bg-white ">
+        <div className="rounded-lg  bg-white mb-3 ">
           <h2 className="mb-0" id="headingOne">
             <button
               className={`${
@@ -41,10 +67,10 @@ export default function Accordion({
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              <label htmlFor="photo_art_style">
+              <label>
                 <span className="font-satoshi font-semibold text-base text-gray-800 flex">
-                  Photo/Art Style
-                  <Tooltip info="What kind of art style or composition should this image have?" />
+                  {label}
+                  {tooltip}
                 </span>
               </label>
               <span
@@ -76,13 +102,32 @@ export default function Accordion({
             className="!mt-0 !rounded-t-none !shadow-none transition-all"
           >
             <p className="p-5">Select all that apply:</p>
-            <div className="px-5 py-4">
-              <SelectCard
-                src="/assets/images/placeholder.png"
-                desc="test"
-                title="testf  ffdsaf sf"
-                handleClick={() => {}}
-              />
+            <div className="px-5 py-4 flex-center">
+              <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {data.length ? (
+                  data.map((item, index) => {
+                    return (
+                      <li key={index}>
+                        <SelectCard
+                          key={index + item.title}
+                          src={item.url}
+                          text={item.text}
+                          title={item.title}
+                          handleCheckBox={handleCheckBox}
+                        />
+                      </li>
+                    );
+                  })
+                ) : (
+                  <SelectCard
+                    key={1}
+                    src={"/assets/images/placeholder.png"}
+                    text={PhotoArtStyle.ABSTRACT}
+                    title={"test"}
+                    handleCheckBox={handleCheckBox}
+                  />
+                )}
+              </ul>
             </div>
           </TECollapse>
         </div>

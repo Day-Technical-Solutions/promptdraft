@@ -64,6 +64,7 @@ export default function TextToImage() {
       </p>
 
       <form
+        id="texttoimage"
         onSubmit={handleSubmit}
         className="mt-10 w-full flex flex-col glassmorphism"
       >
@@ -146,8 +147,21 @@ export default function TextToImage() {
         <div className="mb-5">
           <Accordion
             collection={formData.photoArtStyle}
-            setCollection={setFormData}
-            options={null}
+            label="Photo/Art Style"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of art style or composition should this image have?"
+                }
+              />
+            }
+            enumType={"PhotoArtStyle"}
+          />
+          <Accordion
+            collection={formData.realism}
+            label="Realism"
+            tooltip={<Tooltip info={"How realistic should the image be?"} />}
+            enumType={"Realism"}
           />
         </div>
 
