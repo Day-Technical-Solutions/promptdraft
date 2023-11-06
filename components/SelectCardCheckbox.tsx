@@ -5,16 +5,18 @@ import { CollectionEnumType } from "@data/CollectionTypeMap";
 import Image from "next/image";
 import React, { useState } from "react";
 
-export default function SelectCard({
+export default function SelectCardCheckbox({
   title,
   src,
   text,
   handleCheckBox,
+  name,
 }: {
   title: string;
   src: string;
   text: CollectionEnumType;
   handleCheckBox: (selection: CollectionEnumType) => void;
+  name: string;
 }) {
   const [selected, setSelected] = useState(false);
   return (
@@ -30,11 +32,12 @@ export default function SelectCard({
       >
         <input
           form="texttoimage"
+          name={name}
           type="checkbox"
           id={`${text}`}
           className="appearance-none"
           value={text}
-          checked={selected}
+          defaultChecked={selected}
         />
         {selected && (
           <Image

@@ -55,16 +55,13 @@ export class Utils {
         return Object.values(TimeOfDay).sort((a, b) => {
           return a.localeCompare(b);
         });
-      case "CameraLens":
-        return Object.values(CameraLens).sort((a, b) => {
-          return a.localeCompare(b);
-        });
-      case "CameraType":
-        return Object.values(CameraType).sort((a, b) => {
-          return a.localeCompare(b);
-        });
-      case "CameraView":
-        return Object.values(CameraView).sort((a, b) => {
+      case "Camera":
+        const values = [
+          ...Object.values(CameraLens),
+          ...Object.values(CameraType),
+          ...Object.values(CameraView),
+        ];
+        return values.sort((a, b) => {
           return a.localeCompare(b);
         });
       case "MagicWords":

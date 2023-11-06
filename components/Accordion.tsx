@@ -3,16 +3,18 @@
 import React, { useEffect, useState } from "react";
 import { TECollapse } from "tw-elements-react";
 import { FormData } from "./TextToImage";
-import SelectCard from "./SelectCard";
+import SelectCardCheckbox from "./SelectCardCheckbox";
 import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
 import { Utils } from "@utils/utils";
+import SelectCardRadio from "./SelectCardRadio";
 
 type props = {
   collection: Set<string>;
   label: string;
   tooltip: React.JSX.Element;
   enumType: string;
+  useRadio?: boolean;
 };
 
 type CollectionItem = {
@@ -26,9 +28,11 @@ export default function Accordion({
   label,
   enumType,
   tooltip,
+  useRadio,
 }: props) {
   const [activeElement, setActiveElement] = useState("");
   const [data, setData] = useState<CollectionItem[]>([]);
+  const [radio, setRadio] = useState("");
 
   const handleClick = (value: string) => {
     if (value === activeElement) {
@@ -50,6 +54,20 @@ export default function Accordion({
   const handleCheckBox = (selection: CollectionEnumType) => {
     if (collection.has(selection)) collection.delete(selection);
     else collection.add(selection);
+    console.log(collection);
+  };
+
+  const handleRadio = (selection: CollectionEnumType) => {
+    setRadio(selection);
+    if (collection.has(selection)) {
+      collection.clear();
+      console.log(collection);
+      return;
+    } else {
+      collection.clear();
+      collection.add(selection);
+    }
+
     console.log(collection);
   };
   return (
@@ -101,30 +119,59 @@ export default function Accordion({
             show={activeElement === "element1"}
             className="!mt-0 !rounded-t-none !shadow-none transition-all"
           >
-            <p className="p-5">Select all that apply:</p>
+            <p className="p-5">
+              {useRadio
+                ? "Select One that applies: "
+                : "Select all that apply:"}
+            </p>
             <div className="px-5 py-4 flex-center">
               <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {data.length ? (
                   data.map((item, index) => {
                     return (
                       <li key={index}>
-                        <SelectCard
-                          key={index + item.title}
-                          src={item.url}
-                          text={item.text}
-                          title={item.title}
-                          handleCheckBox={handleCheckBox}
-                        />
+                        {useRadio && (
+                          <SelectCardRadio
+                            key={index + item.title}
+                            src={item.url}
+                            text={item.text}
+                            title={item.title}
+                            handleRadio={handleRadio}
+                            radio={radio}
+                            name={label}
+                          />
+                        )}
+                        {!useRadio && (
+                          <SelectCardCheckbox
+                            key={index + item.title}
+                            src={item.url}
+                            name={label}
+                            text={item.text}
+                            title={item.title}
+                            handleCheckBox={handleCheckBox}
+                          />
+                        )}
                       </li>
                     );
                   })
+                ) : useRadio ? (
+                  <SelectCardRadio
+                    key={1}
+                    src={"/assets/images/placeholder.png"}
+                    text={PhotoArtStyle.ABSTRACT}
+                    title={"test"}
+                    handleRadio={handleRadio}
+                    radio={radio}
+                    name={label}
+                  />
                 ) : (
-                  <SelectCard
+                  <SelectCardCheckbox
                     key={1}
                     src={"/assets/images/placeholder.png"}
                     text={PhotoArtStyle.ABSTRACT}
                     title={"test"}
                     handleCheckBox={handleCheckBox}
+                    name={label}
                   />
                 )}
               </ul>

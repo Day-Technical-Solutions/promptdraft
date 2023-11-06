@@ -38,7 +38,7 @@ export default function TextToImage() {
     colorScheme: new Set<string>(),
     mood: new Set<string>(),
     influece: new Set<string>(),
-    config: new Set<string>(),
+    camera: new Set<string>(),
     magicWords: new Set<string>(),
   });
 
@@ -162,6 +162,89 @@ export default function TextToImage() {
             label="Realism"
             tooltip={<Tooltip info={"How realistic should the image be?"} />}
             enumType={"Realism"}
+            useRadio={true}
+          />
+          <Accordion
+            collection={formData.artMedium}
+            label="Art Medium"
+            tooltip={
+              <Tooltip
+                info={"What kind of material should be used to make the image?"}
+              />
+            }
+            enumType={"ArtMedium"}
+          />
+          <Accordion
+            collection={formData.timeOfDay}
+            label="Time Of Day"
+            tooltip={
+              <Tooltip
+                info={"What time of the day outside should it be roughly?"}
+              />
+            }
+            enumType={"TimeOfDay"}
+          />
+          <Accordion
+            collection={formData.lighting}
+            label="Lighting"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of lighting should the subject or environment have?"
+                }
+              />
+            }
+            enumType={"Lighting"}
+          />
+          <Accordion
+            collection={formData.colorScheme}
+            label="Color Scheme"
+            tooltip={
+              <Tooltip info={"What type of colors should the image have?"} />
+            }
+            enumType={"ColorScheme"}
+          />
+          <Accordion
+            collection={formData.mood}
+            label="Mood"
+            tooltip={
+              <Tooltip
+                info={"What kind of mood is the subject/environment in?"}
+              />
+            }
+            enumType={"Mood"}
+          />
+          <Accordion
+            collection={formData.influece}
+            label="Influence"
+            tooltip={
+              <Tooltip
+                info={
+                  "Add influence of art styles from various well known artists."
+                }
+              />
+            }
+            enumType={"Influence"}
+          />
+          <Accordion
+            collection={formData.camera}
+            label="Camera"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of camera/settings should the image be made with?"
+                }
+              />
+            }
+            enumType={"Camera"}
+          />
+          <Accordion
+            collection={formData.magicWords}
+            label="Magic Words"
+            tooltip={
+              <Tooltip info={"Add various keywords to help improve quality."} />
+            }
+            enumType={"MagicWords"}
           />
         </div>
 
