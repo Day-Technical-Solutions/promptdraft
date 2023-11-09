@@ -54,7 +54,6 @@ export default function Accordion({
   const handleCheckBox = (selection: CollectionEnumType) => {
     if (collection.has(selection)) collection.delete(selection);
     else collection.add(selection);
-    console.log(collection);
   };
 
   const handleRadio = (selection: CollectionEnumType) => {
@@ -67,8 +66,6 @@ export default function Accordion({
       collection.clear();
       collection.add(selection);
     }
-
-    console.log(collection);
   };
   return (
     <>
@@ -79,7 +76,7 @@ export default function Accordion({
               className={`${
                 activeElement === "element1" &&
                 `text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] `
-              } group relative flex w-full items-center rounded-lg border-0 bg-blue-50 px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none `}
+              } group relative flex w-full items-center rounded-lg border-0 bg-gradient-to-r from-blue-100 via-gray-200 to-blue-100 px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none `}
               type="button"
               onClick={() => handleClick("element1")}
               aria-expanded="true"

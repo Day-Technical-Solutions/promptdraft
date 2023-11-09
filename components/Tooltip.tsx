@@ -11,7 +11,7 @@ export default function Tooltip({ info }: { info: string }) {
     </div>
   );
   return (
-    <div className="flex">
+    <div className="flex z-20">
       <div
         className="mx-1 bg-blue-600 rounded-full flex-center tooltip"
         onMouseOver={() => setShow(true)}

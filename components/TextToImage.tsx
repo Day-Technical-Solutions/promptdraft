@@ -1,7 +1,8 @@
 /** @format */
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
@@ -25,6 +26,14 @@ export type FormData = {
 
 export default function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
+  const [generated, setGenerated] = useState(
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!"
+  );
+  const [negPrompt, setNegPrompt] = useState(
+    "disfigured, bad art, bad anatomy, bad proportions, cloned face, ugly, extra limbs, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, mutated hands, fused fingers, too many fingers, long neck, mutant"
+  );
+  const [displayedPrompt, setDisplayedPrompt] = useState("");
+  const { data: session } = useSession();
   const [formData, setFormData] = useState({
     subject: "",
     predicate: "",
@@ -51,9 +60,27 @@ export default function TextToImage() {
 
     return () => clearTimeout(delay);
   };
+  const [copied, setCopied] = useState("");
+  const handleCopy = (text: string) => {
+    setCopied(text);
+    navigator.clipboard.writeText(text);
+    setTimeout(() => setCopied(""), 3000);
+  };
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (generated.length !== displayedPrompt.length) {
+        setDisplayedPrompt(generated.slice(0, index));
+        index++;
+      }
+    }, 1);
+
+    return () => clearInterval(interval);
+  }, [generated]);
 
   return (
-    <section className="w-full  flex-start flex-col min-h-screen">
+    <section className="w-full  flex-start flex-col min-h-screen mb-5">
       <h1 className="head_text text-left">
         <span className="blue_gradient">Text-to-Image</span>
       </h1>
@@ -132,7 +159,7 @@ export default function TextToImage() {
         <label htmlFor="extra_details">
           <span className="font-satoshi font-semibold text-base text-gray-800 flex">
             Extra Details
-            <Tooltip info="What other details about the subject do you want to push priority for the model?" />
+            <Tooltip info="What other details about the subject do you want to push to priority for the model?" />
           </span>
         </label>
         <textarea
@@ -179,7 +206,9 @@ export default function TextToImage() {
             label="Time Of Day"
             tooltip={
               <Tooltip
-                info={"What time of the day outside should it be roughly?"}
+                info={
+                  "What time of the day should it be roughly? Typically affects environment."
+                }
               />
             }
             enumType={"TimeOfDay"}
@@ -189,9 +218,7 @@ export default function TextToImage() {
             label="Lighting"
             tooltip={
               <Tooltip
-                info={
-                  "What kind of lighting should the subject or environment have?"
-                }
+                info={"What kind of lighting should the subject have?"}
               />
             }
             enumType={"Lighting"}
@@ -209,7 +236,9 @@ export default function TextToImage() {
             label="Mood"
             tooltip={
               <Tooltip
-                info={"What kind of mood is the subject/environment in?"}
+                info={
+                  "What kind of mood is the subject in? Typically affects faces."
+                }
               />
             }
             enumType={"Mood"}
@@ -232,7 +261,7 @@ export default function TextToImage() {
             tooltip={
               <Tooltip
                 info={
-                  "What kind of camera/settings should the image be made with?"
+                  "What kind of camera/settings should the image be made with? May give inconsistent results based on model."
                 }
               />
             }
@@ -246,6 +275,69 @@ export default function TextToImage() {
             }
             enumType={"MagicWords"}
           />
+        </div>
+        <div className="grid grid-cols-2 gap-3 mb-3">
+          <div className="grid rounded-lg p-4 flex-col bg-white">
+            <div className="flex gap-4 w-full">
+              <span className=" font-bold text-2xl w-full">Your Prompt: </span>
+              <div className="copy_btn" onClick={() => handleCopy(generated)}>
+                <Image
+                  src={
+                    copied === generated
+                      ? "/assets/icons/tick.svg"
+                      : "/assets/icons/copy.svg"
+                  }
+                  width={12}
+                  height={12}
+                  alt="icon"
+                />
+              </div>
+            </div>
+            <Image
+              src="/assets/images/quotes.png"
+              width={50}
+              height={50}
+              alt="quotes"
+              className="object-fill rounded-lg max-w-sm pointer-events-none rotate-180"
+            />
+            <p className="p-2 desc mb-4 drop-shadow-lg">{displayedPrompt}</p>
+            <Image
+              src="/assets/images/quotes.png"
+              width={50}
+              height={50}
+              alt="quotes"
+              className="object-fill rounded-lg max-w-sm pointer-events-none justify-self-end"
+            />
+          </div>
+          <div className="rounded-lg p-4 flex bg-white flex-col">
+            <div className="flex gap-4 w-full">
+              <div className="flex w-full">
+                <span className=" font-bold text-2xl">Negative Prompt </span>
+                {
+                  <Tooltip info="A negative prompt is an attempt to exclude specific things from the generated image." />
+                }
+              </div>
+              <div
+                className="copy_btn z-10 "
+                onClick={() => handleCopy(negPrompt)}
+              >
+                <Image
+                  src={
+                    copied === negPrompt
+                      ? "/assets/icons/tick.svg"
+                      : "/assets/icons/copy.svg"
+                  }
+                  width={12}
+                  height={12}
+                  alt="icon"
+                />
+              </div>
+            </div>
+            <div className="w-full gap-2 p-2">
+              <p className="desc mb-2">Sample:</p>
+              <p className=" italic">{negPrompt}</p>
+            </div>
+          </div>
         </div>
 
         {/* Submit Button */}
@@ -278,6 +370,16 @@ export default function TextToImage() {
               </div>
             )}
           </button>
+          {session?.user && (
+            <button
+              className="px-5 py-1.5 text-sm bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Share{" "}
+            </button>
+          )}
         </div>
       </form>
     </section>
