@@ -1,16 +1,17 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TECollapse } from "tw-elements-react";
-import { FormData } from "./TextToImage";
 import SelectCardCheckbox from "./SelectCardCheckbox";
 import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
 import { Utils } from "@utils/utils";
 import SelectCardRadio from "./SelectCardRadio";
+import { FormContext } from "@app/generate/text-to-image/page";
+import ActionType from "@utils/actions";
 
 type props = {
-  collection: Set<string>;
+  collection: string[];
   label: string;
   tooltip: React.JSX.Element;
   enumType: string;
@@ -33,6 +34,7 @@ export default function Accordion({
   const [activeElement, setActiveElement] = useState("");
   const [data, setData] = useState<CollectionItem[]>([]);
   const [radio, setRadio] = useState("");
+  const { formData, dispatch } = useContext(FormContext)!;
 
   const handleClick = (value: string) => {
     if (value === activeElement) {
@@ -52,21 +54,30 @@ export default function Accordion({
   }, []);
 
   const handleCheckBox = (selection: CollectionEnumType) => {
-    if (collection.has(selection)) collection.delete(selection);
-    else collection.add(selection);
-    console.log(collection);
+    if (collection.includes(selection))
+      dispatch({
+        type: ActionType.UPDATE_CHECKBOX,
+        payload: {
+          collection: collection,
+          value: collection.filter((entry) => entry !== selection),
+        },
+      });
+    else
+      dispatch({
+        type: ActionType.UPDATE_CHECKBOX,
+        payload: {
+          collection: collection,
+          value: [...collection, selection],
+        },
+      });
   };
 
   const handleRadio = (selection: CollectionEnumType) => {
     setRadio(selection);
-    if (collection.has(selection)) {
-      collection.clear();
-      return;
-    } else {
-      collection.clear();
-      collection.add(selection);
-    }
-    console.log(collection);
+    dispatch({
+      type: ActionType.UPDATE_RADIO,
+      payload: [selection],
+    });
   };
   return (
     <>

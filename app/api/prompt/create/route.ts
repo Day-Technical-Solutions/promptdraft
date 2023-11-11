@@ -1,6 +1,6 @@
 /** @format */
 // api/prompt/create route
-import { type FormData } from "@components/TextToImage";
+import { FormData } from "@app/generate/text-to-image/page";
 import { Utils } from "@utils/utils";
 type Request = {
   json: () => PromiseLike<FormData> | FormData;

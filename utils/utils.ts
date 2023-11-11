@@ -1,6 +1,6 @@
 /** @format */
 
-import { FormData } from "@components/TextToImage";
+import { FormData } from "@app/generate/text-to-image/page";
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";
 import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
@@ -20,6 +20,7 @@ export class Utils {
   } {
     return CollectionTypeMap(item);
   }
+
   public static getDataFromCollectionType(
     enumType: string
   ): CollectionEnumType[] {
@@ -73,6 +74,7 @@ export class Utils {
         return [];
     }
   }
+
   public static buildPromptTextToImage({
     subject,
     predicate,
@@ -97,43 +99,39 @@ export class Utils {
     prompt += (extraDetails ? ", " : "") + (extraDetails ?? "");
 
     //Photo / Art Style
-    prompt +=
-      photoArtStyle.size > 0 ? Array.from(photoArtStyle).join(", ") : "";
+    prompt += photoArtStyle.length > 0 ? ", " + photoArtStyle.join(", ") : "";
 
     //Realism
-    prompt += realism.size > 0 ? Array.from(realism).join("") + ", " : "";
+    prompt += realism.length > 0 ? ", " + realism.join("") : "";
 
     //Art Medium
-    prompt += artMedium.size > 0 ? Array.from(artMedium).join(", ") + ", " : "";
+    prompt += artMedium.length > 0 ? ", " + artMedium.join(", ") : "";
 
     //Camera
-    prompt += camera.size > 0 ? Array.from(camera).join(", ") + ", " : "";
+    prompt += camera.length > 0 ? ", " + camera.join(", ") : "";
 
     //Time of Day
-    prompt += timeOfDay.size > 0 ? Array.from(timeOfDay).join(", ") + ", " : "";
+    prompt += timeOfDay.length > 0 ? ", " + timeOfDay.join(", ") : "";
 
     //Lighting
-    prompt += lighting.size > 0 ? Array.from(lighting).join(", ") + ", " : "";
+    prompt += lighting.length > 0 ? ", " + lighting.join(", ") : "";
 
     //Color Scheme
-    prompt +=
-      colorScheme.size > 0 ? Array.from(colorScheme).join(", ") + ", " : "";
+    prompt += colorScheme.length > 0 ? ", " + colorScheme.join(", ") : "";
 
     //Mood
-    prompt += mood.size > 0 ? Array.from(mood).join(", ") + ", " : "";
+    prompt += mood.length > 0 ? ", " + mood.join(", ") : "";
 
     //Influence
     prompt +=
-      influence.size > 0
-        ? "art style of " + Array.from(influence).join(", ") + ", "
-        : "";
+      influence.length > 0 ? ", art style of " + influence.join(", ") : "";
 
     //Magic Words
-    prompt += Array.from(magicWords).join(", ") + ", ";
+    prompt += ", " + magicWords.join(", ");
 
     //Remove trailing comma and space
-    prompt = prompt.slice(0, -2);
-
+    if (prompt.slice(prompt.length - 2, prompt.length).includes(","))
+      prompt = prompt.slice(0, prompt.length - 2);
     return prompt;
   }
 }

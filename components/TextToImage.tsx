@@ -1,57 +1,26 @@
 /** @format */
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { useSession } from "next-auth/react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
-
-export type FormData = {
-  subject: string;
-  predicate: string;
-  environment: string;
-  extraDetails: string;
-  photoArtStyle: Set<string>;
-  realism: Set<string>;
-  artMedium: Set<string>;
-  timeOfDay: Set<string>;
-  lighting: Set<string>;
-  colorScheme: Set<string>;
-  mood: Set<string>;
-  influence: Set<string>;
-  camera: Set<string>;
-  magicWords: Set<string>;
-};
+import { FormContext } from "@app/generate/text-to-image/page";
+import ActionType from "@utils/actions";
 
 export default function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
-  const [generated, setGenerated] = useState(
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!"
-  );
+  const lorem =
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!";
+  const [generated, setGenerated] = useState(lorem);
   const [negPrompt, setNegPrompt] = useState(
     "disfigured, bad art, bad anatomy, bad proportions, cloned face, ugly, extra limbs, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, mutated hands, fused fingers, too many fingers, long neck, mutant"
   );
   const [displayedPrompt, setDisplayedPrompt] = useState("");
   const { data: session } = useSession();
-  const testFormData = useRef();
-  const [formData, setFormData] = useState({
-    subject: "",
-    predicate: "",
-    environment: "",
-    extraDetails: "",
-    photoArtStyle: new Set<string>(),
-    realism: new Set<string>(),
-    artMedium: new Set<string>(),
-    timeOfDay: new Set<string>(),
-    lighting: new Set<string>(),
-    colorScheme: new Set<string>(),
-    mood: new Set<string>(),
-    influence: new Set<string>(),
-    camera: new Set<string>(),
-    magicWords: new Set<string>(),
-  });
+  const { formData, dispatch } = useContext(FormContext)!;
 
-  const handleSubmit = async (e: { preventDefault: any }) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
 
@@ -77,10 +46,6 @@ export default function TextToImage() {
     navigator.clipboard.writeText(text);
     setTimeout(() => setCopied(""), 3000);
   };
-
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
 
   useEffect(() => {
     let index = 0;
@@ -121,7 +86,10 @@ export default function TextToImage() {
             <input
               id="subject"
               onChange={(e) => {
-                setFormData({ ...formData, subject: `${e.target.value}` });
+                dispatch({
+                  type: ActionType.UPDATE_SUBJECT,
+                  payload: e.target.value,
+                });
               }}
               placeholder="Eg. 'a baby'"
               required
@@ -138,7 +106,10 @@ export default function TextToImage() {
               id="predicate"
               name="predicate"
               onChange={(e) => {
-                setFormData({ ...formData, predicate: `${e.target.value}` });
+                dispatch({
+                  type: ActionType.UPDATE_PREDICATE,
+                  payload: e.target.value,
+                });
               }}
               placeholder="Eg. 'in a stroller'"
               className="form_input mb-5"
@@ -153,7 +124,10 @@ export default function TextToImage() {
               id="environment"
               name="environment"
               onChange={(e) => {
-                setFormData({ ...formData, environment: `${e.target.value}` });
+                dispatch({
+                  type: ActionType.UPDATE_ENV,
+                  payload: e.target.value,
+                });
               }}
               placeholder="Eg. 'urban sidewalk'"
               className="form_input mb-5"
@@ -181,7 +155,10 @@ export default function TextToImage() {
           id="extra_details"
           name="extra_details"
           onChange={(e) => {
-            setFormData({ ...formData, extraDetails: `${e.target.value}` });
+            dispatch({
+              type: ActionType.UPDATE_EXTRA_DETAILS,
+              payload: e.target.value,
+            });
           }}
           placeholder="Eg. red shirt, green stroller, smiling"
           className="form_textarea mb-5 border-none"
@@ -387,10 +364,11 @@ export default function TextToImage() {
           </button>
           {session?.user && (
             <button
-              className="px-5 py-1.5 text-sm bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all"
+              className="px-5 py-1.5 text-sm bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all disabled:bg-gray-500 disabled:text-gray-50"
               onClick={(e) => {
                 e.preventDefault();
               }}
+              disabled={generated === "" || generated === lorem}
             >
               Share{" "}
             </button>
