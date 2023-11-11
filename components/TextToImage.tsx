@@ -1,7 +1,6 @@
 /** @format */
 "use client";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
@@ -19,8 +18,8 @@ export type FormData = {
   lighting: Set<string>;
   colorScheme: Set<string>;
   mood: Set<string>;
-  influece: Set<string>;
-  config: Set<string>;
+  influence: Set<string>;
+  camera: Set<string>;
   magicWords: Set<string>;
 };
 
@@ -34,6 +33,7 @@ export default function TextToImage() {
   );
   const [displayedPrompt, setDisplayedPrompt] = useState("");
   const { data: session } = useSession();
+  const testFormData = useRef();
   const [formData, setFormData] = useState({
     subject: "",
     predicate: "",
@@ -46,20 +46,31 @@ export default function TextToImage() {
     lighting: new Set<string>(),
     colorScheme: new Set<string>(),
     mood: new Set<string>(),
-    influece: new Set<string>(),
+    influence: new Set<string>(),
     camera: new Set<string>(),
     magicWords: new Set<string>(),
   });
 
-  const handleSubmit = (e: { preventDefault: any }) => {
+  const handleSubmit = async (e: { preventDefault: any }) => {
     e.preventDefault();
     setSubmitting(true);
-    const delay = setTimeout(() => {
-      setSubmitting(false);
-    }, 2000);
 
-    return () => clearTimeout(delay);
+    try {
+      const response = await fetch("/api/prompt/create", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setGenerated(data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
+
   const [copied, setCopied] = useState("");
   const handleCopy = (text: string) => {
     setCopied(text);
@@ -68,13 +79,17 @@ export default function TextToImage() {
   };
 
   useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
       if (generated.length !== displayedPrompt.length) {
         setDisplayedPrompt(generated.slice(0, index));
         index++;
       }
-    }, 1);
+    }, 0);
 
     return () => clearInterval(interval);
   }, [generated]);
@@ -92,7 +107,7 @@ export default function TextToImage() {
 
       <form
         id="texttoimage"
-        onSubmit={handleSubmit}
+        onSubmit={(e) => handleSubmit(e)}
         className="mt-10 w-full flex flex-col glassmorphism"
       >
         <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 max-w-5xl pb-1">
@@ -244,7 +259,7 @@ export default function TextToImage() {
             enumType={"Mood"}
           />
           <Accordion
-            collection={formData.influece}
+            collection={formData.influence}
             label="Influence"
             tooltip={
               <Tooltip

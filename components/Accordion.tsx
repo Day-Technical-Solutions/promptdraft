@@ -54,18 +54,19 @@ export default function Accordion({
   const handleCheckBox = (selection: CollectionEnumType) => {
     if (collection.has(selection)) collection.delete(selection);
     else collection.add(selection);
+    console.log(collection);
   };
 
   const handleRadio = (selection: CollectionEnumType) => {
     setRadio(selection);
     if (collection.has(selection)) {
       collection.clear();
-      console.log(collection);
       return;
     } else {
       collection.clear();
       collection.add(selection);
     }
+    console.log(collection);
   };
   return (
     <>

@@ -44,7 +44,8 @@ export default function SelectCardRadio({
           id={`${text}`}
           className="appearance-none"
           value={text}
-          defaultChecked={selected}
+          checked={selected}
+          onChange={() => handleRadio(text)}
         />
         {selected && (
           <Image

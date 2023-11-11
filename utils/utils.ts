@@ -1,5 +1,6 @@
 /** @format */
 
+import { FormData } from "@components/TextToImage";
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";
 import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
@@ -71,5 +72,68 @@ export class Utils {
       default:
         return [];
     }
+  }
+  public static buildPromptTextToImage({
+    subject,
+    predicate,
+    environment,
+    extraDetails,
+    photoArtStyle,
+    realism,
+    artMedium,
+    timeOfDay,
+    lighting,
+    colorScheme,
+    mood,
+    influence,
+    camera,
+    magicWords,
+  }: FormData): string {
+    let prompt = "";
+    //Main Subject
+    prompt += subject;
+    prompt += (predicate ? " " : "") + (predicate ?? "");
+    prompt += (environment ? ", " : "") + (environment ?? "");
+    prompt += (extraDetails ? ", " : "") + (extraDetails ?? "");
+
+    //Photo / Art Style
+    prompt +=
+      photoArtStyle.size > 0 ? Array.from(photoArtStyle).join(", ") : "";
+
+    //Realism
+    prompt += realism.size > 0 ? Array.from(realism).join("") + ", " : "";
+
+    //Art Medium
+    prompt += artMedium.size > 0 ? Array.from(artMedium).join(", ") + ", " : "";
+
+    //Camera
+    prompt += camera.size > 0 ? Array.from(camera).join(", ") + ", " : "";
+
+    //Time of Day
+    prompt += timeOfDay.size > 0 ? Array.from(timeOfDay).join(", ") + ", " : "";
+
+    //Lighting
+    prompt += lighting.size > 0 ? Array.from(lighting).join(", ") + ", " : "";
+
+    //Color Scheme
+    prompt +=
+      colorScheme.size > 0 ? Array.from(colorScheme).join(", ") + ", " : "";
+
+    //Mood
+    prompt += mood.size > 0 ? Array.from(mood).join(", ") + ", " : "";
+
+    //Influence
+    prompt +=
+      influence.size > 0
+        ? "art style of " + Array.from(influence).join(", ") + ", "
+        : "";
+
+    //Magic Words
+    prompt += Array.from(magicWords).join(", ") + ", ";
+
+    //Remove trailing comma and space
+    prompt = prompt.slice(0, -2);
+
+    return prompt;
   }
 }
