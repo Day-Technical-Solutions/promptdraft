@@ -7,6 +7,7 @@ import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
 import { FormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
+import Link from "next/link";
 
 export default function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
@@ -362,17 +363,27 @@ export default function TextToImage() {
               </div>
             )}
           </button>
-          {session?.user && (
-            <button
-              className="px-5 py-1.5 text-sm bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all disabled:bg-gray-500 disabled:text-gray-50"
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              disabled={generated === "" || generated === lorem}
-            >
-              Share{" "}
-            </button>
-          )}
+          {session?.user &&
+            (generated === "" || generated === lorem ? (
+              <button
+                className="px-5 py-1.5 text-sm disabled:curser-default bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all disabled:bg-gray-500 disabled:text-gray-50"
+                disabled={true}
+              >
+                Share
+              </button>
+            ) : (
+              <Link
+                href={{
+                  pathname: "/share-prompt",
+                  query: {
+                    generatedPrompt: generated,
+                  },
+                }}
+                className="px-5 py-1.5 text-sm disabled:curser-default bg-white rounded-lg hover:text-white flex gap-2 flex-center hover:bg-blue-600 text-sky-500 transition-all"
+              >
+                Share{" "}
+              </Link>
+            ))}
         </div>
       </form>
     </section>

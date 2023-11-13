@@ -24,9 +24,9 @@ export default function Form({
       </h1>
       <p className="desc text-left max-w-md">
         {" "}
-        {type} and share amazing prompts with the world and let your imagination
-        run wild with any AI-powered platform. Any prompts you share will be
-        saved to your profile.
+        Share amazing prompts with the world and let your imagination run wild
+        with any AI-powered platform. Any prompts you share will be saved to
+        your profile.
       </p>
       <form
         onSubmit={handleSubmit}
