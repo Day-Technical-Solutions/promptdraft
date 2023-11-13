@@ -12,7 +12,7 @@ export default function Home() {
     <section className="w-full flex-center flex-col">
       <div className="w-screen md:w-full gap-0 p-0 m-0 static">
         <Image
-          src="/assets/images/title_banner.jpg"
+          src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/title_banner.jpg`}
           width={5769}
           height={2784}
           alt="banner"
@@ -41,7 +41,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center items-center rounded-lg">
             <Image
-              src="/assets/images/hook_image_students.jpg"
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/hook_image_students.jpg`}
               width={2048}
               height={2048}
               alt="picture"
@@ -54,7 +54,7 @@ export default function Home() {
         <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 p-20 max-w-5xl">
           <div className="flex justify-center items-center rounded-lg">
             <Image
-              src="/assets/images/hook_image_tech.jpg"
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/hook_image_tech.jpg`}
               width={2048}
               height={2048}
               alt="picture"

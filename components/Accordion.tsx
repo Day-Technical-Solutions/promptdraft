@@ -166,7 +166,7 @@ export default function Accordion({
                 ) : useRadio ? (
                   <SelectCardRadio
                     key={1}
-                    src={"/assets/images/placeholder.png"}
+                    src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/placeholder.png`}
                     text={PhotoArtStyle.ABSTRACT}
                     title={"test"}
                     handleRadio={handleRadio}
@@ -176,7 +176,7 @@ export default function Accordion({
                 ) : (
                   <SelectCardCheckbox
                     key={1}
-                    src={"/assets/images/placeholder.png"}
+                    src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/placeholder.png`}
                     text={PhotoArtStyle.ABSTRACT}
                     title={"test"}
                     handleCheckBox={handleCheckBox}

@@ -52,7 +52,7 @@ export default function SelectCardRadio({
             width={30}
             height={30}
             alt="logo"
-            src="/assets/images/check.png"
+            src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/check.png`}
             className="object-contain checklogo rounded-full pointer-events-none noselect"
           />
         )}

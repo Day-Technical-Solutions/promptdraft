@@ -136,14 +136,20 @@ export default function TextToImage() {
           </div>
           <div className="flex flex-col flex-center">
             <Image
-              src="/assets/images/placeholder.png"
-              width={500}
-              height={500}
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/sample_image_prompt.jpg`}
+              width={1024}
+              height={1024}
               alt="generator"
-              className="object-fill rounded-lg max-w-sm pointer-events-none"
+              className="object-fill rounded-lg max-w-sm pointer-events-none noselect"
               priority
             />
-            <p className=" italic p-1"> text describing image above</p>
+            <p className=" italic p-1 w-4/5 text-center">
+              "a baby laying in a stroller, urban sidewalk, red shirt, green
+              stroller, smiling, portrait, urban, street photography, realistic,
+              lifelike, photography, afternoon, natural lighting, vibrant
+              colors, playful mood, best quality, exquisite, high resolution,
+              highly detailed, stunning"
+            </p>
           </div>
         </div>
         <label htmlFor="extra_details">
@@ -287,7 +293,7 @@ export default function TextToImage() {
               </div>
             </div>
             <Image
-              src="/assets/images/quotes.png"
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/quotes.png`}
               width={50}
               height={50}
               alt="quotes"
@@ -295,7 +301,7 @@ export default function TextToImage() {
             />
             <p className="p-2 desc mb-4 drop-shadow-lg">{displayedPrompt}</p>
             <Image
-              src="/assets/images/quotes.png"
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/quotes.png`}
               width={50}
               height={50}
               alt="quotes"

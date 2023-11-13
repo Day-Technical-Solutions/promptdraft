@@ -29,506 +29,479 @@ export function CollectionTypeMap(enumType: CollectionEnumType): {
   title: string;
   url: string;
 } {
+  const generateUrl = (title: string) => {
+    const formattedTitle = title
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join("_");
+
+    return `${process.env.NEXT_PUBLIC_AWS_CDN_URL}/${formattedTitle}.jpg`;
+  };
+
   switch (enumType) {
     case PhotoArtStyle.PORTRAIT:
-      return { title: "Portrait", url: "/assets/images/placeholder.png" };
+      return { title: "Portrait", url: generateUrl("Portrait") };
     case PhotoArtStyle.COLOR_SPLASH:
-      return { title: "Color Splash", url: "/assets/images/placeholder.png" };
+      return { title: "Color Splash", url: generateUrl("Color Splash") };
     case PhotoArtStyle.DIGITAL_ART:
-      return { title: "Digital Art", url: "/assets/images/placeholder.png" };
+      return { title: "Digital Art", url: generateUrl("Digital Art") };
     case PhotoArtStyle.LOW_POLY:
-      return { title: "Low Poly Model", url: "/assets/images/placeholder.png" };
+      return { title: "Low Poly Model", url: generateUrl("Low Poly Model") };
     case PhotoArtStyle.SCENIC_LANDSCAPE:
       return {
         title: "Scenic Landscape",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Scenic Landscape"),
       };
     case PhotoArtStyle.ABSTRACT:
-      return { title: "Abstract", url: "/assets/images/placeholder.png" };
+      return { title: "Abstract", url: generateUrl("Abstract") };
     case PhotoArtStyle.IMPRESSIONISM:
-      return { title: "Impressionism", url: "/assets/images/placeholder.png" };
+      return { title: "Impressionism", url: generateUrl("Impressionism") };
     case PhotoArtStyle.MINIMALISM:
-      return { title: "Minimalism", url: "/assets/images/placeholder.png" };
+      return { title: "Minimalism", url: generateUrl("Minimalism") };
     case PhotoArtStyle.RETRO_FUTURISM:
-      return { title: "Retro Futurism", url: "/assets/images/placeholder.png" };
+      return { title: "Retro Futurism", url: generateUrl("Retro Futurism") };
     case PhotoArtStyle.CYBERPUNK:
-      return { title: "Cyberpunk", url: "/assets/images/placeholder.png" };
+      return { title: "Cyberpunk", url: generateUrl("Cyberpunk") };
     case PhotoArtStyle.STEAMPUNK:
-      return { title: "Steampunk", url: "/assets/images/placeholder.png" };
+      return { title: "Steampunk", url: generateUrl("Steampunk") };
     case PhotoArtStyle.POST_APOCALYPTIC:
       return {
         title: "Post-Apocalyptic",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Post-Apocalyptic"),
       };
     case PhotoArtStyle.SURREALISM:
-      return { title: "Surrealism", url: "/assets/images/placeholder.png" };
+      return { title: "Surrealism", url: generateUrl("Surrealism") };
     case PhotoArtStyle.FANTASY:
-      return { title: "Fantasy", url: "/assets/images/placeholder.png" };
+      return { title: "Fantasy", url: generateUrl("Fantasy") };
     case PhotoArtStyle.POP_ART:
-      return { title: "Pop Art", url: "/assets/images/placeholder.png" };
+      return { title: "Pop Art", url: generateUrl("Pop Art") };
     case PhotoArtStyle.SPLASH_ART:
-      return { title: "Splash Art", url: "/assets/images/placeholder.png" };
+      return { title: "Splash Art", url: generateUrl("Splash Art") };
     case PhotoArtStyle.PHSYCHEDELIC:
-      return { title: "Psychedelic", url: "/assets/images/placeholder.png" };
+      return { title: "Psychedelic", url: generateUrl("Psychedelic") };
     case PhotoArtStyle.MOVIE_POSTER:
-      return { title: "Movie Poster", url: "/assets/images/placeholder.png" };
+      return { title: "Movie Poster", url: generateUrl("Movie Poster") };
     case PhotoArtStyle.STREET_PHOTOGRAPHY:
       return {
         title: "Street Photography",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Street Photography"),
       };
     case PhotoArtStyle.ARCHITECTURE:
-      return { title: "Architecture", url: "/assets/images/placeholder.png" };
+      return { title: "Architecture", url: generateUrl("Architecture") };
     case PhotoArtStyle.HIGH_RESOLUTION_SCAN:
       return {
         title: "High Resolution Scan",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("High Resolution Scan"),
       };
     case PhotoArtStyle.BRUTALISM:
-      return { title: "Brutalism", url: "/assets/images/placeholder.png" };
+      return { title: "Brutalism", url: generateUrl("Brutalism") };
     case PhotoArtStyle.LIMINAL_SPACING:
-      return {
-        title: "Liminal Spacing",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Liminal Spacing", url: generateUrl("Liminal Spacing") };
     case PhotoArtStyle.WILDLIFE:
-      return { title: "Wildlife", url: "/assets/images/placeholder.png" };
+      return { title: "Wildlife", url: generateUrl("Wildlife") };
     case PhotoArtStyle.FASHION:
-      return { title: "Fashion", url: "/assets/images/placeholder.png" };
+      return { title: "Fashion", url: generateUrl("Fashion") };
     case PhotoArtStyle.BOTANICAL:
-      return { title: "Botanical", url: "/assets/images/placeholder.png" };
+      return { title: "Botanical", url: generateUrl("Botanical") };
     case PhotoArtStyle.FUTURISTIC:
-      return { title: "Futuristic", url: "/assets/images/placeholder.png" };
+      return { title: "Futuristic", url: generateUrl("Futuristic") };
     case PhotoArtStyle.PIXAR_ANIMATION:
-      return {
-        title: "Pixar Animation",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Pixar Animation", url: generateUrl("Pixar Animation") };
     case PhotoArtStyle.VECTOR_ILLUSTRATION:
       return {
         title: "Vector Illustration",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Vector Illustration"),
       };
     case PhotoArtStyle.CHILDRENS_BOOK:
-      return {
-        title: "Children's Book",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Children's Book", url: generateUrl("Children's Book") };
     case PhotoArtStyle.URBAN:
-      return { title: "Urban", url: "/assets/images/placeholder.png" };
+      return { title: "Urban", url: generateUrl("Urban") };
     case PhotoArtStyle.MANGA:
-      return { title: "Manga", url: "/assets/images/placeholder.png" };
+      return { title: "Manga", url: generateUrl("Manga") };
     case PhotoArtStyle.ANIME:
-      return { title: "Anime", url: "/assets/images/placeholder.png" };
+      return { title: "Anime", url: generateUrl("Anime") };
     case PhotoArtStyle.COMIC:
-      return { title: "Comic", url: "/assets/images/placeholder.png" };
+      return { title: "Comic", url: generateUrl("Comic") };
     case PhotoArtStyle.CARICATURE:
-      return { title: "Caricature", url: "/assets/images/placeholder.png" };
+      return { title: "Caricature", url: generateUrl("Caricature") };
     case PhotoArtStyle.PROPAGANDA:
-      return { title: "Propaganda", url: "/assets/images/placeholder.png" };
+      return { title: "Propaganda", url: generateUrl("Propaganda") };
     case PhotoArtStyle.MINECRAFT:
-      return { title: "Minecraft", url: "/assets/images/placeholder.png" };
+      return { title: "Minecraft", url: generateUrl("Minecraft") };
     case PhotoArtStyle.BAROQUE:
-      return { title: "Baroque", url: "/assets/images/placeholder.png" };
+      return { title: "Baroque", url: generateUrl("Baroque") };
     //----------------------------------------
     case ArtMedium.PAINTING:
-      return { title: "Painting", url: "/assets/images/placeholder.png" };
+      return { title: "Painting", url: generateUrl("Painting") };
     case ArtMedium.SKETCH:
-      return { title: "Sketch", url: "/assets/images/placeholder.png" };
+      return { title: "Sketch", url: generateUrl("Sketch") };
     case ArtMedium.OIL_PASTEL:
-      return { title: "Oil Pastel", url: "/assets/images/placeholder.png" };
+      return { title: "Oil Pastel", url: generateUrl("Oil Pastel") };
     case ArtMedium.WATER_COLOR:
-      return { title: "Water Color", url: "/assets/images/placeholder.png" };
+      return { title: "Water Color", url: generateUrl("Water Color") };
     case ArtMedium.RENDERED_ART:
-      return {
-        title: "3D Render/Model",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "3D Render/Model", url: generateUrl("3D Render_Model") };
     case ArtMedium.INK_DRAWING:
-      return { title: "Ink Drawing", url: "/assets/images/placeholder.png" };
+      return { title: "Ink Drawing", url: generateUrl("Ink Drawing") };
     case ArtMedium.ILLUSTRATION_2D:
-      return {
-        title: "2D Illustration",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "2D Illustration", url: generateUrl("2D Illustration") };
     case ArtMedium.CHALK:
-      return { title: "Chalk", url: "/assets/images/placeholder.png" };
+      return { title: "Chalk", url: generateUrl("Chalk") };
     case ArtMedium.COLLAGE:
-      return { title: "Collage", url: "/assets/images/placeholder.png" };
+      return { title: "Collage", url: generateUrl("Collage") };
     case ArtMedium.SCULPTURE:
-      return { title: "Sculpture", url: "/assets/images/placeholder.png" };
+      return { title: "Sculpture", url: generateUrl("Sculpture") };
     case ArtMedium.STICKER:
-      return { title: "Sticker", url: "/assets/images/placeholder.png" };
+      return { title: "Sticker", url: generateUrl("Sticker") };
     case ArtMedium.PHOTOGRAPHY:
-      return { title: "Photography", url: "/assets/images/placeholder.png" };
+      return { title: "Photography", url: generateUrl("Photography") };
     case ArtMedium.CHARCOAL_DRAWING:
       return {
         title: "Charcoal Drawing",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Charcoal Drawing"),
       };
     case ArtMedium.ACRYLIC_PAINTING:
       return {
         title: "Acrylic Painting",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Acrylic Painting"),
       };
     case ArtMedium.MIXED_MEDIA:
-      return { title: "Mixed Media", url: "/assets/images/placeholder.png" };
+      return { title: "Mixed Media", url: generateUrl("Mixed Media") };
     case ArtMedium.ENGRAVING:
-      return { title: "Engraving", url: "/assets/images/placeholder.png" };
+      return { title: "Engraving", url: generateUrl("Engraving") };
     case ArtMedium.POTTERY:
-      return { title: "Pottery", url: "/assets/images/placeholder.png" };
+      return { title: "Pottery", url: generateUrl("Pottery") };
     case ArtMedium.GRAFFITI:
-      return { title: "Graffiti", url: "/assets/images/placeholder.png" };
+      return { title: "Graffiti", url: generateUrl("Graffiti") };
     case ArtMedium.PRINTMAKING:
-      return { title: "Printmaking", url: "/assets/images/placeholder.png" };
+      return { title: "Printmaking", url: generateUrl("Printmaking") };
     case ArtMedium.GLASSBLOWING:
-      return { title: "Glassblowing", url: "/assets/images/placeholder.png" };
+      return { title: "Glassblowing", url: generateUrl("Glassblowing") };
     case ArtMedium.FIBER_ART:
-      return { title: "Fiber Art", url: "/assets/images/placeholder.png" };
+      return { title: "Fiber Art", url: generateUrl("Fiber Art") };
     case ArtMedium.CROTCHET:
-      return { title: "Crotchet", url: "/assets/images/placeholder.png" };
+      return { title: "Crotchet", url: generateUrl("Crotchet") };
     case ArtMedium.METALLURGY:
-      return { title: "Metallurgy", url: "/assets/images/placeholder.png" };
+      return { title: "Metallurgy", url: generateUrl("Metallurgy") };
     case ArtMedium.WOODCARVING:
-      return { title: "Wood Carving", url: "/assets/images/placeholder.png" };
+      return { title: "Wood Carving", url: generateUrl("Wood Carving") };
     case ArtMedium.INSTALLATION_ART:
       return {
         title: "Installation Art",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Installation Art"),
       };
     case ArtMedium.ORIGAMI:
-      return { title: "Origami", url: "/assets/images/placeholder.png" };
+      return { title: "Origami", url: generateUrl("Origami") };
     case ArtMedium.NEEDLE_FELTED:
-      return { title: "Needle Felted", url: "/assets/images/placeholder.png" };
+      return { title: "Needle Felted", url: generateUrl("Needle Felted") };
     //----------------------------------------
     case ColorScheme.VIBRANT_COLORS:
-      return { title: "Vibrant", url: "/assets/images/placeholder.png" };
+      return { title: "Vibrant", url: generateUrl("Vibrant") };
     case ColorScheme.ACIDWAVE:
-      return { title: "Acidwave", url: "/assets/images/placeholder.png" };
+      return { title: "Acidwave", url: generateUrl("Acidwave") };
     case ColorScheme.VAPORWAVE:
-      return { title: "Vaporwave", url: "/assets/images/placeholder.png" };
+      return { title: "Vaporwave", url: generateUrl("Vaporwave") };
     case ColorScheme.DREAMCORE:
-      return { title: "Dreamcore", url: "/assets/images/placeholder.png" };
+      return { title: "Dreamcore", url: generateUrl("Dreamcore") };
     case ColorScheme.WEIRDCORE:
-      return { title: "Weirdcore", url: "/assets/images/placeholder.png" };
+      return { title: "Weirdcore", url: generateUrl("Weirdcore") };
     case ColorScheme.WARM_COLORS:
-      return { title: "Warm Colors", url: "/assets/images/placeholder.png" };
+      return { title: "Warm Colors", url: generateUrl("Warm Colors") };
     case ColorScheme.COOL_COLORS:
-      return { title: "Cool Colors", url: "/assets/images/placeholder.png" };
+      return { title: "Cool Colors", url: generateUrl("Cool Colors") };
     case ColorScheme.PASTEL_COLORS:
-      return { title: "Pastel", url: "/assets/images/placeholder.png" };
+      return { title: "Pastel", url: generateUrl("Pastel") };
     case ColorScheme.NEON_COLORS:
-      return { title: "Neon", url: "/assets/images/placeholder.png" };
+      return { title: "Neon", url: generateUrl("Neon") };
     case ColorScheme.EARTH_TONES:
-      return { title: "Earth Tones", url: "/assets/images/placeholder.png" };
+      return { title: "Earth Tones", url: generateUrl("Earth Tones") };
     case ColorScheme.MONOCHROMATIC_COLORS:
-      return { title: "Monochromatic", url: "/assets/images/placeholder.png" };
+      return { title: "Monochromatic", url: generateUrl("Monochromatic") };
     case ColorScheme.CONTRASTING_COLORS:
-      return { title: "Contrasting", url: "/assets/images/placeholder.png" };
+      return { title: "Contrasting", url: generateUrl("Contrasting") };
     case ColorScheme.MUTED_COLORS:
-      return { title: "Muted", url: "/assets/images/placeholder.png" };
+      return { title: "Muted", url: generateUrl("Muted") };
     case ColorScheme.BOLD_COLORS:
-      return { title: "Bold", url: "/assets/images/placeholder.png" };
+      return { title: "Bold", url: generateUrl("Bold") };
     case ColorScheme.GRADIENT_COLORS:
-      return { title: "Gradient", url: "/assets/images/placeholder.png" };
+      return { title: "Gradient", url: generateUrl("Gradient") };
     case ColorScheme.METALLIC_COLORS:
-      return { title: "Metallic", url: "/assets/images/placeholder.png" };
+      return { title: "Metallic", url: generateUrl("Metallic") };
     case ColorScheme.RETRO_COLORS:
-      return { title: "Retro", url: "/assets/images/placeholder.png" };
+      return { title: "Retro", url: generateUrl("Retro") };
     case ColorScheme.SUNSET_COLORS:
-      return { title: "Sunset Colors", url: "/assets/images/placeholder.png" };
+      return { title: "Sunset Colors", url: generateUrl("Sunset Colors") };
     case ColorScheme.PASTEL_GOTH_COLORS:
-      return { title: "Pastel Goth", url: "/assets/images/placeholder.png" };
+      return { title: "Pastel Goth", url: generateUrl("Pastel Goth") };
     case ColorScheme.BLACK_AND_WHITE:
-      return {
-        title: "Black and White",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Black and White", url: generateUrl("Black_and_White") };
     //-------------------------------------------------
     case Influence.DEREK_GORES:
-      return { title: "Derek Gores", url: "/assets/images/placeholder.png" };
+      return { title: "Derek Gores", url: generateUrl("Derek Gores") };
     case Influence.ALEJANDRO_BURDISIO:
       return {
         title: "Alejandro Burdisio",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Alejandro Burdisio"),
       };
     case Influence.SALVADOR_DALI:
-      return { title: "Salvador Dalí", url: "/assets/images/placeholder.png" };
+      return { title: "Salvador Dalí", url: generateUrl("Salvador Dalí") };
     case Influence.PABLO_PICASSO:
-      return { title: "Pablo Picasso", url: "/assets/images/placeholder.png" };
+      return { title: "Pablo Picasso", url: generateUrl("Pablo Picasso") };
     case Influence.LEONARDO_DA_VINCI:
       return {
         title: "Leonardo da Vinci",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Leonardo_da Vinci"),
       };
     case Influence.VINCENT_VAN_GOGH:
       return {
         title: "Vincent van Gogh",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Vincent_van Gogh"),
       };
     case Influence.FRIDA_KAHLO:
-      return { title: "Frida Kahlo", url: "/assets/images/placeholder.png" };
+      return { title: "Frida Kahlo", url: generateUrl("Frida Kahlo") };
     case Influence.ANDY_WARHOL:
-      return { title: "Andy Warhol", url: "/assets/images/placeholder.png" };
+      return { title: "Andy Warhol", url: generateUrl("Andy Warhol") };
     case Influence.REMBRANDT:
-      return { title: "Rembrandt", url: "/assets/images/placeholder.png" };
+      return { title: "Rembrandt", url: generateUrl("Rembrandt") };
     case Influence.CLAUDE_MONET:
-      return { title: "Claude Monet", url: "/assets/images/placeholder.png" };
+      return { title: "Claude Monet", url: generateUrl("Claude Monet") };
     case Influence.EDVARD_MUNCH:
-      return { title: "Edvard Munch", url: "/assets/images/placeholder.png" };
+      return { title: "Edvard Munch", url: generateUrl("Edvard Munch") };
     case Influence.GEORGIA_O_KEEFFE:
       return {
         title: "Georgia O'Keeffe",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Georgia O'Keeffe"),
       };
     case Influence.YAYOI_KUSAMA:
-      return { title: "Yayoi Kusama", url: "/assets/images/placeholder.png" };
+      return { title: "Yayoi Kusama", url: generateUrl("Yayoi Kusama") };
     case Influence.JACKSON_POLLOCK:
-      return {
-        title: "Jackson Pollock",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Jackson Pollock", url: generateUrl("Jackson Pollock") };
     case Influence.BANKSY:
-      return { title: "Banksy", url: "/assets/images/placeholder.png" };
+      return { title: "Banksy", url: generateUrl("Banksy") };
     case Influence.GUSTAV_KLIMT:
-      return { title: "Gustav Klimt", url: "/assets/images/placeholder.png" };
+      return { title: "Gustav Klimt", url: generateUrl("Gustav Klimt") };
     case Influence.HENRI_MATISSE:
-      return { title: "Henri Matisse", url: "/assets/images/placeholder.png" };
+      return { title: "Henri Matisse", url: generateUrl("Henri Matisse") };
     case Influence.WASSILY_KANDINSKY:
       return {
         title: "Wassily Kandinsky",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Wassily Kandinsky"),
       };
     case Influence.JEAN_MICHEL_BASQUIAT:
       return {
         title: "Jean-Michel Basquiat",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Jean-Michel Basquiat"),
       };
     case Influence.FRANCIS_BACON:
-      return { title: "Francis Bacon", url: "/assets/images/placeholder.png" };
+      return { title: "Francis Bacon", url: generateUrl("Francis Bacon") };
     //---------------------------------------------
     case Lighting.NOSTALGIC_LIGHTING:
-      return { title: "Nostalgic", url: "/assets/images/placeholder.png" };
+      return { title: "Nostalgic", url: generateUrl("Nostalgic") };
     case Lighting.PURPLE_NEON_LIGHTING:
-      return { title: "Purple Neon", url: "/assets/images/placeholder.png" };
+      return { title: "Purple Neon", url: generateUrl("Purple Neon2") };
     case Lighting.WARM_LIGHTING:
-      return { title: "Warm Lighting", url: "/assets/images/placeholder.png" };
+      return { title: "Warm Lighting", url: generateUrl("Warm Lighting") };
     case Lighting.SOFT_LIGHTING:
-      return { title: "Soft", url: "/assets/images/placeholder.png" };
+      return { title: "Soft", url: generateUrl("Soft") };
     case Lighting.COOL_LIGHTING:
-      return { title: "Cool Lighting", url: "/assets/images/placeholder.png" };
+      return { title: "Cool Lighting", url: generateUrl("Cool Lighting") };
     case Lighting.DAYLIGHT:
-      return { title: "Daylight", url: "/assets/images/placeholder.png" };
+      return { title: "Daylight", url: generateUrl("Daylight") };
     case Lighting.MOODY:
-      return { title: "Moody", url: "/assets/images/placeholder.png" };
+      return { title: "Moody", url: generateUrl("Moody") };
     case Lighting.BACKLIGHTING:
-      return { title: "Backlighting", url: "/assets/images/placeholder.png" };
+      return { title: "Backlighting", url: generateUrl("Backlighting") };
     case Lighting.LOW_KEY:
-      return { title: "Low Key", url: "/assets/images/placeholder.png" };
+      return { title: "Low Key", url: generateUrl("Low Key") };
     case Lighting.HIGH_KEY:
-      return { title: "High Key", url: "/assets/images/placeholder.png" };
+      return { title: "High Key", url: generateUrl("High Key") };
     case Lighting.RIM_LIGHTING:
-      return { title: "Rim", url: "/assets/images/placeholder.png" };
+      return { title: "Rim", url: generateUrl("Rim") };
     case Lighting.NATURAL_LIGHTING:
-      return { title: "Natural", url: "/assets/images/placeholder.png" };
+      return { title: "Natural", url: generateUrl("Natural") };
     case Lighting.CANDLELIGHT:
-      return { title: "Candle", url: "/assets/images/placeholder.png" };
+      return { title: "Candle", url: generateUrl("Candlelight") };
     case Lighting.STUDIO_LIGHTING:
-      return { title: "Studio", url: "/assets/images/placeholder.png" };
+      return { title: "Studio", url: generateUrl("Studio") };
     case Lighting.SILHOUETTE:
-      return { title: "Silhouette", url: "/assets/images/placeholder.png" };
+      return { title: "Silhouette", url: generateUrl("Silhouette") };
     case Lighting.UNDERWATER:
-      return { title: "Underwater", url: "/assets/images/placeholder.png" };
+      return { title: "Underwater", url: generateUrl("Underwater") };
     case Lighting.HARSH_LIGHTING:
-      return { title: "Harsh", url: "/assets/images/placeholder.png" };
+      return { title: "Harsh", url: generateUrl("Harsh") };
     case Lighting.FOGGY:
-      return { title: "Foggy", url: "/assets/images/placeholder.png" };
+      return { title: "Foggy", url: generateUrl("Foggy") };
     case Lighting.GLOOMY:
-      return {
-        title: "Gloomy Lighting",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Gloomy Lighting", url: generateUrl("Gloomy") };
     //---------------------------------------
     case Mood.COZY:
-      return { title: "Cozy", url: "/assets/images/placeholder.png" };
+      return { title: "Cozy", url: generateUrl("Cozy") };
     case Mood.ROMANTIC:
-      return { title: "Romantic", url: "/assets/images/placeholder.png" };
+      return { title: "Romantic", url: generateUrl("Romantic") };
     case Mood.LUSTFUL:
-      return { title: "Lustful", url: "/assets/images/placeholder.png" };
+      return { title: "Lustful", url: generateUrl("Lustful") };
     case Mood.GLOOMY:
-      return { title: "Gloomy Mood", url: "/assets/images/placeholder.png" };
+      return { title: "Gloomy Mood", url: generateUrl("Gloomy Mood") };
     case Mood.SERENE:
-      return { title: "Serene", url: "/assets/images/placeholder.png" };
+      return { title: "Serene", url: generateUrl("Serene") };
     case Mood.MYSTERIOUS:
-      return { title: "Mysterious", url: "/assets/images/placeholder.png" };
+      return { title: "Mysterious", url: generateUrl("Mysterious") };
     case Mood.EUPHORIC:
-      return { title: "Euphoric", url: "/assets/images/placeholder.png" };
+      return { title: "Euphoric", url: generateUrl("Euphoric") };
     case Mood.WHIMSICAL:
-      return { title: "Whimsical", url: "/assets/images/placeholder.png" };
+      return { title: "Whimsical", url: generateUrl("Whimsical") };
     case Mood.LONELY:
-      return { title: "Lonely", url: "/assets/images/placeholder.png" };
+      return { title: "Lonely", url: generateUrl("Lonely") };
     case Mood.HOPELESS:
-      return { title: "Hopeless", url: "/assets/images/placeholder.png" };
+      return { title: "Hopeless", url: generateUrl("Hopeless") };
     case Mood.CALM:
-      return { title: "Calm", url: "/assets/images/placeholder.png" };
+      return { title: "Calm", url: generateUrl("Calm") };
     case Mood.FEARFUL:
-      return { title: "Fearful", url: "/assets/images/placeholder.png" };
+      return { title: "Fearful", url: generateUrl("Fearful") };
     case Mood.EXCITING:
-      return { title: "Exciting", url: "/assets/images/placeholder.png" };
+      return { title: "Exciting", url: generateUrl("Exciting") };
     case Mood.DREAMY:
-      return { title: "Dreamy", url: "/assets/images/placeholder.png" };
+      return { title: "Dreamy", url: generateUrl("Dreamy") };
     case Mood.PASSIONATE:
-      return { title: "Passionate", url: "/assets/images/placeholder.png" };
+      return { title: "Passionate", url: generateUrl("Passionate") };
     case Mood.PLAYFUL:
-      return { title: "Playful", url: "/assets/images/placeholder.png" };
+      return { title: "Playful", url: generateUrl("Playful") };
     case Mood.SATISFACTION:
-      return { title: "Satisfaction", url: "/assets/images/placeholder.png" };
+      return { title: "Satisfaction", url: generateUrl("Satisfaction") };
     case Mood.ETHEREAL:
-      return { title: "Ethereal", url: "/assets/images/placeholder.png" };
+      return { title: "Ethereal", url: generateUrl("Ethereal") };
     case Mood.ENCHANTING:
-      return { title: "Enchanting", url: "/assets/images/placeholder.png" };
+      return { title: "Enchanting", url: generateUrl("Enchanting") };
     case Mood.TRANQUIL:
-      return { title: "Tranquil", url: "/assets/images/placeholder.png" };
+      return { title: "Tranquil", url: generateUrl("Tranquil") };
     case Mood.DRAMATIC:
-      return { title: "Dramatic", url: "/assets/images/placeholder.png" };
+      return { title: "Dramatic", url: generateUrl("Dramatic") };
     case Mood.INSPIRING:
-      return { title: "Inspiring", url: "/assets/images/placeholder.png" };
+      return { title: "Inspiring", url: generateUrl("Inspiring") };
     //---------------------------------
     case Realism.REALISTIC:
-      return { title: "Realistic", url: "/assets/images/placeholder.png" };
+      return { title: "Realistic", url: generateUrl("Realistic") };
     case Realism.HYPERREALISTIC:
-      return {
-        title: "Hyper Realistic",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Hyper Realistic", url: generateUrl("Hyper Realistic") };
     case Realism.UNREALISTIC:
-      return { title: "Unrealistic", url: "/assets/images/placeholder.png" };
+      return { title: "Unrealistic", url: generateUrl("Unrealistic") };
     //------------------------------
     case TimeOfDay.DUSK:
-      return { title: "Dusk", url: "/assets/images/placeholder.png" };
+      return { title: "Dusk", url: generateUrl("Dusk") };
     case TimeOfDay.MORNING:
-      return { title: "Morning", url: "/assets/images/placeholder.png" };
+      return { title: "Morning", url: generateUrl("Morning") };
     case TimeOfDay.DAWN:
-      return { title: "Dawn", url: "/assets/images/placeholder.png" };
+      return { title: "Dawn", url: generateUrl("Dawn") };
     case TimeOfDay.MIDNIGHT:
-      return { title: "Midnight", url: "/assets/images/placeholder.png" };
+      return { title: "Midnight", url: generateUrl("Midnight") };
     case TimeOfDay.AFTERNOON:
-      return { title: "Afternoon", url: "/assets/images/placeholder.png" };
+      return { title: "Afternoon", url: generateUrl("Afternoon") };
     case TimeOfDay.SUNSET:
-      return { title: "Sunset", url: "/assets/images/placeholder.png" };
+      return { title: "Sunset", url: generateUrl("Sunset") };
     case TimeOfDay.TWILIGHT:
-      return { title: "Twilight", url: "/assets/images/placeholder.png" };
+      return { title: "Twilight", url: generateUrl("Twilight") };
     case TimeOfDay.GOLDEN_HOUR:
-      return { title: "Golden Hour", url: "/assets/images/placeholder.png" };
+      return { title: "Golden Hour", url: generateUrl("Golden Hour") };
     case TimeOfDay.NIGHT:
-      return { title: "Night", url: "/assets/images/placeholder.png" };
+      return { title: "Night", url: generateUrl("Night") };
     case TimeOfDay.SUNRISE:
-      return { title: "Sunrise", url: "/assets/images/placeholder.png" };
+      return { title: "Sunrise", url: generateUrl("Sunrise") };
     case TimeOfDay.NOON:
-      return { title: "Noon", url: "/assets/images/placeholder.png" };
+      return { title: "Noon", url: generateUrl("Noon") };
     case TimeOfDay.EVENING:
-      return { title: "Evening", url: "/assets/images/placeholder.png" };
+      return { title: "Evening", url: generateUrl("Evening") };
     case TimeOfDay.LATE_NIGHT:
-      return { title: "Late Night", url: "/assets/images/placeholder.png" };
+      return { title: "Late Night", url: generateUrl("Late Night") };
     case TimeOfDay.EARLY_MORNING:
-      return { title: "Early Morning", url: "/assets/images/placeholder.png" };
+      return { title: "Early Morning", url: generateUrl("Early Morning") };
     case TimeOfDay.LATE_AFTERNOON:
-      return { title: "Late Afternoon", url: "/assets/images/placeholder.png" };
+      return { title: "Late Afternoon", url: generateUrl("Late Afternoon") };
     case TimeOfDay.MIDDAY:
-      return { title: "Midday", url: "/assets/images/placeholder.png" };
+      return { title: "Midday", url: generateUrl("Midday") };
     case TimeOfDay.EARLY_EVENING:
-      return { title: "Early Evening", url: "/assets/images/placeholder.png" };
+      return { title: "Early Evening", url: generateUrl("Early Evening") };
     case TimeOfDay.LATE_EVENING:
-      return { title: "Late Evening", url: "/assets/images/placeholder.png" };
+      return { title: "Late Evening", url: generateUrl("Late Evening") };
     case TimeOfDay.PRE_DAWN:
-      return { title: "Pre-Dawn", url: "/assets/images/placeholder.png" };
+      return { title: "Pre-Dawn", url: generateUrl("Pre-Dawn") };
     case TimeOfDay.POST_SUNSET:
-      return { title: "Post-Sunset", url: "/assets/images/placeholder.png" };
+      return { title: "Post-Sunset", url: generateUrl("Post-Sunset") };
     //------------------------------------------------
     case CameraView.NORMAL:
-      return { title: "Normal View", url: "/assets/images/placeholder.png" };
+      return { title: "Normal View", url: generateUrl("Normal View") };
     case CameraView.ZOOM:
-      return { title: "Zoom View", url: "/assets/images/placeholder.png" };
+      return { title: "Zoom View", url: generateUrl("Zoom View") };
     case CameraView.PANORAMIC:
-      return { title: "Panoramic View", url: "/assets/images/placeholder.png" };
+      return { title: "Panoramic View", url: generateUrl("Panoramic View") };
     case CameraView.BOKEH:
-      return { title: "Bokeh", url: "/assets/images/placeholder.png" };
+      return { title: "Bokeh", url: generateUrl("Bokeh") };
     //-------------------------------------------------
     case CameraLens.STANDARD:
-      return { title: "Standard Lens", url: "/assets/images/placeholder.png" };
+      return { title: "Standard Lens", url: generateUrl("Standard Lens") };
     case CameraLens.PRIME:
-      return { title: "Prime Lens", url: "/assets/images/placeholder.png" };
+      return { title: "Prime Lens", url: generateUrl("Prime Lens") };
     case CameraLens.MACRO:
-      return { title: "Macro Lens", url: "/assets/images/placeholder.png" };
+      return { title: "Macro Lens", url: generateUrl("Macro Lens") };
     case CameraLens.WIDE_ANGLE:
-      return {
-        title: "Wide Angle Lens",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Wide Angle Lens", url: generateUrl("Wide Angle Lens") };
     case CameraLens.TELEPHOTO:
-      return { title: "Telephoto Lens", url: "/assets/images/placeholder.png" };
+      return { title: "Telephoto Lens", url: generateUrl("Telephoto Lens") };
     case CameraLens.FISHEYE:
-      return { title: "Fisheye Lens", url: "/assets/images/placeholder.png" };
+      return { title: "Fisheye Lens", url: generateUrl("Fisheye Lens") };
     //---------------------------------------------------
     case CameraType.DSLR:
-      return { title: "DSLR Camera", url: "/assets/images/placeholder.png" };
+      return { title: "DSLR Camera", url: generateUrl("DSLR") };
     case CameraType.MIRRORLESS:
       return {
         title: "Mirrorless Camera",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Mirrorless"),
       };
     case CameraType.POINT_AND_SHOOT:
       return {
         title: "Point and Shoot Camera",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Point_and_Shoot"),
       };
     case CameraType.FILM:
-      return { title: "Film Camera", url: "/assets/images/placeholder.png" };
+      return { title: "Film Camera", url: generateUrl("Film") };
     case CameraType.CCTV:
-      return { title: "CCTV", url: "/assets/images/placeholder.png" };
+      return { title: "CCTV", url: generateUrl("CCTV") };
     case CameraType.DRONE:
-      return { title: "Drone Camera", url: "/assets/images/placeholder.png" };
+      return { title: "Drone Camera", url: generateUrl("Drone") };
     //----------------------------------------------------
     case MagicWords.BEST_QUALITY:
-      return { title: "Best Quality", url: "/assets/images/placeholder.png" };
+      return { title: "Best Quality", url: generateUrl("Best Quality") };
     case MagicWords.MASTERPIECE:
-      return { title: "Masterpiece", url: "/assets/images/placeholder.png" };
+      return { title: "Masterpiece", url: generateUrl("Masterpiece") };
     case MagicWords.HIGHLY_DETAILED:
-      return {
-        title: "Highly Detailed",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "Highly Detailed", url: generateUrl("Highly Detailed") };
     case MagicWords.HDR:
-      return { title: "HDR", url: "/assets/images/placeholder.png" };
+      return { title: "HDR", url: generateUrl("HDR") };
     case MagicWords.STUNNING:
-      return { title: "Stunning", url: "/assets/images/placeholder.png" };
+      return { title: "Stunning", url: generateUrl("Stunning") };
     case MagicWords.HIGH_RESOLUTION:
-      return {
-        title: "High Resolution",
-        url: "/assets/images/placeholder.png",
-      };
+      return { title: "High Resolution", url: generateUrl("High Resolution") };
     case MagicWords.BREATHTAKING:
-      return { title: "Breathtaking", url: "/assets/images/placeholder.png" };
+      return { title: "Breathtaking", url: generateUrl("Breathtaking") };
     case MagicWords.IMPRESSIVE:
-      return { title: "Impressive", url: "/assets/images/placeholder.png" };
+      return { title: "Impressive", url: generateUrl("Impressive") };
     case MagicWords.ARTISTIC:
-      return { title: "Artistic", url: "/assets/images/placeholder.png" };
+      return { title: "Artistic", url: generateUrl("Artistic") };
     case MagicWords.PROFESSIONAL:
-      return { title: "Professional", url: "/assets/images/placeholder.png" };
+      return { title: "Professional", url: generateUrl("Professional") };
     case MagicWords.FANTASTIC:
-      return { title: "Fantastic", url: "/assets/images/placeholder.png" };
+      return { title: "Fantastic", url: generateUrl("Fantastic") };
     case MagicWords.CAPTIVATING:
-      return { title: "Captivating", url: "/assets/images/placeholder.png" };
+      return { title: "Captivating", url: generateUrl("Captivating") };
     case MagicWords.EYE_CATCHING:
-      return { title: "Eye Catching", url: "/assets/images/placeholder.png" };
+      return { title: "Eye Catching", url: generateUrl("Eye Catching") };
     case MagicWords.INTRIGUING:
-      return { title: "Intriguing", url: "/assets/images/placeholder.png" };
+      return { title: "Intriguing", url: generateUrl("Intriguing") };
     case MagicWords.EXQUISITE:
-      return { title: "Exquisite", url: "/assets/images/placeholder.png" };
+      return { title: "Exquisite", url: generateUrl("Exquisite") };
     case MagicWords.TRENDING_ON_ARTSTATION:
       return {
         title: "Trending On Artstation",
-        url: "/assets/images/placeholder.png",
+        url: generateUrl("Trending On Artstation"),
       };
     default:
       return { title: "", url: "" };

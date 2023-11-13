@@ -16,7 +16,7 @@ export default function Generator({
 
   return (
     <div
-      className="flex flex-row rounded-lg items-center drop-shadow-lg transition-all hover:scale-95 cursor-pointer"
+      className="flex flex-row rounded-lg items-center drop-shadow-lg transition-all cursor-pointer"
       onClick={() => {
         switch (type) {
           case "Text-to-Image":
@@ -30,7 +30,7 @@ export default function Generator({
         }
       }}
     >
-      <div className="flex flex-center w-full rounded-l-lg min-h-full bg_light_blue_gradient ">
+      <div className="flex flex-center w-full rounded-l-lg min-h-full border drop-shadow-sm hover:bg-blue-300 transition-all ">
         <p className="subHead_text text-center">{`${type}`}</p>
       </div>
       <div className="">
