@@ -1,9 +1,9 @@
 /** @format */
-import { FormData } from "@app/generate/text-to-image/page";
+import { T2IFormData } from "@app/generate/text-to-image/page";
 import ActionType from "./actions";
 
-export function reducer(
-  formData: FormData,
+export function T2IReducer(
+  formData: T2IFormData,
   action: { type: ActionType; payload: any }
 ) {
   switch (action.type) {

@@ -3,10 +3,10 @@
 
 import TextToImage from "@components/TextToImage";
 import React, { createContext, useReducer } from "react";
-import { reducer } from "@utils/reducer";
+import { T2IReducer } from "@utils/T2IReducer";
 import ActionType from "@utils/actions";
 
-export type FormData = {
+export type T2IFormData = {
   subject: string;
   predicate: string;
   environment: string;
@@ -23,15 +23,15 @@ export type FormData = {
   magicWords: string[];
 };
 
-type FormContextType = {
-  formData: FormData;
+type T2IFormContextType = {
+  formData: T2IFormData;
   dispatch: React.Dispatch<{
     type: ActionType;
     payload: any;
   }>;
 };
 
-export const FormContext = createContext<FormContextType | null>(null);
+export const T2IFormContext = createContext<T2IFormContextType | null>(null);
 
 function TextToImageForm() {
   const initialState = {
@@ -50,13 +50,13 @@ function TextToImageForm() {
     camera: [],
     magicWords: [],
   };
-  const [formData, dispatch] = useReducer(reducer, initialState);
+  const [formData, dispatch] = useReducer(T2IReducer, initialState);
 
   return (
     <div className="min-h-screen w-full">
-      <FormContext.Provider value={{ formData, dispatch }}>
+      <T2IFormContext.Provider value={{ formData, dispatch }}>
         <TextToImage />
-      </FormContext.Provider>
+      </T2IFormContext.Provider>
     </div>
   );
 }

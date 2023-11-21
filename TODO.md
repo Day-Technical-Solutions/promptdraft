@@ -1,7 +1,5 @@
 <!-- @format -->
 
-Integrate text-to-image form with state management
-
 Create text-to-chat form with fetch request to GPT4
 
 implement salesforce blip for image to text
@@ -17,6 +15,8 @@ create front page posts
 create and replace logo
 
 --------MVP Ready------ Deploy on Vercel
+
+implement prompt chaining
 
 implement pagination for all fetches
 
@@ -58,3 +58,5 @@ contact us section w/footer
 Add Generate button to Nav
 
 Add generator selectors
+
+Integrate text-to-image form with state management

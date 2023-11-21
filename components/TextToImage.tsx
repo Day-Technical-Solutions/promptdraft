@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
-import { FormContext } from "@app/generate/text-to-image/page";
+import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
 import Link from "next/link";
 
@@ -19,7 +19,7 @@ export default function TextToImage() {
   );
   const [displayedPrompt, setDisplayedPrompt] = useState("");
   const { data: session } = useSession();
-  const { formData, dispatch } = useContext(FormContext)!;
+  const { formData, dispatch } = useContext(T2IFormContext)!;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

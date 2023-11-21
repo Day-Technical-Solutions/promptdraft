@@ -7,7 +7,7 @@ import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
 import { Utils } from "@utils/utils";
 import SelectCardRadio from "./SelectCardRadio";
-import { FormContext } from "@app/generate/text-to-image/page";
+import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
 
 type props = {
@@ -34,7 +34,7 @@ export default function Accordion({
   const [activeElement, setActiveElement] = useState("");
   const [data, setData] = useState<CollectionItem[]>([]);
   const [radio, setRadio] = useState("");
-  const { formData, dispatch } = useContext(FormContext)!;
+  const { dispatch } = useContext(T2IFormContext)!;
 
   const handleClick = (value: string) => {
     if (value === activeElement) {
