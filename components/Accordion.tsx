@@ -47,7 +47,7 @@ export default function Accordion({
   useEffect(() => {
     const collectionArray = Utils.getDataFromCollectionType(enumType);
     const collectionItems = collectionArray.map((item) => ({
-      ...Utils.getInfoFromEnum(item),
+      ...Utils.getInfoFromCollectionEnum(item),
       text: item,
     }));
     setData(collectionItems);

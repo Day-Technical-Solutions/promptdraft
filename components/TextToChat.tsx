@@ -5,13 +5,14 @@ import React, { useContext, useState } from "react";
 import Tooltip from "./Tooltip";
 import { T2CFormContext, T2CFormData } from "@app/generate/text-to-chat/page";
 import ActionType from "@utils/actions";
+import DropdownSelect from "./DropdownSelect";
 
 export default function TextToChat() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
-  const { formData, dispatch } = useContext(T2CFormContext)!;
+  const { dispatch } = useContext(T2CFormContext)!;
 
   return (
     <section className="w-full  flex-start flex-col min-h-screen mb-5">
@@ -129,6 +130,19 @@ export default function TextToChat() {
             name="callToAction"
             className="form_input mb-5"
           ></input>
+          <DropdownSelect
+            label="Scope"
+            enumType="Scope"
+            tooltip="Provide a spectrum from a broad understanding of a subject to more nuanced and detailed exploration."
+            action={ActionType.UPDATE_SCOPE}
+          />
+          <DropdownSelect
+            label="Primary Format"
+            enumType="Format"
+            tooltip="The primary structure that you want the response to have."
+            action={ActionType.UPDATE_FORMAT}
+            useOptionTooltips={false}
+          />
         </div>
       </form>
     </section>

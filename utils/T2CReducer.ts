@@ -33,6 +33,16 @@ export function T2CReducer(
         ...formData,
         callToAction: action.payload,
       };
+    case ActionType.UPDATE_SCOPE:
+      return {
+        ...formData,
+        scope: action.payload,
+      };
+    case ActionType.UPDATE_FORMAT:
+      return {
+        ...formData,
+        format: action.payload,
+      };
     default:
       return formData;
   }

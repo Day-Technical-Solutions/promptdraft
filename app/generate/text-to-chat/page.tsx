@@ -7,11 +7,13 @@ import ActionType from "@utils/actions";
 import React, { createContext, useReducer } from "react";
 
 export type T2CFormData = {
-  thespian: "string";
+  thespian: string;
   context: string;
   objective: string;
   example: string;
   callToAction: string;
+  scope: string;
+  format: string;
 };
 
 type T2CFormContextType = {
@@ -31,6 +33,8 @@ function TextToChatForm() {
     objective: "",
     example: "",
     callToAction: "",
+    scope: "",
+    format: "",
   };
 
   const [formData, dispatch] = useReducer(T2CReducer, initialState);

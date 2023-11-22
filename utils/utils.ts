@@ -1,20 +1,23 @@
 /** @format */
 
-import { FormData } from "@app/generate/text-to-image/page";
+import { T2IFormData } from "@app/generate/text-to-image/page";
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";
 import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
 import ColorScheme from "@data/ColorScheme";
+import Format from "@data/Format";
 import Influence from "@data/Influence";
 import Lighting from "@data/Lighting";
 import MagicWords from "@data/MagicWords";
 import Mood from "@data/Mood";
 import PhotoArtStyle from "@data/PhotoArtStyle";
 import Realism from "@data/Realism";
+import Scope from "@data/Scope";
+import SelectTypeMap, { SelectEnumType } from "@data/SelectTypeMap";
 import TimeOfDay from "@data/TimeOfDay";
 
 export class Utils {
-  public static getInfoFromEnum(item: CollectionEnumType): {
+  public static getInfoFromCollectionEnum(item: CollectionEnumType): {
     title: string;
     url: string;
   } {
@@ -75,6 +78,24 @@ export class Utils {
     }
   }
 
+  public static getDataFromSelectType(enumType: string): SelectEnumType[] {
+    switch (enumType) {
+      case "Scope":
+        return Object.values(Scope);
+      case "Format":
+        return Object.values(Format);
+      default:
+        return [];
+    }
+  }
+
+  public static getInfoFromSelectTypeEnum(item: SelectEnumType): {
+    info: string;
+    example: string;
+  } {
+    return SelectTypeMap(item);
+  }
+
   public static buildPromptTextToImage({
     subject,
     predicate,
@@ -90,7 +111,7 @@ export class Utils {
     influence,
     camera,
     magicWords,
-  }: FormData): string {
+  }: T2IFormData): string {
     let prompt = "";
     //Main Subject
     prompt += subject;
