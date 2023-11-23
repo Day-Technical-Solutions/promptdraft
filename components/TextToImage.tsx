@@ -78,6 +78,9 @@ export default function TextToImage() {
       >
         <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 max-w-5xl pb-1">
           <div className="input_container">
+            <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+              Details
+            </div>
             <label htmlFor="subject">
               <span className="font-satoshi font-semibold text-base text-gray-800 flex">
                 Subject{" "}
@@ -170,6 +173,9 @@ export default function TextToImage() {
           placeholder="Eg. red shirt, green stroller, smiling"
           className="form_textarea mb-5 border-none"
         ></textarea>
+        <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+          Modifiers
+        </div>
         <div className="mb-5">
           <Accordion
             collection={formData.photoArtStyle}

@@ -3,8 +3,9 @@
 import React from "react";
 import Scope from "./Scope";
 import Format from "./Format";
+import Languages from "./Language";
 
-export type SelectEnumType = Scope | Format;
+export type SelectEnumType = Scope | Format | Languages;
 
 export default function SelectTypeMap(enumType: SelectEnumType) {
   switch (enumType) {
@@ -37,6 +38,186 @@ export default function SelectTypeMap(enumType: SelectEnumType) {
         info: "Generate a brief overview or introduction to the given subject.",
         example:
           "Provide a general overview of artificial intelligence and its impact on society.",
+      };
+    case Languages.EN:
+      return {
+        info: "en",
+        example: "",
+      };
+    case Languages.ES:
+      return {
+        info: "es",
+        example: "",
+      };
+    case Languages.FR:
+      return {
+        info: "fr",
+        example: "",
+      };
+    case Languages.DE:
+      return {
+        info: "de",
+        example: "",
+      };
+    case Languages.ZH_HANS:
+      return {
+        info: "zh-Hans",
+        example: "",
+      };
+    case Languages.ZH_HANT:
+      return {
+        info: "zh-Hant",
+        example: "",
+      };
+    case Languages.JA:
+      return {
+        info: "ja",
+        example: "",
+      };
+    case Languages.KO:
+      return {
+        info: "ko",
+        example: "",
+      };
+    case Languages.RU:
+      return {
+        info: "ru",
+        example: "",
+      };
+    case Languages.AR:
+      return {
+        info: "ar",
+        example: "",
+      };
+    case Languages.HI:
+      return {
+        info: "hi",
+        example: "",
+      };
+    case Languages.PT:
+      return {
+        info: "pt",
+        example: "",
+      };
+    case Languages.IT:
+      return {
+        info: "it",
+        example: "",
+      };
+    case Languages.NL:
+      return {
+        info: "nl",
+        example: "",
+      };
+    case Languages.SV:
+      return {
+        info: "sv",
+        example: "",
+      };
+    case Languages.TR:
+      return {
+        info: "tr",
+        example: "",
+      };
+    case Languages.VI:
+      return {
+        info: "vi",
+        example: "",
+      };
+    case Languages.EL:
+      return {
+        info: "el",
+        example: "",
+      };
+    case Languages.HE:
+      return {
+        info: "he",
+        example: "",
+      };
+    case Languages.PL:
+      return {
+        info: "pl",
+        example: "",
+      };
+    case Languages.TH:
+      return {
+        info: "th",
+        example: "",
+      };
+    case Languages.ID:
+      return {
+        info: "id",
+        example: "",
+      };
+    case Languages.FI:
+      return {
+        info: "fi",
+        example: "",
+      };
+    case Languages.CS:
+      return {
+        info: "cs",
+        example: "",
+      };
+    case Languages.RO:
+      return {
+        info: "ro",
+        example: "",
+      };
+    case Languages.DA:
+      return {
+        info: "da",
+        example: "",
+      };
+    case Languages.NO:
+      return {
+        info: "no",
+        example: "",
+      };
+    case Languages.HU:
+      return {
+        info: "hu",
+        example: "",
+      };
+    case Languages.BN:
+      return {
+        info: "bn",
+        example: "",
+      };
+    case Languages.MS:
+      return {
+        info: "ms",
+        example: "",
+      };
+    case Languages.SK:
+      return {
+        info: "sk",
+        example: "",
+      };
+    case Languages.BG:
+      return {
+        info: "bg",
+        example: "",
+      };
+    case Languages.HR:
+      return {
+        info: "hr",
+        example: "",
+      };
+    case Languages.LV:
+      return {
+        info: "lv",
+        example: "",
+      };
+    case Languages.LT:
+      return {
+        info: "lt",
+        example: "",
+      };
+    case Languages.HT:
+      return {
+        info: "ht",
+        example: "",
       };
     default:
       return {

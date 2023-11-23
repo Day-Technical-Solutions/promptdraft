@@ -7,6 +7,7 @@ import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
 import ColorScheme from "@data/ColorScheme";
 import Format from "@data/Format";
 import Influence from "@data/Influence";
+import Languages from "@data/Language";
 import Lighting from "@data/Lighting";
 import MagicWords from "@data/MagicWords";
 import Mood from "@data/Mood";
@@ -84,6 +85,8 @@ export class Utils {
         return Object.values(Scope);
       case "Format":
         return Object.values(Format);
+      case "Languages":
+        return Object.values(Languages);
       default:
         return [];
     }

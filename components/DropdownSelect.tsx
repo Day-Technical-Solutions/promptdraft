@@ -75,7 +75,11 @@ export default function DropdownSelect({
         >
           {data.map((item, index) => {
             return (
-              <option key={index} value={item.value}>
+              <option
+                key={index}
+                value={item.value}
+                lang={enumType === "Languages" ? item.info : ""}
+              >
                 {item.value}
               </option>
             );

@@ -43,6 +43,21 @@ export function T2CReducer(
         ...formData,
         format: action.payload,
       };
+    case ActionType.UPDATE_CONSTRAINTS:
+      return {
+        ...formData,
+        constraints: action.payload,
+      };
+    case ActionType.UPDATE_LANGUAGE:
+      return {
+        ...formData,
+        language: action.payload,
+      };
+    case ActionType.UPDATE_KEYTERMS:
+      return {
+        ...formData,
+        keyTerms: action.payload,
+      };
     default:
       return formData;
   }

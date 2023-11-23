@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
 import { T2CFormContext, T2CFormData } from "@app/generate/text-to-chat/page";
 import ActionType from "@utils/actions";
@@ -32,6 +32,9 @@ export default function TextToChat() {
         className="mt-10 w-full flex flex-col glassmorphism"
       >
         <div className="input_container">
+          <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+            Base Response
+          </div>
           <label htmlFor="thespian">
             <span className="font-satoshi font-semibold text-base text-gray-800 flex">
               Thespian <Tooltip info="Who should the AI act as?" />
@@ -102,7 +105,7 @@ export default function TextToChat() {
                 payload: e.target.value,
               });
             }}
-            placeholder={`Eg. Start with a general overview, then 10 topic points with information for each, and finish with a closing summary.
+            placeholder={`Eg. "Start with a general overview, then 10 topic points with information for each, and finish with a closing summary."
             -Overview
               -Topic 1
               -Topic 2
@@ -143,6 +146,52 @@ export default function TextToChat() {
             action={ActionType.UPDATE_FORMAT}
             useOptionTooltips={false}
           />
+          <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+            Core Modifiers
+          </div>
+          <label htmlFor="constraints">
+            <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+              Constraints{" "}
+              <Tooltip info="What do you not want in the response? Consider this a 'Negative Prompt'." />
+            </span>
+          </label>
+          <input
+            id="constraints"
+            onChange={(e) => {
+              dispatch({
+                type: ActionType.UPDATE_CONSTRAINTS,
+                payload: e.target.value,
+              });
+            }}
+            placeholder="Eg. Do not give me information about insects, such as the rhinocerous beetle.'"
+            name="constraints"
+            className="form_input mb-5"
+          ></input>
+          <DropdownSelect
+            label="Language"
+            enumType="Languages"
+            tooltip="The language you want the response to be in."
+            action={ActionType.UPDATE_LANGUAGE}
+            useOptionTooltips={false}
+          />
+          <label htmlFor="keyterms">
+            <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+              Key Terms{" "}
+              <Tooltip info="What keywords MUST be in the response?" />
+            </span>
+          </label>
+          <input
+            id="keyterms"
+            onChange={(e) => {
+              dispatch({
+                type: ActionType.UPDATE_KEYTERMS,
+                payload: e.target.value,
+              });
+            }}
+            placeholder="Eg. durability, ivory, keratin, kilograms, life cycle'"
+            name="keyterms"
+            className="form_input mb-5"
+          ></input>
         </div>
       </form>
     </section>
