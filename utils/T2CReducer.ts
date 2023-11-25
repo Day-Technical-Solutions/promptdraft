@@ -58,6 +58,31 @@ export function T2CReducer(
         ...formData,
         keyTerms: action.payload,
       };
+    case ActionType.UPDATE_TONE:
+      return {
+        ...formData,
+        tone: action.payload,
+      };
+    case ActionType.UPDATE_URGENCY:
+      return {
+        ...formData,
+        urgency: action.payload,
+      };
+    case ActionType.UPDATE_AUDIENCE:
+      return {
+        ...formData,
+        audience: action.payload,
+      };
+    case ActionType.UPDATE_SENSITIVITY:
+      return {
+        ...formData,
+        sensitivity: action.payload,
+      };
+    case ActionType.UPDATE_POV:
+      return {
+        ...formData,
+        pointOfView: action.payload,
+      };
     default:
       return formData;
   }

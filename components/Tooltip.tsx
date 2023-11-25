@@ -6,12 +6,12 @@ import { useState } from "react";
 export default function Tooltip({ info }: { info: string }) {
   const [show, setShow] = useState(false);
   const tooltip = (
-    <div className=" font-light absolute ml-5 bg-slate-800 text-white rounded-lg p-2 text-xs">
+    <div className=" font-light absolute ml-5 bg-slate-800 text-white rounded-lg p-2 text-xs z-50">
       {info}
     </div>
   );
   return (
-    <div className="flex z-20">
+    <div className="flex -z-1">
       <div
         className="mx-1 bg-blue-600 rounded-full flex-center tooltip"
         onMouseOver={() => setShow(true)}

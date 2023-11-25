@@ -15,7 +15,10 @@ import PhotoArtStyle from "@data/PhotoArtStyle";
 import Realism from "@data/Realism";
 import Scope from "@data/Scope";
 import SelectTypeMap, { SelectEnumType } from "@data/SelectTypeMap";
+import Sensitivity from "@data/Sensitivity";
 import TimeOfDay from "@data/TimeOfDay";
+import Tone from "@data/Tone";
+import Urgency from "@data/Urgency";
 
 export class Utils {
   public static getInfoFromCollectionEnum(item: CollectionEnumType): {
@@ -87,6 +90,12 @@ export class Utils {
         return Object.values(Format);
       case "Languages":
         return Object.values(Languages);
+      case "Tone":
+        return Object.values(Tone);
+      case "Urgency":
+        return Object.values(Urgency);
+      case "Sensitivity":
+        return Object.values(Sensitivity);
       default:
         return [];
     }

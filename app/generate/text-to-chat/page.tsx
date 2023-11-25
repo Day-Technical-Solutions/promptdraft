@@ -17,6 +17,11 @@ export type T2CFormData = {
   constraints: string;
   language: string;
   keyTerms: string;
+  tone: string;
+  urgency: string;
+  audience: string;
+  sensitivity: string;
+  pointOfView: string;
 };
 
 type T2CFormContextType = {
@@ -41,6 +46,11 @@ function TextToChatForm() {
     constraints: "",
     language: "",
     keyTerms: "",
+    tone: "",
+    urgency: "",
+    audience: "",
+    sensitivity: "",
+    pointOfView: "",
   };
 
   const [formData, dispatch] = useReducer(T2CReducer, initialState);

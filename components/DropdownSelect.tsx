@@ -52,10 +52,6 @@ export default function DropdownSelect({
     return dispatch({ type: action, payload: value });
   }, [value]);
 
-  useEffect(() => {
-    return console.log(formData);
-  }, [formData]);
-
   return (
     <div>
       <label htmlFor={enumType}>
@@ -86,7 +82,7 @@ export default function DropdownSelect({
           })}
         </select>
         {useOptionTooltips ? (
-          <Tooltip info={`${info} Eg. "${example}"`} />
+          <Tooltip info={info + (example ? " Eg. " + example : "")} />
         ) : null}
       </div>
     </div>

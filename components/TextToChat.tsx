@@ -3,7 +3,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext, T2CFormData } from "@app/generate/text-to-chat/page";
+import { T2CFormContext } from "@app/generate/text-to-chat/page";
 import ActionType from "@utils/actions";
 import DropdownSelect from "./DropdownSelect";
 
@@ -12,7 +12,11 @@ export default function TextToChat() {
     e.preventDefault();
   };
 
-  const { dispatch } = useContext(T2CFormContext)!;
+  const { formData, dispatch } = useContext(T2CFormContext)!;
+
+  useEffect(() => {
+    return console.log(formData);
+  }, [formData]);
 
   return (
     <section className="w-full  flex-start flex-col min-h-screen mb-5">
@@ -190,6 +194,60 @@ export default function TextToChat() {
             }}
             placeholder="Eg. durability, ivory, keratin, kilograms, life cycle'"
             name="keyterms"
+            className="form_input mb-5"
+          ></input>
+          <DropdownSelect
+            label="Tone"
+            enumType="Tone"
+            tooltip="The tone you want the response to be in."
+            action={ActionType.UPDATE_TONE}
+          />
+          <DropdownSelect
+            label="Urgency"
+            enumType="Urgency"
+            tooltip="How urgent should the response feel?"
+            action={ActionType.UPDATE_URGENCY}
+          />
+          <label htmlFor="audience">
+            <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+              Audience{" "}
+              <Tooltip info="Who is the target audience for the response?" />
+            </span>
+          </label>
+          <input
+            id="audience"
+            onChange={(e) => {
+              dispatch({
+                type: ActionType.UPDATE_AUDIENCE,
+                payload: e.target.value,
+              });
+            }}
+            placeholder="Eg. Wildlife researcher'"
+            name="audience"
+            className="form_input mb-5"
+          ></input>
+          <DropdownSelect
+            label="Sensitivity"
+            enumType="Sensitivity"
+            tooltip="How sensitive to the topic should the response be?"
+            action={ActionType.UPDATE_SENSITIVITY}
+          />
+          <label htmlFor="pov">
+            <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+              Point of View{" "}
+              <Tooltip info="Is there a specific point of view you want the response to cater to?" />
+            </span>
+          </label>
+          <input
+            id="pov"
+            onChange={(e) => {
+              dispatch({
+                type: ActionType.UPDATE_POV,
+                payload: e.target.value,
+              });
+            }}
+            placeholder="Eg. National Geographic narrator'"
+            name="pov"
             className="form_input mb-5"
           ></input>
         </div>

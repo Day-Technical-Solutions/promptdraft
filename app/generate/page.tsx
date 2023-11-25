@@ -12,7 +12,7 @@ export default function Generate() {
         type="Text-to-Image"
         image={
           <Image
-            src="/assets/images/generator_image.jpg"
+            src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/generator_image.jpg`}
             width={300}
             height={300}
             alt="generator"
@@ -25,7 +25,7 @@ export default function Generate() {
         type="Text-to-Chat"
         image={
           <Image
-            src="/assets/images/generator_chat.jpg"
+            src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/generator_chat.jpg`}
             width={300}
             height={300}
             alt="generator"
@@ -38,7 +38,7 @@ export default function Generate() {
         type="Image-to-Text"
         image={
           <Image
-            src="/assets/images/generator_text.jpg"
+            src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/generator_text.jpg`}
             width={300}
             height={300}
             alt="generator"

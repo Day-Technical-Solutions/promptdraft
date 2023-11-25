@@ -4,8 +4,17 @@ import React from "react";
 import Scope from "./Scope";
 import Format from "./Format";
 import Languages from "./Language";
+import Tone from "./Tone";
+import Urgency from "./Urgency";
+import Sensitivity from "./Sensitivity";
 
-export type SelectEnumType = Scope | Format | Languages;
+export type SelectEnumType =
+  | Scope
+  | Format
+  | Languages
+  | Tone
+  | Urgency
+  | Sensitivity;
 
 export default function SelectTypeMap(enumType: SelectEnumType) {
   switch (enumType) {
@@ -39,6 +48,7 @@ export default function SelectTypeMap(enumType: SelectEnumType) {
         example:
           "Provide a general overview of artificial intelligence and its impact on society.",
       };
+    //-----------------------------------------------------------------------------------------------
     case Languages.EN:
       return {
         info: "en",
@@ -217,6 +227,129 @@ export default function SelectTypeMap(enumType: SelectEnumType) {
     case Languages.HT:
       return {
         info: "ht",
+        example: "",
+      };
+    //------------------------------------------------------------------------------------
+    case Tone.FORMAL:
+      return {
+        info: "Characterized by a professional and respectful tone, suitable for serious or official contexts.",
+        example: "",
+      };
+    case Tone.INFORMAL:
+      return {
+        info: "Conveys a relaxed and friendly tone, often used in casual conversations or less formal settings.",
+        example: "",
+      };
+    case Tone.HUMOROUS:
+      return {
+        info: "Infused with humor and wit, aiming to entertain or lighten the mood.",
+        example: "",
+      };
+    case Tone.SINCERE:
+      return {
+        info: "Genuine and heartfelt, expressing honesty and authenticity.",
+        example: "",
+      };
+    case Tone.INQUISITIVE:
+      return {
+        info: "Poses questions and seeks information, encouraging a thoughtful response.",
+        example: "",
+      };
+    case Tone.ENCOURAGING:
+      return {
+        info: "Motivational and positive, designed to uplift and inspire.",
+        example: "",
+      };
+    case Tone.DIRECT:
+      return {
+        info: "Straightforward and to the point, minimizing unnecessary details.",
+        example: "",
+      };
+    case Tone.PLAYFUL:
+      return {
+        info: "Lighthearted and cheerful, often incorporating elements of fun and playfulness.",
+        example: "",
+      };
+    case Tone.ANALYTICAL:
+      return {
+        info: "Emphasizes a logical and systematic approach, suitable for problem-solving or analysis.",
+        example: "",
+      };
+    case Tone.CAUTIOUS:
+      return {
+        info: "Approaches the subject with care and consideration, avoiding bold statements.",
+        example: "",
+      };
+    case Tone.PERSUASIVE:
+      return {
+        info: "Convincing and compelling, designed to influence opinions or actions.",
+        example: "",
+      };
+    case Tone.ENERGETIC:
+      return {
+        info: "Dynamic and vibrant, conveying enthusiasm and energy.",
+        example: "",
+      };
+    case Tone.SERIOUS:
+      return {
+        info: "Solemn and grave, appropriate for discussions of weighty or sensitive topics.",
+        example: "",
+      };
+    case Tone.CASUAL:
+      return {
+        info: "Relaxed and easygoing, often used in informal or friendly settings.",
+        example: "",
+      };
+    case Tone.EMPATHETIC:
+      return {
+        info: "Demonstrates understanding and empathy, acknowledging emotions and feelings.",
+        example: "",
+      };
+    //---------------------------------------------------------------------------------------------------------
+    case Urgency.HIGH:
+      return {
+        info: "Requires immediate attention due to high urgency.",
+        example: "",
+      };
+    case Urgency.MEDIUM:
+      return {
+        info: "Should be addressed in the near future with moderate urgency.",
+        example: "",
+      };
+    case Urgency.LOW:
+      return {
+        info: "Can be handled with lower priority due to low urgency.",
+        example: "",
+      };
+    case Urgency.ASAP:
+      return {
+        info: "Needs to be dealt with as soon as possible.",
+        example: "",
+      };
+    case Urgency.NOT_URGENT:
+      return {
+        info: "No urgency. Can be handled at a relaxed pace.",
+        example: "",
+      };
+    //-----------------------------------------------------------------------------------------------------------------
+    case Sensitivity.EXTREME_SENSITIVITY:
+      return {
+        info: "Covers extremely sensitive topics; handle with the utmost care and discretion.",
+        example: "",
+      };
+    case Sensitivity.HIGH_SENSITIVITY:
+      return {
+        info: "Involves highly sensitive subjects; exercise caution in communication.",
+        example: "",
+      };
+    case Sensitivity.PARTIAL_SENSITIVITY:
+      return {
+        info: "Contains partially sensitive content; use discretion in communication.",
+        example: "",
+      };
+    case Sensitivity.TRIVIAL:
+      return {
+        info: "Addresses trivial or non-sensitive topics; minimal precautions required.",
         example: "",
       };
     default:
