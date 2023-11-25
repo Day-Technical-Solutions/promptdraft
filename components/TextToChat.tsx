@@ -6,6 +6,7 @@ import Tooltip from "./Tooltip";
 import { T2CFormContext } from "@app/generate/text-to-chat/page";
 import ActionType from "@utils/actions";
 import DropdownSelect from "./DropdownSelect";
+import Radio from "./Radio";
 
 export default function TextToChat() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -251,6 +252,51 @@ export default function TextToChat() {
             className="form_input mb-5"
           ></input>
         </div>
+        <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+          Data Modifiers
+        </div>
+        <Radio
+          form="texttochat"
+          name="visualElements"
+          tooltip="Use visual elements for data in the response? Eg. (Bar, Float, Pie charts, line graphs) These will be textual representations unless using advanced data analysis."
+          label="Visual Elements"
+          action={ActionType.UPDATE_VISUAL_ELEMENTS}
+        />
+        <Radio
+          form="texttochat"
+          name="counterArguments"
+          tooltip="Provide counter arguments in the response?"
+          label="Counter Arguments"
+          action={ActionType.UPDATE_COUNTERARGUMENTS}
+        />
+        <Radio
+          form="texttochat"
+          name="analogies"
+          tooltip="Use supporting analogies for explanations?"
+          label="Analogies"
+          action={ActionType.UPDATE_ANALOGIES}
+        />
+        <Radio
+          form="texttochat"
+          name="statistics"
+          tooltip="Include statistics to support arguments?"
+          label="Statistics"
+          action={ActionType.UPDATE_STATISTICS}
+        />
+        <Radio
+          form="texttochat"
+          name="quotes"
+          tooltip="Include relevant quotes from qualified professionals?"
+          label="Quotes"
+          action={ActionType.UPDATE_QUOTES}
+        />
+        <Radio
+          form="texttochat"
+          name="citations"
+          tooltip="Include citations for all quotes and statistics used."
+          label="Citations"
+          action={ActionType.UPDATE_CITATIONS}
+        />
       </form>
     </section>
   );

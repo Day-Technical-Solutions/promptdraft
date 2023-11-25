@@ -22,6 +22,12 @@ export type T2CFormData = {
   audience: string;
   sensitivity: string;
   pointOfView: string;
+  visualElements: string;
+  counterArguments: string;
+  analogies: string;
+  quotes: string;
+  statistics: string;
+  citations: string;
 };
 
 type T2CFormContextType = {
@@ -51,6 +57,12 @@ function TextToChatForm() {
     audience: "",
     sensitivity: "",
     pointOfView: "",
+    visualElements: "",
+    counterArguments: "",
+    analogies: "",
+    quotes: "",
+    statistics: "",
+    citations: "",
   };
 
   const [formData, dispatch] = useReducer(T2CReducer, initialState);

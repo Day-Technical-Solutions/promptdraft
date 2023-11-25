@@ -83,6 +83,36 @@ export function T2CReducer(
         ...formData,
         pointOfView: action.payload,
       };
+    case ActionType.UPDATE_VISUAL_ELEMENTS:
+      return {
+        ...formData,
+        visualElements: action.payload,
+      };
+    case ActionType.UPDATE_COUNTERARGUMENTS:
+      return {
+        ...formData,
+        counterArguments: action.payload,
+      };
+    case ActionType.UPDATE_ANALOGIES:
+      return {
+        ...formData,
+        analogies: action.payload,
+      };
+    case ActionType.UPDATE_STATISTICS:
+      return {
+        ...formData,
+        statistics: action.payload,
+      };
+    case ActionType.UPDATE_CITATIONS:
+      return {
+        ...formData,
+        citations: action.payload,
+      };
+    case ActionType.UPDATE_QUOTES:
+      return {
+        ...formData,
+        quotes: action.payload,
+      };
     default:
       return formData;
   }
