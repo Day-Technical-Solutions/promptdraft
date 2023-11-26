@@ -20,6 +20,14 @@ import TimeOfDay from "@data/TimeOfDay";
 import Tone from "@data/Tone";
 import Urgency from "@data/Urgency";
 
+export const lorem =
+  "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!";
+
+export const metadata = {
+  title: "Prompt Draft",
+  description: "High Quality Prompts Made Easy",
+};
+
 export class Utils {
   public static getInfoFromCollectionEnum(item: CollectionEnumType): {
     title: string;

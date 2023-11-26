@@ -4,11 +4,6 @@ import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 
-export const metadata = {
-  title: "Prompt Draft",
-  description: "High Quality Prompts Made Easy",
-};
-
 export default function RootLayout({
   children,
 }: {

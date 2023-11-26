@@ -8,11 +8,10 @@ import Accordion from "./Accordion";
 import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
 import Link from "next/link";
+import { lorem } from "@utils/utils";
 
 export default function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
-  const lorem =
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!";
   const [generated, setGenerated] = useState(lorem);
   const [negPrompt, setNegPrompt] = useState(
     "disfigured, bad art, bad anatomy, bad proportions, cloned face, ugly, extra limbs, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, mutated hands, fused fingers, too many fingers, long neck, mutant"
@@ -26,7 +25,7 @@ export default function TextToImage() {
     setSubmitting(true);
 
     try {
-      const response = await fetch("/api/prompt/create", {
+      const response = await fetch("/api/prompt/create/t2i", {
         method: "POST",
         body: JSON.stringify(formData),
       });
