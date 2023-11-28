@@ -13,6 +13,8 @@ export default function EditPrompt() {
   const [post, setPost] = useState<Post>({
     prompt: "",
     tag: "",
+    link: "",
+    title: "",
   });
   const searchParams = useSearchParams();
   const promptId = searchParams.get("id");
@@ -24,6 +26,8 @@ export default function EditPrompt() {
       setPost({
         prompt: data.prompt,
         tag: data.tag,
+        link: data.link,
+        title: data.title,
       });
     };
     if (promptId) getPromptDetails();
@@ -40,6 +44,8 @@ export default function EditPrompt() {
         body: JSON.stringify({
           prompt: post.prompt,
           tag: post.tag,
+          link: post.link,
+          title: post.title,
         }),
       });
       if (response.ok) router.push("/");

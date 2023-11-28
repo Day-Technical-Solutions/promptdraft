@@ -1,9 +1,5 @@
 <!-- @format -->
 
-Remove emails and replace with userTag
-
-Add a title to the prompts
-
 Add favorties module so users can see posts the have favorited
 
 create front page posts
@@ -11,6 +7,8 @@ create front page posts
 create and replace logo
 
 --------MVP Ready------ Deploy on Vercel
+
+add see all modal
 
 implement prompt chaining
 
@@ -23,8 +21,6 @@ Add more login providers, add dedicated sign up/login page
 Add custom login form
 
 Settings page to update user information
-
-truncate posts and add see all module
 
 Add null state module for a user with no posts ? < 5 ?
 
@@ -60,3 +56,11 @@ Integrate text-to-image form with state management
 Create text-to-chat form with fetch request to GPT4
 
 implement gpt4v for image to text
+
+Remove emails and replace with usearTg
+
+Add a title to the prompts
+
+add a link to a preview photo
+
+truncate posts

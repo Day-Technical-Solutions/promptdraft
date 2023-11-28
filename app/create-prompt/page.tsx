@@ -14,7 +14,11 @@ export type Post = {
     email: string;
     username: string;
     image: string;
+    userTag: string;
+    favorites: string[];
   };
+  title: string;
+  link: string;
   prompt: string;
   tag: string;
 };
@@ -30,6 +34,8 @@ export default function CreatePrompt({
   const [post, setPost] = useState<Post>({
     prompt: generatedPrompt ?? "",
     tag: "",
+    link: "",
+    title: "",
   });
   if (!session?.user.id) return router.push("/");
 
@@ -44,6 +50,8 @@ export default function CreatePrompt({
           prompt: post.prompt,
           userID: session?.user.id,
           tag: post.tag,
+          link: post.link,
+          title: post.title,
         }),
       });
       if (response.ok) router.push("/");

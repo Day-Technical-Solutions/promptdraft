@@ -21,6 +21,7 @@ export default function PromptCard({
 }) {
   const [copied, setCopied] = useState("");
   const { data: session } = useSession();
+  const [showAll, setShowAll] = useState(false);
   const router = useRouter();
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -28,7 +29,6 @@ export default function PromptCard({
     setTimeout(() => setCopied(""), 3000);
   };
   const pathName = usePathname();
-  const canvas = useRef();
   const handleProfileClick = (creatorId?: string) => {
     if (!creatorId || pathName === "/") return;
     if (session?.user.id === creatorId) return router.push("/profile");
@@ -57,7 +57,7 @@ export default function PromptCard({
               {post.creator?.username}
             </h3>
             <p className="font-inter text-sm text-gray-500">
-              {post.creator?.email}
+              {`@${post.creator?.userTag}`}
             </p>
           </div>
         </div>
@@ -74,7 +74,24 @@ export default function PromptCard({
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      <p className="font-bold font-satoshi text-lg my-3 p-2">{post.title}</p>
+      {post.link ? (
+        <Image
+          src={
+            process.env.NEXT_PUBLIC_CLOUDINARY_HOSTNAME +
+            "/image/fetch/" +
+            post.link
+          }
+          alt="user image"
+          width={300}
+          height={300}
+          className="rounded-full object-contain p-2"
+        />
+      ) : null}
+      <div className={showAll ? "" : "max-h-72 text-ellipsis overflow-hidden"}>
+        <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      </div>
+      <div className="h-4 bg-gradient-to-t from-slate-50 to-transparent w-full relative bottom-4 rounded  "></div>
       <p
         className={
           "font-inter text-sm blue_gradient " +
@@ -86,6 +103,18 @@ export default function PromptCard({
       >
         {post.tag}
       </p>
+      <div className="w-full flex-center">
+        {pathName !== "/" && (
+          <button
+            className="text-sm font-satoshi cursor-pointer text-blue-500 hover:underline"
+            onClick={() => {
+              setShowAll((prev) => !prev);
+            }}
+          >
+            {!showAll ? "See All" : "See Less"}
+          </button>
+        )}
+      </div>
 
       {session?.user.id === post.creator?._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-3 border-t border-gray-200 pt-3">

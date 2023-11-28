@@ -30,8 +30,20 @@ export default function Form({
       </p>
       <form
         onSubmit={handleSubmit}
-        className="mt-10 w-full max-w-2x1 flex flex-col gap-7 glassmorphism"
+        className="mt-10 w-full max-w-2x1 flex flex-col gap-1 glassmorphism"
       >
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-800">
+            Title
+          </span>
+        </label>
+        <input
+          value={post.title}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
+          placeholder="Quick Prompt Summary"
+          required
+          className="form_input mb-4"
+        ></input>
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-800">
             Your AI Prompt
@@ -42,20 +54,31 @@ export default function Form({
           onChange={(e) => setPost({ ...post, prompt: e.target.value })}
           placeholder="Write your prompt here..."
           required
-          className="form_textarea"
+          className="form_textarea mb-4"
         ></textarea>
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-800">
+            Image Url
+          </span>
+        </label>
+        <input
+          type="url"
+          value={post.link}
+          onChange={(e) => setPost({ ...post, link: e.target.value })}
+          placeholder="https://image.com/url"
+          className="form_input mb-4"
+        ></input>
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-800">
             Tags <span className="font-normal">(#prompt, #ai, #tool)</span>
           </span>
         </label>
-
         <input
           value={post.tag}
           onChange={(e) => setPost({ ...post, tag: e.target.value })}
           placeholder="#tags"
           required
-          className="form_input"
+          className="form_input mb-4"
         ></input>
         <div className="flex-end mx-3 mb-5 gap-4">
           <Link href="/" className="text-gray-500 text-sm">

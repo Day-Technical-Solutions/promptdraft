@@ -4,7 +4,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
-      domains: ['lh3.googleusercontent.com', process.env.AWS_HOSTNAME],
+      domains: ['lh3.googleusercontent.com', process.env.AWS_HOSTNAME, 'res.cloudinary.com'],
   },
 }
 

@@ -16,6 +16,18 @@ const UserSchema = new Schema({
       "Username invalid, must contain 8-20 alphanumeric charactes and be unique",
     ],
   },
+  userTag: {
+    type: String,
+    required: [true, "User tag is required"],
+    match: [
+      /^(?=.{3,35}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
+      "Username invalid, must contain 8-20 alphanumeric charactes and be unique",
+    ],
+  },
+  favorites: {
+    type: Array<String>,
+    default: [],
+  },
   image: {
     type: String,
   },

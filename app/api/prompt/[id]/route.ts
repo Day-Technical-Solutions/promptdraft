@@ -25,13 +25,15 @@ export const GET = async (req: Request, { params }: Params) => {
 
 //PATCH (update)
 export const PATCH = async (req: Request, { params }: Params) => {
-  const { prompt, tag } = await req.json();
+  const { prompt, tag, link, title } = await req.json();
 
   try {
     const existingPrompt = await Prompt.findById(params.id);
     if (!prompt) return new Response("Prompt not found", { status: 404 });
     existingPrompt.prompt = prompt;
     existingPrompt.tag = tag;
+    existingPrompt.title = title;
+    existingPrompt.link = link;
     await existingPrompt.save();
     return new Response(JSON.stringify(existingPrompt), {
       status: 200,
