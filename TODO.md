@@ -1,9 +1,5 @@
 <!-- @format -->
 
-Create text-to-chat form with fetch request to GPT4
-
-implement salesforce blip for image to text
-
 Remove emails and replace with userTag
 
 Add a title to the prompts
@@ -60,3 +56,7 @@ Add Generate button to Nav
 Add generator selectors
 
 Integrate text-to-image form with state management
+
+Create text-to-chat form with fetch request to GPT4
+
+implement gpt4v for image to text
