@@ -36,6 +36,7 @@ const handler = NextAuth({
                 : "guest" + Math.floor(Math.random() * 1000)
             }`,
             image: profile?.image,
+            favorites: [],
           });
         }
 

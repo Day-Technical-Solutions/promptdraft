@@ -1,7 +1,5 @@
 <!-- @format -->
 
-Add favorties module so users can see posts the have favorited
-
 create front page posts
 
 create and replace logo
@@ -64,3 +62,5 @@ Add a title to the prompts
 add a link to a preview photo
 
 truncate posts
+
+Add favorties module so users can see posts the have favorited

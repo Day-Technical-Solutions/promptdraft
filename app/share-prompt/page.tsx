@@ -18,6 +18,8 @@ export default function SharePrompt() {
   const [post, setPost] = useState<Post>({
     prompt: searchParams.get("generatedPrompt") ?? "",
     tag: "",
+    link: "",
+    title: "",
   });
   if (!session?.user.id) return router.push("/");
 
@@ -32,6 +34,8 @@ export default function SharePrompt() {
           prompt: post.prompt,
           userID: session?.user.id,
           tag: post.tag,
+          link: post.link,
+          title: post.title,
         }),
       });
       if (response.ok) router.push("/");

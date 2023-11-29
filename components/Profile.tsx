@@ -6,13 +6,15 @@ import { Post } from "@app/create-prompt/page";
 export default function Profile({
   name,
   desc,
-  data,
+  favPostsData,
+  postsData,
   handleEdit,
   handleDelete,
 }: {
   name: string;
   desc: string;
-  data: Post[];
+  favPostsData: Post[];
+  postsData: Post[];
   handleEdit?: (post: Post) => void;
   handleDelete?: (post: Post) => void;
 }) {
@@ -23,8 +25,18 @@ export default function Profile({
       </h1>
       <p className="desc text-left">{desc}</p>
       <div className="mt-10 prompt_layout min-h-screen">
-        {data.map((post, index) => (
+        {favPostsData.map((post, index) => (
           <PromptCard
+            favorite={true}
+            key={index}
+            post={post}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        ))}
+        {postsData.map((post, index) => (
+          <PromptCard
+            favorite={false}
             key={index}
             post={post}
             handleEdit={handleEdit}

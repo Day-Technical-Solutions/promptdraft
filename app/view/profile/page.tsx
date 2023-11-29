@@ -42,7 +42,8 @@ export default function UserProfile() {
       <Profile
         name={`${user?.username}'s`}
         desc="Have a look at the awesome creativity of these prompts!"
-        data={posts}
+        postsData={posts}
+        favPostsData={[]}
       />
     )
   );

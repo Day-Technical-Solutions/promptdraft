@@ -9,11 +9,13 @@ import { Post } from "@app/create-prompt/page";
 
 export default function PromptCard({
   post,
+  favorite,
   handleTagClick,
   handleEdit,
   handleDelete,
 }: {
   key?: number;
+  favorite: boolean;
   post: Post;
   handleTagClick?: (tag: string) => void;
   handleEdit?: (post: Post) => void;
@@ -22,6 +24,7 @@ export default function PromptCard({
   const [copied, setCopied] = useState("");
   const { data: session } = useSession();
   const [showAll, setShowAll] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(favorite);
   const router = useRouter();
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -33,6 +36,51 @@ export default function PromptCard({
     if (!creatorId || pathName === "/") return;
     if (session?.user.id === creatorId) return router.push("/profile");
     else return router.push(`/view/profile/?id=${creatorId}`);
+  };
+
+  useEffect(() => {
+    //Update State
+    if (!session?.user) return;
+    const fetchFavorites = async () => {
+      try {
+        const response = await fetch(
+          `/api/users/${session?.user.id}/favorites`
+        );
+
+        session.user.favorites = await response.json();
+        setIsFavorited(session.user.favorites.includes(post._id!));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    if (session.user.favorites === undefined) fetchFavorites();
+    else setIsFavorited(session.user.favorites.includes(post._id!));
+    return;
+  }, [session?.user.favorites, isFavorited]);
+
+  const handleFavorite = async (postId: string) => {
+    if (!session?.user) return;
+    if (!isFavorited) {
+      session.user.favorites = [...session.user.favorites, postId];
+      setIsFavorited(true);
+    } else {
+      session.user.favorites = session?.user.favorites
+        .slice()
+        .filter((id) => id !== postId);
+      setIsFavorited(false);
+    }
+
+    //Update DB
+    try {
+      const response = await fetch(`/api/users/${session?.user.id}/favorites`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          favorites: session.user.favorites,
+        }),
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -61,6 +109,25 @@ export default function PromptCard({
             </p>
           </div>
         </div>
+        {session?.user &&
+          session?.user.id !== post.creator?._id &&
+          pathName !== "/" && (
+            <div
+              className={`hover:bg-yellow-300 transition-all cursor-pointer rounded-full ${
+                isFavorited ? "bg-yellow-300" : ""
+              }`}
+              onClick={() => handleFavorite(post._id!)}
+            >
+              {" "}
+              <Image
+                src={post.creator?.image ?? "/assets/icons/favorites_Icon.png"}
+                alt="favorites"
+                width={25}
+                height={25}
+                className="rounded-full object-contain"
+              />
+            </div>
+          )}
         <div className="copy_btn" onClick={() => handleCopy()}>
           <Image
             src={

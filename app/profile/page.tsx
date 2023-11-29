@@ -10,6 +10,7 @@ import { Post } from "@app/create-prompt/page";
 export default function MyProfile() {
   const { data: session } = useSession();
   const [posts, setPosts] = useState<Post[]>([]);
+  const [favoritedPosts, setFavoritedPosts] = useState<Post[]>([]);
   const router = useRouter();
   const handleEdit = async (post: Post) => {
     router.push(`/update-prompt?id=${post._id}`);
@@ -39,6 +40,15 @@ export default function MyProfile() {
       const data = await response.json();
       setPosts(data);
     };
+
+    const fetchFavorites = async () => {
+      const response = await fetch(
+        `/api/users/${session?.user.id}/posts/favorites`
+      );
+      const data = await response.json();
+      setFavoritedPosts(data);
+    };
+    fetchFavorites();
     fetchPost();
   }, [session]);
 
@@ -46,7 +56,8 @@ export default function MyProfile() {
     <Profile
       name="My"
       desc="Welcome to your personalized profile page. Explore and review any prompts you've shared or favorited."
-      data={posts}
+      favPostsData={[...favoritedPosts]}
+      postsData={[...posts]}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />

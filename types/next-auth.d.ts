@@ -13,6 +13,7 @@ declare module "next-auth" {
       username: string;
       image: string | StaticImport;
       id: string;
+      favorites: string[];
     };
   }
 }

@@ -4,6 +4,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import PromptCard from "./PromptCard";
 import { Post } from "@app/create-prompt/page";
+import { useSession } from "next-auth/react";
 
 const PromptCardList = ({
   data,
@@ -15,7 +16,12 @@ const PromptCardList = ({
   return (
     <div className="mt-16 prompt_layout h-full">
       {data.map((post, index) => (
-        <PromptCard key={index} post={post} handleTagClick={handleTagClick} />
+        <PromptCard
+          key={index}
+          post={post}
+          handleTagClick={handleTagClick}
+          favorite={false}
+        />
       ))}
     </div>
   );
@@ -25,6 +31,7 @@ export default function Feed() {
   const [searchText, setSearchText] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<Post[]>([]);
+  const { data: session } = useSession();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value);
@@ -47,7 +54,9 @@ export default function Feed() {
     //filter by tag, post, username
     const filtered = posts.filter((post) => {
       return (
-        post.creator?.email.toLowerCase().includes(searchText.toLowerCase()) ||
+        post.creator?.userTag
+          .toLowerCase()
+          .includes(searchText.toLowerCase()) ||
         post.prompt.toLowerCase().includes(searchText.toLowerCase()) ||
         post.tag.toLowerCase().includes(searchText.toLowerCase())
       );

@@ -26,7 +26,7 @@ const UserSchema = new Schema({
   },
   favorites: {
     type: Array<String>,
-    default: [],
+    default: new Array(),
   },
   image: {
     type: String,
