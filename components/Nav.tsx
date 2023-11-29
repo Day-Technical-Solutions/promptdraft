@@ -35,6 +35,17 @@ export default function Nav() {
     setLoginProviders();
   }, []);
 
+  useEffect(() => {
+    if (!session) return;
+    const updateImage = async () => {
+      const response = await fetch(`/api/users/${session?.user.id}/image`, {
+        method: "PATCH",
+        body: JSON.stringify(session?.user.image),
+      });
+    };
+    updateImage();
+  }, [session?.user.image]);
+
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
@@ -154,7 +165,7 @@ export default function Nav() {
               <button
                 type="button"
                 key={provider.name}
-                onClick={() => signIn(provider.id)}
+                onClick={async () => signIn(provider.id)}
                 className="black_btn"
               >
                 Sign In

@@ -6,16 +6,17 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { Post } from "@app/create-prompt/page";
+import Markdown from "react-markdown";
 
 export default function PromptCard({
   post,
-  favorite,
+  favorite = false,
   handleTagClick,
   handleEdit,
   handleDelete,
 }: {
   key?: number;
-  favorite: boolean;
+  favorite?: boolean;
   post: Post;
   handleTagClick?: (tag: string) => void;
   handleEdit?: (post: Post) => void;
@@ -94,7 +95,7 @@ export default function PromptCard({
           onClick={() => handleProfileClick(post.creator?._id)}
         >
           <Image
-            src={post.creator?.image ?? "/assets/images/logo.svg"}
+            src={post.creator!.image ?? "/assets/images/logo.svg"}
             alt="user image"
             width={40}
             height={40}
@@ -152,16 +153,18 @@ export default function PromptCard({
           alt="user image"
           width={300}
           height={300}
-          className="rounded-full object-contain p-2"
+          className="object-contain p-2"
         />
       ) : null}
       <div className={showAll ? "" : "max-h-72 text-ellipsis overflow-hidden"}>
-        <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+        <Markdown className="my-4 font-satoshi text-sm text-gray-700">
+          {post.prompt}
+        </Markdown>
       </div>
-      <div className="h-4 bg-gradient-to-t from-slate-50 to-transparent w-full relative bottom-4 rounded  "></div>
+      <div className="h-4 bg-gradient-to-t from-slate-50 to-transparent w-full relative bottom-4 rounded "></div>
       <p
         className={
-          "font-inter text-sm blue_gradient " +
+          "font-inter text-sm blue_gradient mb-2" +
           (pathName === "/feed" ? "cursor-pointer pulse-hover" : "")
         }
         onClick={() =>
@@ -173,7 +176,7 @@ export default function PromptCard({
       <div className="w-full flex-center">
         {pathName !== "/" && (
           <button
-            className="text-sm font-satoshi cursor-pointer text-blue-500 hover:underline"
+            className="text-sm font-satoshi cursor-pointer text-blue-500 hover:underline my-3"
             onClick={() => {
               setShowAll((prev) => !prev);
             }}

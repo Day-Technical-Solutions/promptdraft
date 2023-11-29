@@ -19,7 +19,7 @@ export default function Profile({
   handleDelete?: (post: Post) => void;
 }) {
   return (
-    <section className="w-full">
+    <section className="w-full min-h-screen">
       <h1 className="head_text text-left">
         <span className="blue_gradient">{name} Profile</span>
       </h1>

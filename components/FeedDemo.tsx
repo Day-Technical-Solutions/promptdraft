@@ -28,7 +28,7 @@ export default function FeedDemo() {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch("/api/prompt");
+      const response = await fetch("/api/prompt/demo");
       const data = await response.json();
       setPosts(data);
     };

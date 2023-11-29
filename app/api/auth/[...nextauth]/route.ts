@@ -29,13 +29,13 @@ const handler = NextAuth({
           await User.create({
             email: profile?.email,
             username: profile?.name?.replace(/\s/g, "").toLowerCase(),
+            image: profile?.image ?? "",
             userTag: `${
               profile?.name
                 ? profile.name.replace(/\s/g, "") +
                   Math.floor(Math.random() * 1000)
                 : "guest" + Math.floor(Math.random() * 1000)
             }`,
-            image: profile?.image,
             favorites: [],
           });
         }

@@ -16,6 +16,9 @@ const UserSchema = new Schema({
       "Username invalid, must contain 8-20 alphanumeric charactes and be unique",
     ],
   },
+  image: {
+    type: String,
+  },
   userTag: {
     type: String,
     required: [true, "User tag is required"],
@@ -27,9 +30,6 @@ const UserSchema = new Schema({
   favorites: {
     type: Array<String>,
     default: new Array(),
-  },
-  image: {
-    type: String,
   },
 });
 
