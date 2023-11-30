@@ -173,7 +173,7 @@ export default function PromptCard({
           {post.prompt}
         </Markdown>
       </div>
-      <div className="h-4 bg-gradient-to-t from-slate-50 to-transparent w-full relative bottom-4 rounded "></div>
+      <div className="h-4 bg-gradient-to-t from-slate-50 to-transparent w-full relative bottom-4 rounded blur "></div>
       <p
         className={
           "font-inter text-sm blue_gradient mb-2" +
