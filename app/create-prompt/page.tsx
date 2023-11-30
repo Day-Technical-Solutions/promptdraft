@@ -54,7 +54,7 @@ export default function CreatePrompt({
           title: post.title,
         }),
       });
-      if (response.ok) router.push("/");
+      if (response.ok) router.push("/profile");
     } catch (error) {
       console.log(error);
     } finally {

@@ -47,7 +47,7 @@ export default function Nav() {
   }, [session?.user.image]);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mb-3 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
         <div className=" rounded-full bg-blue-300">
           <Image
