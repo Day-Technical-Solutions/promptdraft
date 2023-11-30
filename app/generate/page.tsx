@@ -6,7 +6,7 @@ import React from "react";
 
 export default function Generate() {
   return (
-    <div className="h-screen flex gap-6 flex-col mb-5 w-full">
+    <div className="min-h-screen grid gap-6 mb-5 w-full">
       <h1 className="head_text blue_gradient">Choose Your Generator</h1>
       <Generator
         type="Text-to-Image"
