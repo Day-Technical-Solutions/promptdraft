@@ -69,6 +69,11 @@ export function CollectionTypeMap(enumType: CollectionEnumType): {
         title: "Post-Apocalyptic",
         url: generateUrl("Post-Apocalyptic"),
       };
+    case PhotoArtStyle.CINEMATIC:
+      return {
+        title: "Cinematic",
+        url: generateUrl("Cinematic"),
+      };
     case PhotoArtStyle.SURREALISM:
       return { title: "Surrealism", url: generateUrl("Surrealism") };
     case PhotoArtStyle.FANTASY:

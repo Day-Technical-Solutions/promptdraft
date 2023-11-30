@@ -49,14 +49,16 @@ export default function Nav() {
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
-        <Image
-          width={30}
-          height={30}
-          alt="logo"
-          src="/assets/images/logo.svg"
-          className="object-contain"
-        />
-        <p className="logo_text">{siteName}</p>
+        <div className=" rounded-full bg-blue-300">
+          <Image
+            width={30}
+            height={30}
+            alt="logo"
+            src="/assets/images/clipboard.png"
+            className="object-contain"
+          />
+        </div>
+        <p className="font-satoshi font-bold text-lg">{siteName}</p>
       </Link>
 
       {/* Desktop Navigation */}

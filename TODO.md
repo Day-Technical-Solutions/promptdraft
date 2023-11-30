@@ -1,9 +1,5 @@
 <!-- @format -->
 
-create front page posts
-
-create and replace logo
-
 --------MVP Ready------ Deploy on Vercel
 
 add see all modal
@@ -64,3 +60,7 @@ add a link to a preview photo
 truncate posts
 
 Add favorties module so users can see posts the have favorited
+
+create front page posts
+
+create and replace logo

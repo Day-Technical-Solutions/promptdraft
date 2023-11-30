@@ -94,13 +94,25 @@ export default function PromptCard({
           }
           onClick={() => handleProfileClick(post.creator?._id)}
         >
-          <Image
-            src={post.creator!.image ?? "/assets/images/logo.svg"}
-            alt="user image"
-            width={40}
-            height={40}
-            className="rounded-full object-contain"
-          />
+          {post.creator?.image ? (
+            <Image
+              src={post.creator!.image}
+              alt="user image"
+              width={40}
+              height={40}
+              className="rounded-full object-contain"
+            />
+          ) : (
+            <div className="p-1 rounded-full bg-blue-300">
+              <Image
+                width={40}
+                height={40}
+                alt="logo"
+                src="/assets/images/clipboard.png"
+                className="object-contain"
+              />
+            </div>
+          )}
           <div className="flex flex-col">
             <h3 className="font-satoshit font-semibold text-gray-900">
               {post.creator?.username}
@@ -121,7 +133,7 @@ export default function PromptCard({
             >
               {" "}
               <Image
-                src={post.creator?.image ?? "/assets/icons/favorites_Icon.png"}
+                src={"/assets/icons/favorites_Icon.png"}
                 alt="favorites"
                 width={25}
                 height={25}

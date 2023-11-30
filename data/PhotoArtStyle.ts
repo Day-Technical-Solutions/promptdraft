@@ -37,6 +37,7 @@ enum PhotoArtStyle {
   MANGA = "manga",
   ANIME = "anime",
   COMIC = "comic",
+  CINEMATIC = "cinematic",
   CARICATURE = "caricature",
   PROPAGANDA = "propaganda",
 }
