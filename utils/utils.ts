@@ -1,4 +1,5 @@
 /** @format */
+"use client";
 
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";

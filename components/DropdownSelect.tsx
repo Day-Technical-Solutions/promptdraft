@@ -3,8 +3,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext } from "@app/generate/text-to-chat/page";
-import { Utils } from "@utils/utils";
+import { T2CFormContext, Utils } from "@utils/utils";
 import ActionType from "@utils/actions";
 
 type SelectItem = {
