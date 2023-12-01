@@ -27,9 +27,9 @@ export default function TextToImageForm() {
 
   return (
     <div className="min-h-screen w-full">
-      {/* <T2IFormContext.Provider value={{ formData, dispatch }}>
-        <TextToImage />
-      </T2IFormContext.Provider> */}
+      <T2IFormContext.Provider value={{ formData, dispatch }}>
+        {/* <TextToImage /> */}
+      </T2IFormContext.Provider>
     </div>
   );
 }
