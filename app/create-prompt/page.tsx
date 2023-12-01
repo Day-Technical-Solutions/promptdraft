@@ -23,7 +23,7 @@ export type Post = {
   tag: string;
 };
 
-export default function CreatePrompt({
+export function CreatePrompt({
   generatedPrompt,
 }: {
   generatedPrompt?: string;
