@@ -5,10 +5,12 @@ import { useSession } from "next-auth/react";
 import { T2IFormContext, lorem } from "@utils/utils";
 import ActionType from "@utils/actions";
 import Link from "next/link";
-import Accordion from "./Accordion";
 import ButtonSubmit from "./ButtonSubmit";
 import Tooltip from "./Tooltip";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Accordion = dynamic(() => import("./Accordion"), { ssr: false });
 
 export default function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
@@ -187,6 +189,97 @@ export default function TextToImage() {
               />
             }
             enumType={"PhotoArtStyle"}
+          />
+          <Accordion
+            collection={formData.realism}
+            label="Realism"
+            tooltip={<Tooltip info={"How realistic should the image be?"} />}
+            enumType={"Realism"}
+            useRadio={true}
+          />
+          <Accordion
+            collection={formData.artMedium}
+            label="Art Medium"
+            tooltip={
+              <Tooltip
+                info={"What kind of material should be used to make the image?"}
+              />
+            }
+            enumType={"ArtMedium"}
+          />
+          <Accordion
+            collection={formData.timeOfDay}
+            label="Time Of Day"
+            tooltip={
+              <Tooltip
+                info={
+                  "What time of the day should it be roughly? Typically affects environment."
+                }
+              />
+            }
+            enumType={"TimeOfDay"}
+          />
+          <Accordion
+            collection={formData.lighting}
+            label="Lighting"
+            tooltip={
+              <Tooltip
+                info={"What kind of lighting should the subject have?"}
+              />
+            }
+            enumType={"Lighting"}
+          />
+          <Accordion
+            collection={formData.colorScheme}
+            label="Color Scheme"
+            tooltip={
+              <Tooltip info={"What type of colors should the image have?"} />
+            }
+            enumType={"ColorScheme"}
+          />
+          <Accordion
+            collection={formData.mood}
+            label="Mood"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of mood is the subject in? Typically affects faces."
+                }
+              />
+            }
+            enumType={"Mood"}
+          />
+          <Accordion
+            collection={formData.influence}
+            label="Influence"
+            tooltip={
+              <Tooltip
+                info={
+                  "Add influence of art styles from various well known artists."
+                }
+              />
+            }
+            enumType={"Influence"}
+          />
+          <Accordion
+            collection={formData.camera}
+            label="Camera"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of camera/settings should the image be made with? May give inconsistent results based on model."
+                }
+              />
+            }
+            enumType={"Camera"}
+          />
+          <Accordion
+            collection={formData.magicWords}
+            label="Magic Words"
+            tooltip={
+              <Tooltip info={"Add various keywords to help improve quality."} />
+            }
+            enumType={"MagicWords"}
           />
         </div>
         <div className="grid grid-cols-2 gap-3 mb-3">
