@@ -23,13 +23,13 @@ export default function TextToImageForm() {
     camera: [],
     magicWords: [],
   };
-  const [formData, dispatch] = useReducer(T2IReducer, initialState);
+  // const [formData, dispatch] = useReducer(T2IReducer, initialState);
 
   return (
     <div className="min-h-screen w-full">
-      <T2IFormContext.Provider value={{ formData, dispatch }}>
+      {/* <T2IFormContext.Provider value={{ formData, dispatch }}>
         <TextToImage />
-      </T2IFormContext.Provider>
+      </T2IFormContext.Provider> */}
     </div>
   );
 }
