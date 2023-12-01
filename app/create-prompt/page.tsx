@@ -23,16 +23,12 @@ export type Post = {
   tag: string;
 };
 
-export function CreatePrompt({
-  generatedPrompt,
-}: {
-  generatedPrompt?: string;
-}) {
+export default function CreatePrompt() {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState<Post>({
-    prompt: generatedPrompt ?? "",
+    prompt: "",
     tag: "",
     link: "",
     title: "",
