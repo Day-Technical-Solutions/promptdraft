@@ -2,9 +2,9 @@
 "use client";
 
 import TextToImage from "@components/TextToImage";
-import React, { useReducer } from "react";
 import { T2IReducer } from "@utils/T2IReducer";
 import { T2IFormContext } from "@utils/utils";
+import { useReducer } from "react";
 
 export default function TextToImageForm() {
   const initialState = {

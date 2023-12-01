@@ -1,8 +1,7 @@
 /** @format */
 
 import Generator from "@components/Generator";
-import { Image } from "next/dist/client/image-component";
-import React from "react";
+import Image from "next/image";
 
 export default function Generate() {
   return (
