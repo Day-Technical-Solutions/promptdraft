@@ -6,7 +6,7 @@ import React, { useReducer } from "react";
 import { T2IReducer } from "@utils/T2IReducer";
 import { T2IFormContext } from "@utils/utils";
 
-export function TextToImageForm() {
+export default function TextToImageForm() {
   const initialState = {
     subject: "",
     predicate: "",
