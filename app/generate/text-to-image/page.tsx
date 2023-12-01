@@ -1,6 +1,7 @@
 /** @format */
 "use client";
 
+import TextToImage from "@components/TextToImage";
 import { T2IReducer } from "@utils/T2IReducer";
 import { T2IFormContext } from "@utils/utils";
 import { useReducer } from "react";
