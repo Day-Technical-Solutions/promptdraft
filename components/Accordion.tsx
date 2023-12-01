@@ -4,9 +4,8 @@ import React, { useContext, useEffect, useState } from "react";
 import SelectCardCheckbox from "./SelectCardCheckbox";
 import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
-import { Utils } from "@utils/utils";
+import { T2IFormContext, Utils } from "@utils/utils";
 import SelectCardRadio from "./SelectCardRadio";
-import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
 import dynamic from "next/dynamic";
 

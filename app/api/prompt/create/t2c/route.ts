@@ -1,7 +1,6 @@
 /** @format */
 // api/prompt/create/t2c route
-import { T2CFormData } from "@app/generate/text-to-chat/page";
-import { Utils } from "@utils/utils";
+import { T2CFormData, Utils } from "@utils/utils";
 import OpenAI from "openai";
 
 const openai = new OpenAI({

@@ -2,20 +2,9 @@
 "use client";
 
 import TextToImage from "@components/TextToImage";
-import React, { createContext, useReducer } from "react";
+import React, { useReducer } from "react";
 import { T2IReducer } from "@utils/T2IReducer";
-import ActionType from "@utils/actions";
-import { T2IFormData } from "@utils/utils";
-
-type T2IFormContextType = {
-  formData: T2IFormData;
-  dispatch: React.Dispatch<{
-    type: ActionType;
-    payload: any;
-  }>;
-};
-
-export const T2IFormContext = createContext<T2IFormContextType | null>(null);
+import { T2IFormContext } from "@utils/utils";
 
 function TextToImageForm() {
   const initialState = {

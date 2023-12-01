@@ -18,6 +18,8 @@ import Sensitivity from "@data/Sensitivity";
 import TimeOfDay from "@data/TimeOfDay";
 import Tone from "@data/Tone";
 import Urgency from "@data/Urgency";
+import { createContext } from "react";
+import ActionType from "./actions";
 
 export const lorem =
   "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!";
@@ -50,6 +52,26 @@ export type T2CFormData = {
   statistics: string;
   citations: string;
 };
+
+type T2CFormContextType = {
+  formData: T2CFormData;
+  dispatch: React.Dispatch<{
+    type: ActionType;
+    payload: any;
+  }>;
+};
+
+export const T2CFormContext = createContext<T2CFormContextType | null>(null);
+
+type T2IFormContextType = {
+  formData: T2IFormData;
+  dispatch: React.Dispatch<{
+    type: ActionType;
+    payload: any;
+  }>;
+};
+
+export const T2IFormContext = createContext<T2IFormContextType | null>(null);
 
 export type T2IFormData = {
   subject: string;

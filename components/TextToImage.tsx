@@ -5,10 +5,9 @@ import { useSession } from "next-auth/react";
 import Tooltip from "./Tooltip";
 import { Image } from "next/dist/client/image-component";
 import Accordion from "./Accordion";
-import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
 import Link from "next/link";
-import { lorem } from "@utils/utils";
+import { T2IFormContext, lorem } from "@utils/utils";
 import ButtonSubmit from "./ButtonSubmit";
 
 export default function TextToImage() {

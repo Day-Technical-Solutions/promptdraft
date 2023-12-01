@@ -3,13 +3,12 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext } from "@app/generate/text-to-chat/page";
 import ActionType from "@utils/actions";
 import DropdownSelect from "./DropdownSelect";
 import Radio from "./Radio";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { lorem } from "@utils/utils";
+import { T2CFormContext, lorem } from "@utils/utils";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import ButtonSubmit from "./ButtonSubmit";
