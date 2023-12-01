@@ -74,7 +74,108 @@ export default function TextToImage() {
         id="texttoimage"
         onSubmit={(e) => handleSubmit(e)}
         className="mt-10 w-full flex flex-col glassmorphism"
-      ></form>
+      >
+        <div className="gap-5 grid items-center grid-cols-1 md:grid-cols-2 max-w-5xl pb-1">
+          <div className="input_container">
+            <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+              Details
+            </div>
+            <label htmlFor="subject">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Subject{" "}
+                <Tooltip info="What is the primary focus of your prompt?" />
+              </span>
+            </label>
+            <input
+              id="subject"
+              onChange={(e) => {
+                dispatch({
+                  type: ActionType.UPDATE_SUBJECT,
+                  payload: e.target.value,
+                });
+              }}
+              placeholder="Eg. 'a baby'"
+              required
+              name="subject"
+              className="form_input mb-5"
+            ></input>
+            <label htmlFor="predicate">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Predicate
+                <Tooltip info="What is the subject doing?" />
+              </span>
+            </label>
+            <input
+              id="predicate"
+              name="predicate"
+              onChange={(e) => {
+                dispatch({
+                  type: ActionType.UPDATE_PREDICATE,
+                  payload: e.target.value,
+                });
+              }}
+              placeholder="Eg. 'in a stroller'"
+              className="form_input mb-5"
+            ></input>
+            <label htmlFor="environment">
+              <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+                Environment
+                <Tooltip info="What kind of enviroment is the subject in?" />
+              </span>
+            </label>
+            <input
+              id="environment"
+              name="environment"
+              onChange={(e) => {
+                dispatch({
+                  type: ActionType.UPDATE_ENV,
+                  payload: e.target.value,
+                });
+              }}
+              placeholder="Eg. 'urban sidewalk'"
+              className="form_input mb-5"
+            ></input>
+          </div>
+          <div className="flex flex-col flex-center">
+            <Image
+              src={`${process.env.NEXT_PUBLIC_AWS_CDN_URL}/sample_image_prompt.jpg`}
+              width={1024}
+              height={1024}
+              alt="generator"
+              className="object-fill rounded-lg max-w-sm pointer-events-none noselect"
+              priority
+            />
+            <p className=" italic p-1 w-4/5 text-center">
+              {`"a baby laying in a stroller, urban sidewalk, red shirt, green
+              stroller, smiling, portrait, urban, street photography, realistic,
+              lifelike, photography, afternoon, natural lighting, vibrant
+              colors, playful mood, best quality, exquisite, high resolution,
+              highly detailed, stunning"`}
+            </p>
+          </div>
+        </div>
+        <label htmlFor="extra_details">
+          <span className="font-satoshi font-semibold text-base text-gray-800 flex">
+            Extra Details
+            <Tooltip info="What other details about the subject do you want to push to priority for the model?" />
+          </span>
+        </label>
+        <textarea
+          id="extra_details"
+          name="extra_details"
+          onChange={(e) => {
+            dispatch({
+              type: ActionType.UPDATE_EXTRA_DETAILS,
+              payload: e.target.value,
+            });
+          }}
+          placeholder="Eg. red shirt, green stroller, smiling"
+          className="form_textarea mb-5 border-none"
+        ></textarea>
+        <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
+          Modifiers
+        </div>
+      </form>
     </section>
   );
 }
