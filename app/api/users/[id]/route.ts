@@ -2,7 +2,6 @@
 
 import { connectToDB } from "@utils/database";
 import User from "@models/user";
-import Prompt from "@models/prompt";
 // api/users/[id] route
 export const GET = async (
   req: Request,

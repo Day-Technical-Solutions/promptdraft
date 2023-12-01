@@ -4,16 +4,13 @@ import { T2CFormData } from "@app/generate/text-to-chat/page";
 import { Utils } from "@utils/utils";
 import OpenAI from "openai";
 
-type Request = {
-  json: () => PromiseLike<T2CFormData> | T2CFormData;
-};
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   organization: "org-KPf7OJsVT5kRsafTmRQ1bC5N",
 });
 
 export const POST = async (req: Request) => {
-  const formData = await req.json();
+  const formData: T2CFormData = await req.json();
   const gptPrompt = Utils.buildPromptTextToChat();
   const completion = await openai.chat.completions.create({
     messages: [

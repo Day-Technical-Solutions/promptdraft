@@ -2,12 +2,9 @@
 // api/prompt/create/t2i route
 import { T2IFormData } from "@app/generate/text-to-image/page";
 import { Utils } from "@utils/utils";
-type Request = {
-  json: () => PromiseLike<T2IFormData> | T2IFormData;
-};
 
 export const POST = async (req: Request) => {
-  const formData = await req.json();
+  const formData: T2IFormData = await req.json();
   console.log(formData);
   try {
     const generatedPrompt = Utils.buildPromptTextToImage(formData);

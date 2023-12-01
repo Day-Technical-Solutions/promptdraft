@@ -3,9 +3,6 @@
 import { Utils } from "@utils/utils";
 import OpenAI from "openai";
 
-type Request = {
-  json: () => PromiseLike<{ file: File; preview: string }>;
-};
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   organization: "org-KPf7OJsVT5kRsafTmRQ1bC5N",
