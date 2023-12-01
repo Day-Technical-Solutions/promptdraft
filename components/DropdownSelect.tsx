@@ -40,7 +40,7 @@ export default function DropdownSelect({
     }));
     setData(selectItems);
     setValue(selectItems[0].value);
-  }, []);
+  }, [enumType]);
 
   useEffect(() => {
     data.forEach((item) => {
@@ -50,7 +50,7 @@ export default function DropdownSelect({
       }
     });
     return dispatch({ type: action, payload: value });
-  }, [value]);
+  }, [value, action, data, dispatch]);
 
   return (
     <div>

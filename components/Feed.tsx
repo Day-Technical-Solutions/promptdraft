@@ -62,7 +62,7 @@ export default function Feed() {
       );
     });
     setFilteredPosts(filtered);
-  }, [searchText]);
+  }, [searchText, posts]);
 
   return (
     <section className="feed">

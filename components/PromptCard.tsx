@@ -57,7 +57,7 @@ export default function PromptCard({
     if (session.user.favorites === undefined) fetchFavorites();
     else setIsFavorited(session.user.favorites.includes(post._id!));
     return;
-  }, [session?.user.favorites, isFavorited]);
+  }, [session?.user.favorites, isFavorited, post._id, session?.user]);
 
   const handleFavorite = async (postId: string) => {
     if (!session?.user) return;

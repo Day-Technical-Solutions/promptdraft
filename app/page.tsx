@@ -62,11 +62,11 @@ export default function Home() {
             />
           </div>
           <p className="font-satoshi text-xl text-right text-white">
-            Whether you're seeking vivid conversational starters or stimulating
-            visuals, {siteName} is your gateway to an expansive realm of
+            {`Whether you're seeking vivid conversational starters or stimulating
+            visuals, ${siteName} is your gateway to an expansive realm of
             innovative possibilities. Elevate your content creation, scripting,
             and data manipulation experience with precision, speed, and creative
-            exploration.
+            exploration.`}
           </p>
         </div>
       </div>

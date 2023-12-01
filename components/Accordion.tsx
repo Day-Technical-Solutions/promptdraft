@@ -1,7 +1,6 @@
 /** @format */
 
 import React, { useContext, useEffect, useState } from "react";
-import { TECollapse } from "tw-elements-react";
 import SelectCardCheckbox from "./SelectCardCheckbox";
 import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
@@ -9,6 +8,7 @@ import { Utils } from "@utils/utils";
 import SelectCardRadio from "./SelectCardRadio";
 import { T2IFormContext } from "@app/generate/text-to-image/page";
 import ActionType from "@utils/actions";
+import dynamic from "next/dynamic";
 
 type props = {
   collection: string[];
@@ -23,6 +23,10 @@ type CollectionItem = {
   url: string;
   text: CollectionEnumType;
 };
+
+const TECollapse = dynamic(() =>
+  import("tw-elements-react").then((res) => res.TECollapse)
+);
 
 export default function Accordion({
   collection,
@@ -51,7 +55,7 @@ export default function Accordion({
       text: item,
     }));
     setData(collectionItems);
-  }, []);
+  }, [enumType]);
 
   const handleCheckBox = (selection: CollectionEnumType) => {
     if (collection.includes(selection))

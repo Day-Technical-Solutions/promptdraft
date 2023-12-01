@@ -44,7 +44,7 @@ export default function Nav() {
       });
     };
     updateImage();
-  }, [session?.user.image]);
+  }, [session?.user.image, session]);
 
   return (
     <nav className="flex-between w-full mb-3 pt-3">

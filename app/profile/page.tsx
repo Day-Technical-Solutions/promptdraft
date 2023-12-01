@@ -50,7 +50,7 @@ export default function MyProfile() {
     };
     fetchFavorites();
     fetchPost();
-  }, [session]);
+  }, [session, router, session?.user.id]);
 
   return (
     <Profile

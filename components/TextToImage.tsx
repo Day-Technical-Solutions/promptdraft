@@ -58,7 +58,7 @@ export default function TextToImage() {
     }, 0);
 
     return () => clearInterval(interval);
-  }, [generated]);
+  }, [generated, displayedPrompt.length]);
 
   return (
     <section className="w-full  flex-start flex-col min-h-screen mb-5">
@@ -147,11 +147,11 @@ export default function TextToImage() {
               priority
             />
             <p className=" italic p-1 w-4/5 text-center">
-              "a baby laying in a stroller, urban sidewalk, red shirt, green
+              {`"a baby laying in a stroller, urban sidewalk, red shirt, green
               stroller, smiling, portrait, urban, street photography, realistic,
               lifelike, photography, afternoon, natural lighting, vibrant
               colors, playful mood, best quality, exquisite, high resolution,
-              highly detailed, stunning"
+              highly detailed, stunning"`}
             </p>
           </div>
         </div>

@@ -24,7 +24,7 @@ export default function SelectCardRadio({
 
   useEffect(() => {
     setSelected(text === radio);
-  }, [radio]);
+  }, [radio, text]);
 
   return (
     <div className="p-2">
