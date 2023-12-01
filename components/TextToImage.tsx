@@ -175,7 +175,20 @@ export default function TextToImage() {
         <div className="font-bold text-lg py-2 my-5 font-inter border-b-2 border-gray-400 w-full">
           Modifiers
         </div>
-
+        <div className="mb-5">
+          <Accordion
+            collection={formData.photoArtStyle}
+            label="Photo/Art Style"
+            tooltip={
+              <Tooltip
+                info={
+                  "What kind of art style or composition should this image have?"
+                }
+              />
+            }
+            enumType={"PhotoArtStyle"}
+          />
+        </div>
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div className="grid rounded-lg p-4 flex-col bg-white">
             <div className="flex gap-4 w-full">
