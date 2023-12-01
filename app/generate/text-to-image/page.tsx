@@ -23,7 +23,7 @@ export default function TextToImageForm() {
     camera: [],
     magicWords: [],
   };
-  // const [formData, dispatch] = useReducer(T2IReducer, initialState);
+  const [formData, dispatch] = useReducer(T2IReducer, initialState);
 
   return (
     <div className="min-h-screen w-full">
