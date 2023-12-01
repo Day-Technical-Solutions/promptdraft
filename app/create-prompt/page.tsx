@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -27,13 +27,18 @@ export default function CreatePrompt() {
   const router = useRouter();
   const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [post, setPost] = useState<Post>({
     prompt: "",
     tag: "",
     link: "",
     title: "",
   });
-  if (!session?.user.id) return router.push("/");
+
+  useEffect(() => {
+    if (!session?.user.id) return router.push("/");
+    if (completed) router.push("/profile");
+  }, [session?.user.id, router, completed]);
 
   const createPrompt = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
@@ -50,7 +55,7 @@ export default function CreatePrompt() {
           title: post.title,
         }),
       });
-      if (response.ok) router.push("/profile");
+      if (response.ok) setCompleted(true);
     } catch (error) {
       console.log(error);
     } finally {
