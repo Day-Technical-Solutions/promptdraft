@@ -35,7 +35,7 @@ export default function UserProfile() {
     };
     fetchUser();
     fetchPost();
-  }, []);
+  }, [id]);
 
   return (
     user && (

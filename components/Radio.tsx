@@ -5,7 +5,7 @@
 import ActionType from "@utils/actions";
 import React, { useContext } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext } from "@app/generate/text-to-chat/page";
+import { T2CFormContext } from "@utils/utils";
 
 export default function Radio({
   form,
