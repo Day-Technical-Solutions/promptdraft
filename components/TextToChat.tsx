@@ -56,7 +56,7 @@ export default function TextToChat() {
     }, 0);
 
     return () => clearInterval(interval);
-  }, [generated, displayedPrompt.length]);
+  }, [generated]);
 
   return (
     <section className="w-full  flex-start flex-col min-h-screen mb-5">
