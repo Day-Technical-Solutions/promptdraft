@@ -5,23 +5,7 @@ import TextToImage from "@components/TextToImage";
 import React, { createContext, useReducer } from "react";
 import { T2IReducer } from "@utils/T2IReducer";
 import ActionType from "@utils/actions";
-
-export type T2IFormData = {
-  subject: string;
-  predicate: string;
-  environment: string;
-  extraDetails: string;
-  photoArtStyle: string[];
-  realism: string[];
-  artMedium: string[];
-  timeOfDay: string[];
-  lighting: string[];
-  colorScheme: string[];
-  mood: string[];
-  influence: string[];
-  camera: string[];
-  magicWords: string[];
-};
+import { T2IFormData } from "@utils/utils";
 
 type T2IFormContextType = {
   formData: T2IFormData;

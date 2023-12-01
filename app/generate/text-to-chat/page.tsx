@@ -4,31 +4,8 @@
 import TextToChat from "@components/TextToChat";
 import { T2CReducer } from "@utils/T2CReducer";
 import ActionType from "@utils/actions";
+import { T2CFormData } from "@utils/utils";
 import React, { createContext, useReducer } from "react";
-
-export type T2CFormData = {
-  thespian: string;
-  context: string;
-  objective: string;
-  example: string;
-  callToAction: string;
-  scope: string;
-  format: string;
-  constraints: string;
-  language: string;
-  keyTerms: string;
-  tone: string;
-  urgency: string;
-  audience: string;
-  sensitivity: string;
-  pointOfView: string;
-  visualElements: string;
-  counterArguments: string;
-  analogies: string;
-  quotes: string;
-  statistics: string;
-  citations: string;
-};
 
 type T2CFormContextType = {
   formData: T2CFormData;

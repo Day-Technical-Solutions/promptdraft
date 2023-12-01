@@ -1,7 +1,6 @@
 /** @format */
 // api/prompt/create/t2i route
-import { T2IFormData } from "@app/generate/text-to-image/page";
-import { Utils } from "@utils/utils";
+import { T2IFormData, Utils } from "@utils/utils";
 
 export const POST = async (req: Request) => {
   const formData: T2IFormData = await req.json();

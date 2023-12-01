@@ -1,7 +1,5 @@
 /** @format */
 
-import { T2CFormData } from "@app/generate/text-to-chat/page";
-import { T2IFormData } from "@app/generate/text-to-image/page";
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";
 import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
@@ -27,6 +25,47 @@ export const lorem =
 export const metadata = {
   title: "Prompt Draft",
   description: "High Quality Prompts Made Easy",
+};
+
+export type T2CFormData = {
+  thespian: string;
+  context: string;
+  objective: string;
+  example: string;
+  callToAction: string;
+  scope: string;
+  format: string;
+  constraints: string;
+  language: string;
+  keyTerms: string;
+  tone: string;
+  urgency: string;
+  audience: string;
+  sensitivity: string;
+  pointOfView: string;
+  visualElements: string;
+  counterArguments: string;
+  analogies: string;
+  quotes: string;
+  statistics: string;
+  citations: string;
+};
+
+export type T2IFormData = {
+  subject: string;
+  predicate: string;
+  environment: string;
+  extraDetails: string;
+  photoArtStyle: string[];
+  realism: string[];
+  artMedium: string[];
+  timeOfDay: string[];
+  lighting: string[];
+  colorScheme: string[];
+  mood: string[];
+  influence: string[];
+  camera: string[];
+  magicWords: string[];
 };
 
 export class Utils {
