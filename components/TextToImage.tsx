@@ -10,7 +10,7 @@ import Link from "next/link";
 import { T2IFormContext, lorem } from "@utils/utils";
 import ButtonSubmit from "./ButtonSubmit";
 
-export default function TextToImage() {
+export function TextToImage() {
   const [submitting, setSubmitting] = useState(false);
   const [generated, setGenerated] = useState(lorem);
   const [negPrompt, setNegPrompt] = useState(
