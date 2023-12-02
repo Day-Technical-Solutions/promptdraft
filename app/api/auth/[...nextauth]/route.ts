@@ -19,16 +19,12 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
-      if (!session) {
-        const newSession = await getServerSession();
-        if (newSession !== null) session = newSession;
-      }
+      session = (await getServerSession())!;
 
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
       session.user.id = sessionUser._id.toString();
-
       return session;
     },
     async signIn({ account, profile, user, credentials }) {
