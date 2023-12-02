@@ -23,6 +23,8 @@ const handler = NextAuth({
         email: session.user.email,
       });
       session.user.id = sessionUser._id.toString();
+      console.log(sessionUser);
+      console.log(session.user);
       return session;
     },
     async signIn({ profile }) {
