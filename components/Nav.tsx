@@ -46,6 +46,10 @@ export default function Nav() {
     updateImage();
   }, [session?.user.image, session]);
 
+  useEffect(() => {
+    console.log(session);
+  }, [session]);
+
   return (
     <nav className="flex-between w-full mb-3 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
