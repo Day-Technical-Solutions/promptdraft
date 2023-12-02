@@ -3,9 +3,14 @@
 import { connectToDB } from "@utils/database";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { encode, decode } from "next-auth/jwt";
 import User from "@models/user";
 // api/auth/next-auth/[provider] route
 const handler = NextAuth({
+  session: {
+    strategy: "jwt",
+  },
+  jwt: { encode, decode },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_ID!,
@@ -15,7 +20,7 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       const sessionUser = await User.findOne({
-        email: session.user?.email,
+        email: session.user.email,
       });
       session.user.id = sessionUser._id.toString();
       return session;
