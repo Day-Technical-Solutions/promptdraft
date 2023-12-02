@@ -1,6 +1,4 @@
 /** @format */
-"use client";
-
 import ArtMedium from "@data/ArtMedium";
 import { CameraLens, CameraType, CameraView } from "@data/Camera";
 import { CollectionEnumType, CollectionTypeMap } from "@data/CollectionTypeMap";
@@ -19,8 +17,7 @@ import Sensitivity from "@data/Sensitivity";
 import TimeOfDay from "@data/TimeOfDay";
 import Tone from "@data/Tone";
 import Urgency from "@data/Urgency";
-import { createContext } from "react";
-import ActionType from "./actions";
+import { T2IFormData } from "@data/Contexts";
 
 export const lorem =
   "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae quae placeat sunt ullam veritatis harum ex vitae commodi sint velit. Aut consequatur accusantium velit maiores quo obcaecati inventore iure nostrum!";
@@ -28,67 +25,6 @@ export const lorem =
 export const metadata = {
   title: "Prompt Draft",
   description: "High Quality Prompts Made Easy",
-};
-
-export type T2CFormData = {
-  thespian: string;
-  context: string;
-  objective: string;
-  example: string;
-  callToAction: string;
-  scope: string;
-  format: string;
-  constraints: string;
-  language: string;
-  keyTerms: string;
-  tone: string;
-  urgency: string;
-  audience: string;
-  sensitivity: string;
-  pointOfView: string;
-  visualElements: string;
-  counterArguments: string;
-  analogies: string;
-  quotes: string;
-  statistics: string;
-  citations: string;
-};
-
-type T2CFormContextType = {
-  formData: T2CFormData;
-  dispatch: React.Dispatch<{
-    type: ActionType;
-    payload: any;
-  }>;
-};
-
-export const T2CFormContext = createContext<T2CFormContextType | null>(null);
-
-type T2IFormContextType = {
-  formData: T2IFormData;
-  dispatch: React.Dispatch<{
-    type: ActionType;
-    payload: any;
-  }>;
-};
-
-export const T2IFormContext = createContext<T2IFormContextType | null>(null);
-
-export type T2IFormData = {
-  subject: string;
-  predicate: string;
-  environment: string;
-  extraDetails: string;
-  photoArtStyle: string[];
-  realism: string[];
-  artMedium: string[];
-  timeOfDay: string[];
-  lighting: string[];
-  colorScheme: string[];
-  mood: string[];
-  influence: string[];
-  camera: string[];
-  magicWords: string[];
 };
 
 export class Utils {

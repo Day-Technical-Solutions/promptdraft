@@ -5,7 +5,7 @@
 import ActionType from "@utils/actions";
 import React, { useContext } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext } from "@utils/utils";
+import { T2CFormContext } from "@data/Contexts";
 
 export default function Radio({
   form,

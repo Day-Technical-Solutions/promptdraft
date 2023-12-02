@@ -2,13 +2,14 @@
 "use client";
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useSession } from "next-auth/react";
-import { T2IFormContext, lorem } from "@utils/utils";
 import ActionType from "@utils/actions";
 import Link from "next/link";
 import ButtonSubmit from "./ButtonSubmit";
 import Tooltip from "./Tooltip";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { T2IFormContext } from "@data/Contexts";
+import { lorem } from "@utils/utils";
 
 const Accordion = dynamic(() => import("./Accordion"), { ssr: false });
 

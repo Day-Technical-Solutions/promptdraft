@@ -1,6 +1,6 @@
 /** @format */
+import { T2IFormData } from "@data/Contexts";
 import ActionType from "./actions";
-import { T2IFormData } from "./utils";
 
 export function T2IReducer(
   formData: T2IFormData,

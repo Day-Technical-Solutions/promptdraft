@@ -3,8 +3,9 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "./Tooltip";
-import { T2CFormContext, Utils } from "@utils/utils";
+import { Utils } from "@utils/utils";
 import ActionType from "@utils/actions";
+import { T2CFormContext } from "@data/Contexts";
 
 type SelectItem = {
   value: string;

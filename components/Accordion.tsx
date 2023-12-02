@@ -4,10 +4,11 @@ import React, { useContext, useEffect, useState } from "react";
 import SelectCardCheckbox from "./SelectCardCheckbox";
 import { type CollectionEnumType } from "@data/CollectionTypeMap";
 import PhotoArtStyle from "@data/PhotoArtStyle";
-import { T2IFormContext, Utils } from "@utils/utils";
+import { Utils } from "@utils/utils";
 import SelectCardRadio from "./SelectCardRadio";
 import ActionType from "@utils/actions";
 import dynamic from "next/dynamic";
+import { T2IFormContext } from "@data/Contexts";
 
 type props = {
   collection: string[];

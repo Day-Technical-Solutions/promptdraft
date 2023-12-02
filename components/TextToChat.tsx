@@ -8,10 +8,11 @@ import DropdownSelect from "./DropdownSelect";
 import Radio from "./Radio";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { T2CFormContext, lorem } from "@utils/utils";
 import Image from "next/image";
 import Markdown from "react-markdown";
 import ButtonSubmit from "./ButtonSubmit";
+import { T2CFormContext } from "@data/Contexts";
+import { lorem } from "@utils/utils";
 
 export default function TextToChat() {
   const [submitting, setSubmitting] = useState(false);

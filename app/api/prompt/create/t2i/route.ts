@@ -1,13 +1,16 @@
 /** @format */
 // api/prompt/create/t2i route
-import { T2IFormData, Utils } from "@utils/utils";
+import { T2IFormData } from "@data/Contexts";
+import { Utils } from "@utils/utils";
 
-export const POST = async (req: Request) => {
-  const formData: T2IFormData = await req.json();
+export const POST = async (req: {
+  json: () => T2IFormData | PromiseLike<T2IFormData>;
+}) => {
+  const formData = await req.json();
   console.log(formData);
+  const generatedPrompt = Utils.buildPromptTextToImage(formData);
+  console.log(generatedPrompt);
   try {
-    const generatedPrompt = Utils.buildPromptTextToImage(formData);
-    console.log(generatedPrompt);
     return new Response(JSON.stringify(generatedPrompt), { status: 201 });
   } catch (error) {
     return new Response("Failed to generate prompt", { status: 500 });

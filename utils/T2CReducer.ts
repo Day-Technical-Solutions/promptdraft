@@ -1,7 +1,6 @@
 /** @format */
 
 import ActionType from "./actions";
-import { T2CFormData } from "./utils";
 
 export function T2CReducer(
   formData: T2CFormData,

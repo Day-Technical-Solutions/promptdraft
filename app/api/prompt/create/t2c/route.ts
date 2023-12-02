@@ -1,6 +1,7 @@
 /** @format */
 // api/prompt/create/t2c route
-import { T2CFormData, Utils } from "@utils/utils";
+import { T2CFormData } from "@data/Contexts";
+import { Utils } from "@utils/utils";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
@@ -8,7 +9,9 @@ const openai = new OpenAI({
   organization: "org-KPf7OJsVT5kRsafTmRQ1bC5N",
 });
 
-export const POST = async (req: Request) => {
+export const POST = async (req: {
+  json: () => T2CFormData | PromiseLike<T2CFormData>;
+}) => {
   const formData: T2CFormData = await req.json();
   const gptPrompt = Utils.buildPromptTextToChat();
   const completion = await openai.chat.completions.create({
