@@ -15,6 +15,7 @@ import {
   LiteralUnion,
 } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
+import User from "@models/user";
 
 export default function Nav() {
   const { data: session } = useSession();
@@ -34,6 +35,16 @@ export default function Nav() {
 
     setLoginProviders();
   }, []);
+
+  useEffect(() => {
+    if (session && !session?.user.id) {
+      const fetchUser = async () => {
+        const user = await User.findOne({ email: session?.user.email });
+        session!.user.id = user._id;
+      };
+      fetchUser();
+    }
+  }, [session?.user.id]);
 
   useEffect(() => {
     if (!session) return;
