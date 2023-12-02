@@ -22,7 +22,7 @@ export const POST = async (req: Request) => {
   const generatedPrompt = completion.choices[0].message.content;
 
   try {
-    return new Response(JSON.stringify(generatedPrompt), { status: 201 });
+    return new Response(JSON.stringify("GPT CALL GOES HERE"), { status: 201 });
   } catch (error) {
     return new Response("Failed to generate prompt", { status: 500 });
   }

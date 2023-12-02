@@ -131,7 +131,7 @@ export default function TextToChat() {
                 payload: e.target.value,
               });
             }}
-            placeholder="Eg. 'Write a detailed outline of the zoology of a rhinocerous.'"
+            placeholder="Eg. 'Write a detailed outline of the zoology of a rhinoceros.'"
             required
             name="objective"
             className="form_input h-30 mb-5"
