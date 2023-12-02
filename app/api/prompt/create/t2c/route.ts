@@ -9,9 +9,7 @@ const openai = new OpenAI({
   organization: "org-KPf7OJsVT5kRsafTmRQ1bC5N",
 });
 
-export const POST = async (req: {
-  json: () => T2CFormData | PromiseLike<T2CFormData>;
-}) => {
+export const POST = async (req: Request) => {
   const formData: T2CFormData = await req.json();
   const gptPrompt = Utils.buildPromptTextToChat();
   const completion = await openai.chat.completions.create({

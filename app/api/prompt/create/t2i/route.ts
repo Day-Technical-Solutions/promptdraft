@@ -3,9 +3,7 @@
 import { T2IFormData } from "@data/Contexts";
 import { Utils } from "@utils/utils";
 
-export const POST = async (req: {
-  json: () => T2IFormData | PromiseLike<T2IFormData>;
-}) => {
+export const POST = async (req: Request) => {
   const formData = await req.json();
   console.log(formData);
   const generatedPrompt = Utils.buildPromptTextToImage(formData);
