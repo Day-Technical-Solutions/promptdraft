@@ -17,6 +17,7 @@ import {
 import { BuiltInProviderType } from "next-auth/providers/index";
 
 export default function Nav() {
+  const { data: session } = useSession();
   const [providers, setProviders] = useState<Record<
     LiteralUnion<BuiltInProviderType, string>,
     ClientSafeProvider
@@ -33,8 +34,6 @@ export default function Nav() {
 
     setLoginProviders();
   }, []);
-
-  const { data: session } = useSession();
 
   useEffect(() => {
     if (!session) return;
