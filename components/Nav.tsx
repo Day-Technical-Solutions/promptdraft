@@ -37,13 +37,7 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    if (session && !session?.user.id) {
-      const fetchUser = async () => {
-        const user = await User.findOne({ email: session?.user.email });
-        session!.user.id = user._id;
-      };
-      fetchUser();
-    }
+    console.log(session);
   }, [session?.user.id]);
 
   useEffect(() => {
