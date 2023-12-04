@@ -5,7 +5,6 @@ import Nav from "@components/Nav";
 import Provider from "@components/Provider";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@utils/AuthOptions";
-import { Session } from "next-auth";
 
 export const metadata = {
   title: "Prompt Draft",
@@ -16,7 +15,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = (await getServerSession(authOptions)) as Session;
+  //const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body>
