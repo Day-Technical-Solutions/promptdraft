@@ -20,7 +20,18 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider session={session ?? { user: {}, expires: "" }}>
+        <Provider
+          session={{
+            user: {
+              email: "",
+              username: "",
+              image: "",
+              id: "",
+              favorites: [],
+            },
+            expires: "",
+          }}
+        >
           <div className="main">
             <div className="gradient" />
           </div>
