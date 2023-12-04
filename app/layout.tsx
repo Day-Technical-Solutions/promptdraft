@@ -15,11 +15,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  //const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <body>
-        <Provider session={session}>
+        <Provider session={null}>
           <div className="main">
             <div className="gradient" />
           </div>

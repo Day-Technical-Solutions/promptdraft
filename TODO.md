@@ -4,6 +4,8 @@
 
 client side password validation
 
+enforce sign-in on profile view
+
 add see all modal
 
 implement prompt chaining
