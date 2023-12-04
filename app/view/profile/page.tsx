@@ -38,13 +38,15 @@ export default function UserProfile() {
   }, [id]);
 
   return (
-    user && (
-      <Profile
-        name={`${user?.username}'s`}
-        desc="Have a look at the awesome creativity of these prompts!"
-        postsData={posts}
-        favPostsData={[]}
-      />
-    )
+    <div className="min-h-screen">
+      {user && (
+        <Profile
+          name={`${user?.username}'s`}
+          desc="Have a look at the awesome creativity of these prompts!"
+          postsData={posts}
+          favPostsData={[]}
+        />
+      )}
+    </div>
   );
 }

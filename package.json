@@ -24,6 +24,7 @@
     "tw-elements-react": "^1.0.0-alpha1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",

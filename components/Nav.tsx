@@ -37,10 +37,6 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    console.log(session);
-  }, [session?.user.id]);
-
-  useEffect(() => {
     if (!session) return;
     const updateImage = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/image`, {
@@ -75,7 +71,7 @@ export default function Nav() {
           <Link href="/feed" className="black_btn">
             Feed
           </Link>
-          {session?.user && (
+          {session?.user.id ? (
             <>
               <Link href="/create-prompt" className="black_btn">
                 Create Post
@@ -93,21 +89,25 @@ export default function Nav() {
               </button>
               <Link href={"/profile"}>
                 <Image
-                  src={session?.user.image}
+                  src={
+                    session?.user.image
+                      ? session.user.image
+                      : "/assets/images/clipboard.png"
+                  }
                   width={37}
                   height={37}
-                  className="rounded-full"
+                  className="rounded-full bg-blue-300"
                   alt="profile"
                 />
               </Link>
             </>
-          )}
+          ) : null}
         </div>
       </div>
 
       {/* Mobile Nav */}
       <div className="sm:hidden flex relative">
-        {session?.user && (
+        {session?.user.id && (
           <div className="flex">
             <Image
               src={session?.user.image}
@@ -167,17 +167,13 @@ export default function Nav() {
       </div>
       {!session?.user && (
         <>
-          {providers &&
-            Object.values(providers).map((provider) => (
-              <button
-                type="button"
-                key={provider.name}
-                onClick={() => signIn(provider.id)}
-                className="black_btn"
-              >
-                Sign In
-              </button>
-            ))}
+          <button
+            type="button"
+            onClick={() => router.push("/api/auth/signin")}
+            className="black_btn"
+          >
+            Sign In
+          </button>
         </>
       )}
     </nav>

@@ -2,6 +2,8 @@
 
 --------MVP Ready------ Deploy on Vercel
 
+client side password validation
+
 add see all modal
 
 implement prompt chaining
@@ -10,9 +12,9 @@ implement pagination for all fetches
 
 implement a cache for searches, update DB fetch logic
 
-Add more login providers, add dedicated sign up/login page
+Add more login providers,
 
-Add custom login form
+customize auto login form, add dedicated sign up
 
 Settings page to update user information
 
