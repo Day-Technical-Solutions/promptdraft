@@ -36,16 +36,20 @@ export default function Nav() {
     setLoginProviders();
   }, []);
 
+  // useEffect(() => {
+  //   if (session?.user.image) return;
+  //   const updateImage = async () => {
+  //     const response = await fetch(`/api/users/${session?.user.id}/image`, {
+  //       method: "PATCH",
+  //       body: JSON.stringify(session?.user.image),
+  //     });
+  //   };
+  //   if (session?.user) updateImage();
+  // }, [session?.user.id, session]);
+
   useEffect(() => {
-    if (!session) return;
-    const updateImage = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/image`, {
-        method: "PATCH",
-        body: JSON.stringify(session?.user.image),
-      });
-    };
-    updateImage();
-  }, [session?.user.image, session]);
+    console.log(session);
+  }, [session]);
 
   return (
     <nav className="flex-between w-full mb-3 pt-3">
