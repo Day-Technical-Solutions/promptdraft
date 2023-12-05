@@ -15,75 +15,75 @@ export const authOptions: AuthOptions = {
   },
   jwt: { encode, decode },
   providers: [
-    CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: {
-          label: "Username:",
-          type: "text",
-          placeholder: "your-username-here",
-        },
-        email: {
-          label: "Email:",
-          type: "email",
-          placeholder: "email@example.com",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "*********",
-        },
-      },
-      async authorize(credentials) {
-        if (!credentials) return null;
-        await connectToDB();
-        const user: IUser | null = await User.findOne({
-          email: credentials.email,
-        });
-        if (!user) {
-          const usernameInfo = credentials.username as string;
-          const passwordInfo = bcrypt.hashSync(
-            credentials.password as string,
-            4
-          );
-          await User.create({
-            email: credentials.email,
-            username: usernameInfo.replace(/\s/g, "").toLowerCase(),
-            image: "",
-            userTag:
-              usernameInfo.replace(/\s/g, "") +
-              Math.floor(Math.random() * 1000),
-            password: passwordInfo,
-            favorites: [],
-          });
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     username: {
+    //       label: "Username:",
+    //       type: "text",
+    //       placeholder: "your-username-here",
+    //     },
+    //     email: {
+    //       label: "Email:",
+    //       type: "email",
+    //       placeholder: "email@example.com",
+    //     },
+    //     password: {
+    //       label: "Password",
+    //       type: "password",
+    //       placeholder: "*********",
+    //     },
+    //   },
+    //   async authorize(credentials) {
+    //     if (!credentials) return null;
+    //     await connectToDB();
+    //     const user: IUser | null = await User.findOne({
+    //       email: credentials.email,
+    //     });
+    //     if (!user) {
+    //       const usernameInfo = credentials.username as string;
+    //       const passwordInfo = bcrypt.hashSync(
+    //         credentials.password as string,
+    //         4
+    //       );
+    //       await User.create({
+    //         email: credentials.email,
+    //         username: usernameInfo.replace(/\s/g, "").toLowerCase(),
+    //         image: "",
+    //         userTag:
+    //           usernameInfo.replace(/\s/g, "") +
+    //           Math.floor(Math.random() * 1000),
+    //         password: passwordInfo,
+    //         favorites: [],
+    //       });
 
-          const newUser = await User.findOne({
-            email: credentials.email,
-          });
+    //       const newUser = await User.findOne({
+    //         email: credentials.email,
+    //       });
 
-          return {
-            id: newUser._id,
-            email: newUser.email,
-            name: newUser.username,
-            image: newUser.image,
-          };
-        } else {
-          const isAutorized = await bcrypt.compare(
-            credentials.password,
-            user.password!
-          );
-          if (isAutorized) {
-            return {
-              id: user._id,
-              email: user.email,
-              name: user.username,
-              image: user.image,
-            };
-          }
-        }
-        return null;
-      },
-    }),
+    //       return {
+    //         id: newUser._id,
+    //         email: newUser.email,
+    //         name: newUser.username,
+    //         image: newUser.image,
+    //       };
+    //     } else {
+    //       const isAutorized = await bcrypt.compare(
+    //         credentials.password,
+    //         user.password!
+    //       );
+    //       if (isAutorized) {
+    //         return {
+    //           id: user._id,
+    //           email: user.email,
+    //           name: user.username,
+    //           image: user.image,
+    //         };
+    //       }
+    //     }
+    //     return null;
+    //   },
+    // }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
