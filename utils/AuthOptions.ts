@@ -2,7 +2,7 @@
 
 import { connectToDB } from "@utils/database";
 import bcrypt from "bcrypt";
-import { type AuthOptions } from "next-auth";
+import { getServerSession, type AuthOptions, Session } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -130,6 +130,7 @@ export const authOptions: AuthOptions = {
       }
     },
     async session({ session }) {
+      if (!session) session = (await getServerSession()) as Session;
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
