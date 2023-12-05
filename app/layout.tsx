@@ -2,12 +2,14 @@
 
 import "@styles/globals.css";
 import Nav from "@components/Nav";
-import Provider from "@components/Provider";
+import Provider from "@components/AuthProvider";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@utils/AuthOptions";
+import AuthProvider from "@components/AuthProvider";
 
 export const metadata = {
   title: "Prompt Draft",
+  description: "The greatest prompt generator in the world.",
 };
 
 export default async function RootLayout({
@@ -18,7 +20,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Provider>
+        <AuthProvider>
           <div className="main">
             <div className="gradient" />
           </div>
@@ -31,7 +33,7 @@ export default async function RootLayout({
               </div>
             </footer>
           </main>
-        </Provider>
+        </AuthProvider>
       </body>
     </html>
   );

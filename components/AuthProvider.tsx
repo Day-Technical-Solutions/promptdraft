@@ -5,12 +5,10 @@ import React, { useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
 import { Session } from "next-auth";
 
-export default function Provider({
+export default function AuthProvider({
   children,
-  session,
 }: {
   children: React.ReactNode;
-  session?: Session | null;
 }) {
-  return <SessionProvider session={session}>{children}</SessionProvider>;
+  return <SessionProvider>{children}</SessionProvider>;
 }
