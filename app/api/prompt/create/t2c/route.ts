@@ -18,7 +18,6 @@ export const POST = async (req: Request) => {
 			{ role: "user", content: JSON.stringify(formData) },
 		],
 		model: "gpt-4",
-		max_tokens: 8192,
 	});
 	const generatedPrompt = completion.choices[0].message.content;
 
