@@ -12,7 +12,19 @@ const nextConfig = {
       topLevelAwait: true,
     }
     return config
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: `/api/:path*`,
+        destination: `/api/:path*`,
+      },
+      {
+        source: `/:path*`,
+        destination: `https://www.promptdraft.net/:path*`,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig
