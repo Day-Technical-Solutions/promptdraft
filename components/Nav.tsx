@@ -119,6 +119,7 @@ export default function Nav() {
 									href={"/profile"}
 									className='dropdown_link'
 									onClick={() => setToggleDropdown(false)}
+									prefetch={false}
 								>
 									My Profile
 								</Link>
@@ -126,6 +127,7 @@ export default function Nav() {
 									href='/generate'
 									className='dropdown_link'
 									onClick={() => setToggleDropdown(false)}
+									prefetch={false}
 								>
 									Generate
 								</Link>
@@ -133,6 +135,7 @@ export default function Nav() {
 									href={"/create-prompt"}
 									className='dropdown_link'
 									onClick={() => setToggleDropdown(false)}
+									prefetch={false}
 								>
 									Create Post
 								</Link>
@@ -140,6 +143,7 @@ export default function Nav() {
 									href={"/feed"}
 									className='dropdown_link'
 									onClick={() => setToggleDropdown(false)}
+									prefetch={false}
 								>
 									Feed
 								</Link>
