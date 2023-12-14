@@ -8,7 +8,7 @@ const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
 	organization: "org-KPf7OJsVT5kRsafTmRQ1bC5N",
 });
-
+export const runtime = "edge";
 export const POST = async (req: Request) => {
 	const formData: T2CFormData = await req.json();
 	const gptPrompt = Utils.buildPromptTextToChat();
