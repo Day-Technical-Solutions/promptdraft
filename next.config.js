@@ -19,10 +19,6 @@ const nextConfig = {
         source: `/api/:path*`,
         destination: `/api/:path*`,
       },
-      {
-        source: `/:path*`,
-        destination: `https://www.promptdraft.net/:path*`,
-      },
     ];
   },
 }
