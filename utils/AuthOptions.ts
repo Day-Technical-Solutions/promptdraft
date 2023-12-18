@@ -122,7 +122,8 @@ export const authOptions: AuthOptions = {
 		},
 		async session({ session, token }) {
 			if (session.user.id) return session;
-			const user = await User.findOne({ email: session.user.email });
+			const newSession = await getServerSession();
+			const user = await User.findOne({ email: newSession?.user.email ?? session.user.email });
 			session.user.id = user._id;
 			session.user.favorites = user.favorites;
 			return session;

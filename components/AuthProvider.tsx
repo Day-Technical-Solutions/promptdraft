@@ -6,6 +6,5 @@ import { SessionProvider } from "next-auth/react";
 import { Session, getServerSession } from "next-auth";
 
 export default async function AuthProvider({ children }: { children: React.ReactNode }) {
-	const session = await getServerSession();
-	return <SessionProvider session={session}>{children}</SessionProvider>;
+	return <SessionProvider>{children}</SessionProvider>;
 }
