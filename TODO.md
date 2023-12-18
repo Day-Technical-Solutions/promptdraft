@@ -1,7 +1,10 @@
 <!-- @format -->
 
-nav
+sort by date created in feed and profile
+
 --------MVP Ready------ Deploy on Vercel
+
+add react cache revalidation to no-cache server fetch for feed
 
 client side password validation
 

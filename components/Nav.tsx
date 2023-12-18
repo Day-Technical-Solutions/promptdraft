@@ -18,7 +18,7 @@ import { BuiltInProviderType } from "next-auth/providers/index";
 import User from "@models/user";
 
 export default function Nav() {
-	const { data: session } = useSession();
+	const { data: session, update } = useSession();
 	const [providers, setProviders] = useState<Record<
 		LiteralUnion<BuiltInProviderType, string>,
 		ClientSafeProvider
@@ -35,6 +35,12 @@ export default function Nav() {
 
 		setLoginProviders();
 	}, []);
+
+	useEffect(() => {
+		const visibilityHandler = () => document.visibilityState === "visible" && update();
+		window.addEventListener("visibilitychange", visibilityHandler, false);
+		return () => window.removeEventListener("visibilitychange", visibilityHandler, false);
+	}, [update]);
 
 	// useEffect(() => {
 	//   if (session?.user.image) return;
